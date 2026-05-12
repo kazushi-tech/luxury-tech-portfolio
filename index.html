@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="実際に制作したWebサービスとLPを、実スクリーンショット中心で見せるKazushi Portfolio."
+      content="実際に制作したWebサービスとLPを、実画面と設計意図で見せるKazushi Portfolio."
     />
-    <title>Kazushi Portfolio | Verified Web Works</title>
+    <title>Kazushi Portfolio | Web Works Gallery</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
@@ -19,14 +19,14 @@
         <span class="brand-mark" aria-hidden="true">K</span>
         <span class="brand-text">
           <b>Kazushi</b>
-          <small>Verified Web Works</small>
+          <small>Web Works Gallery</small>
         </span>
       </a>
       <nav class="site-nav" aria-label="主要ナビゲーション">
         <a href="#works">Works</a>
-        <a href="#proof">Proof</a>
-        <a href="#method">Method</a>
-        <a class="nav-cta" href="#contact">Import Ready</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Contact</a>
       </nav>
     </header>
 
@@ -34,112 +34,120 @@
       <section class="hero section-shell" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="hero-pill">
-            <span>Real screenshots</span>
-            <span>AI-shaped portfolio</span>
+            <span>実画面で見る制作実績</span>
+            <span>Web / LP / Dashboard</span>
           </p>
           <h1 id="hero-title">
-            Proof-backed
-            <span>web works.</span>
+            画面で伝わる、
+            <span>制作実績。</span>
           </h1>
           <p class="hero-lead">
-            Insight Studio、姓名診断、KRM留学LP、日だまり茶房。
-            実際に開いて撮影した画面を主役に、作例ギャラリーの軽さと少し遊びのある高級感で見せるポートフォリオです。
+            サービスの内容、誰に向けたものか、どこを設計したのか。
+            見た目だけで終わらせず、実際の画面と短い説明で制作物の意図まで伝えるポートフォリオです。
           </p>
           <div class="hero-actions" aria-label="主要アクション">
-            <a class="button button-primary" href="#works">Explore works</a>
-            <a class="button button-soft" href="https://github.com/kazushi-tech/luxury-tech-portfolio" target="_blank" rel="noopener">
-              GitHub repo
-            </a>
+            <a class="button button-primary" href="#works">作品を見る</a>
+            <a class="button button-soft" href="#about">制作姿勢を見る</a>
           </div>
         </div>
 
         <div class="hero-gallery" aria-label="制作実績のプレビュー">
-          <article class="hero-tile hero-tile-large">
+          <article class="hero-tile">
             <img src="assets/projects/insight-studio-redacted.png" alt="Insight Studioの安全化済み実画面" />
-            <span>Featured SaaS</span>
+            <span>Insight Studio</span>
           </article>
           <article class="hero-tile">
             <img src="assets/projects/namae-studio-real.png" alt="姓名診断の実画面" />
-            <span>Web Service</span>
+            <span>姓名診断</span>
           </article>
           <article class="hero-tile">
             <img src="assets/projects/krm-ryugaku-status.png" alt="KRM留学LPの実画面" />
-            <span>Landing Page</span>
+            <span>KRM留学LP</span>
           </article>
           <article class="hero-tile">
             <img src="assets/projects/hidamari-sabou-real.png" alt="日だまり茶房LPの実画面" />
-            <span>Fictional LP</span>
+            <span>日だまり茶房</span>
           </article>
         </div>
       </section>
 
       <section id="works" class="works section-shell" aria-labelledby="works-title">
+        <div class="section-visual reveal">
+          <img src="assets/portfolio/works-heading.png" alt="制作実績が並ぶギャラリー風の見出し画像" loading="lazy" />
+        </div>
         <div class="section-top">
           <div>
             <p class="eyebrow">Selected Works</p>
-            <h2 id="works-title">Choose a card, see the proof.</h2>
+            <h2 id="works-title">どんなサービスか、何を設計したか。</h2>
           </div>
           <div class="filter-bar" aria-label="作品カテゴリ"></div>
         </div>
         <div class="works-grid" id="works-grid" aria-live="polite"></div>
       </section>
 
-      <section id="proof" class="proof section-shell" aria-labelledby="proof-title">
-        <div class="proof-panel reveal">
-          <div class="proof-copy">
-            <p class="eyebrow">Portfolio Rule</p>
-            <h2 id="proof-title">Generated visuals set the mood. Real screenshots prove the work.</h2>
-            <p>
-              GPT Image / Image Gen はポートフォリオ自体の世界観作りに使い、作品カードは実際の公開画面を撮影した素材で構成。
-              Insight Studioだけは、識別につながる情報を安全化した画像を使っています。
-            </p>
+      <section id="gallery" class="gallery section-shell" aria-labelledby="gallery-title">
+        <div class="section-visual reveal">
+          <img src="assets/portfolio/gallery-heading.png" alt="Web制作物のサムネイルが壁面に並ぶ見出し画像" loading="lazy" />
+        </div>
+        <div class="section-top section-top-narrow">
+          <div>
+            <p class="eyebrow">Gallery</p>
+            <h2 id="gallery-title">作品は、実画面で判断できるように。</h2>
           </div>
-          <div class="proof-badges" aria-label="素材方針">
-            <span>Actual site captures</span>
-            <span>Safe redaction</span>
-            <span>No fake client data</span>
-            <span>Vercel import ready</span>
-          </div>
+          <p>
+            画像は飾りではなく、初見で「何を作ったのか」が伝わるための証拠です。
+            LPは第一印象、サービスは入力から結果までの導線、ダッシュボードは業務の流れが見えることを重視しています。
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-note reveal">
+            <span>01</span>
+            <h3>実画面を先に見せる</h3>
+            <p>説明文で補う前に、まず画面の印象で制作物の方向性が伝わる構成にします。</p>
+          </article>
+          <article class="gallery-note reveal">
+            <span>02</span>
+            <h3>説明は短く、具体的に</h3>
+            <p>「作りました」ではなく、対象ユーザー、設計意図、導線の役割を短く添えます。</p>
+          </article>
         </div>
       </section>
 
-      <section id="method" class="method section-shell" aria-labelledby="method-title">
-        <div class="section-top">
-          <div>
-            <p class="eyebrow">Method</p>
-            <h2 id="method-title">Design like a gallery. Verify like a product.</h2>
-          </div>
+      <section id="about" class="about section-shell" aria-labelledby="about-title">
+        <div class="section-visual reveal">
+          <img src="assets/portfolio/about-heading.png" alt="黒い制作机とUIワイヤーの見出し画像" loading="lazy" />
         </div>
-        <div class="method-grid">
-          <article class="method-card reveal">
-            <span>01</span>
-            <h3>Capture</h3>
-            <p>公開URLやログイン後画面をブラウザで確認し、実物のスクリーンショットを残す。</p>
-          </article>
-          <article class="method-card reveal">
-            <span>02</span>
-            <h3>Shape</h3>
-            <p>説明を短くし、画像・カテゴリ・成果の見え方を先に伝えるカードへ整える。</p>
-          </article>
-          <article class="method-card reveal">
-            <span>03</span>
-            <h3>Ship</h3>
-            <p>静的サイトとして軽く保ち、GitHubからVercelへそのままImportできる状態にする。</p>
-          </article>
+        <div class="about-panel reveal">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2 id="about-title">見た目と目的を、同じ画面に置く。</h2>
+          </div>
+          <div class="about-copy">
+            <p>
+              きれいなだけのページではなく、誰が、どの順番で、何を判断するのかまで考えて制作します。
+              LPなら相談や予約へ進む理由を、Webサービスなら入力から結果までの迷いにくさを、業務画面なら次の行動につながる情報整理を大切にしています。
+            </p>
+            <ul>
+              <li>情報設計、UI、文言、導線をまとめて調整する</li>
+              <li>公開画面を見ながら、違和感を具体的に直す</li>
+              <li>実績紹介では、誤解を招く表現や過剰な見せ方を避ける</li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <section id="contact" class="contact section-shell" aria-labelledby="contact-title">
+        <div class="section-visual reveal">
+          <img src="assets/portfolio/contact-heading.png" alt="制作相談を連想させる静かな見出し画像" loading="lazy" />
+        </div>
         <div class="contact-card reveal">
-          <p class="eyebrow">Ready to import</p>
-          <h2 id="contact-title">VercelのAdd New Projectから、そのまま公開へ。</h2>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">制作物を、伝わる形に整えます。</h2>
           <p>
-            Build Commandなし、Output Directoryは <code>.</code>。
-            GitHub連携後にImportするだけで動く静的ポートフォリオとして整えています。
+            LP、Webサービス、業務画面の見せ方を、画面・文章・導線のセットで整えます。
+            ポートフォリオを見た上で、制作や改善レビューの相談に進める導線として使えるセクションです。
           </p>
-          <a class="button button-primary" href="https://github.com/kazushi-tech/luxury-tech-portfolio" target="_blank" rel="noopener">
-            Open repository
-          </a>
+          <a class="button button-primary" href="#works">作品を見返す</a>
         </div>
       </section>
     </main>

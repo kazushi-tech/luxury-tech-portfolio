@@ -8,6 +8,72 @@
 - `assets/projects/process-portfolio.png`: ポートフォリオ制作プロセス用の生成ビジュアル
 - `assets/projects/deploy-ready.png`: 公開準備・Vercel Import説明用の生成ビジュアル
 - 作品カード本体は生成画像ではなく、実際にブラウザで開いて撮影した `*-real.png` / `*-status.png` を使う。
+- `assets/portfolio/works-heading.png`: Works見出し用。実スクショが並ぶ暗いギャラリー空間。
+- `assets/portfolio/gallery-heading.png`: Gallery見出し用。Web制作物のサムネイルが壁面展示されている編集的ビジュアル。
+- `assets/portfolio/about-heading.png`: About見出し用。黒い制作机、ノート、UIワイヤー、柔らかい光のアトリエ風ビジュアル。
+- `assets/portfolio/contact-heading.png`: Contact見出し用。静かな相談導線、カード、メール、制作メモの高級感あるビジュアル。
+
+## 2026-05-12 section heading prompts
+
+### Works heading
+
+Use case: ui-mockup
+Asset type: website tab heading image for a portfolio section
+Primary request: Create a wide cinematic header visual for a Works tab in a Japanese web portfolio. It should show several real-project screenshot-like panels arranged in a dark gallery space, but the panels must be abstract and non-readable, used only as atmosphere.
+Scene/backdrop: quiet black digital gallery, subtle wall grid, elegant display rails, soft reflections.
+Subject: four floating web screenshot frames in a balanced 2x2 rhythm, no readable project names, no logos.
+Style/medium: premium editorial web design visual, realistic digital render, high-end but not cyberpunk, slightly playful composition.
+Composition/framing: wide landscape banner, 16:7 feel, centered with safe empty margins for overlay text, scroll-section heading image.
+Lighting/mood: calm, precise, dark graphite, soft champagne edge light, faint cyan and lavender highlights.
+Color palette: #08090D, #11141A, #191A1F, #F5F1E8, #D8B96E, #8EDAE5, #A99CF7.
+Text: none.
+Constraints: no readable text, no real company logos, no people, no personal data, no numeric dashboards, no watermark.
+Avoid: AI buzzword aesthetic, neon cyberpunk, fake client screenshots, clutter, oversized glowing orbs.
+
+### Gallery heading
+
+Use case: ui-mockup
+Asset type: website tab heading image for a portfolio gallery section
+Primary request: Create a wide editorial header visual for a Gallery tab in a personal web portfolio. The scene should feel like a curated wall of web design case studies, with elegant thumbnail frames and a sophisticated dark atmosphere.
+Scene/backdrop: black graphite exhibition wall, thin metallic rails, small label plates without readable text, soft paper-white thumbnail surfaces.
+Subject: a grid of web-design thumbnail cards displayed like an art gallery, abstract UI crops only, no real content.
+Style/medium: high-end editorial web design, quiet luxury gallery, slightly playful card angles, refined and modern.
+Composition/framing: wide landscape banner, 16:7 feel, balanced negative space near the center-left for overlay copy.
+Lighting/mood: soft museum lighting, warm black, champagne highlights, subtle cyan reflections.
+Color palette: #08090D, #11141A, #F5F1E8, #B9B2A7, #D8B96E, #8EDAE5, #C97964.
+Text: none.
+Constraints: no readable words, no logos, no people, no real screenshots, no private data, no watermark.
+Avoid: AI-generated text artifacts, overly futuristic HUD, neon, heavy glow, stock-photo look.
+
+### About heading
+
+Use case: productivity-visual
+Asset type: website tab heading image for an About section
+Primary request: Create a wide atmospheric header visual for an About tab in a Japanese web portfolio, focused on craft, planning, and verification rather than self-promotion.
+Scene/backdrop: dark atelier desk with a laptop showing abstract UI wireframes, sketchbook, small printed screenshots, color swatches, and a tidy notebook.
+Subject: a refined creator workspace with web design planning materials, no people, no hands, no readable private information.
+Style/medium: premium editorial still life, realistic render, calm and warm, quiet luxury tech atelier.
+Composition/framing: wide landscape banner, 16:7 feel, objects arranged with space for overlay text, slight top-down angle.
+Lighting/mood: soft desk lamp, warm black, paper texture, subtle cyan UI glow, champagne metal details.
+Color palette: #08090D, #11141A, #191A1F, #F5F1E8, #B9B2A7, #D8B96E, #8EDAE5.
+Text: none.
+Constraints: no readable words, no logos, no people or faces, no personal data, no client names, no watermark.
+Avoid: AI robot imagery, sci-fi lab, neon, messy desk, generic corporate stock photo.
+
+### Contact heading
+
+Use case: productivity-visual
+Asset type: website tab heading image for a Contact section
+Primary request: Create a wide elegant header visual for a Contact tab in a personal web portfolio, suggesting calm consultation and next steps for web production.
+Scene/backdrop: dark premium desk scene with a minimal contact card, envelope, small project brief sheets, soft UI card reflections, and a quiet composition.
+Subject: refined communication materials for a web production consultation, abstract and non-readable.
+Style/medium: premium editorial still life, realistic render, calm, polished, human but not corporate stock.
+Composition/framing: wide landscape banner, 16:7 feel, clean negative space for overlay heading, centered but slightly asymmetrical.
+Lighting/mood: soft warm side light, dark graphite, subtle paper white, champagne metal, faint lavender/cyan edge glow.
+Color palette: #08090D, #11141A, #191A1F, #F5F1E8, #B9B2A7, #D8B96E, #A99CF7, #8EDAE5.
+Text: none.
+Constraints: no readable text, no logos, no real email address, no people or faces, no personal data, no watermark.
+Avoid: deploy imagery, AI robot imagery, neon, generic customer support stock photo, clutter.
 
 ## Insight Studio flagship mock
 
