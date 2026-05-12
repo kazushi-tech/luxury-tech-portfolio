@@ -1,0 +1,9 @@
+{
+  "name": "luxury-tech-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "check": "node --check script.js && node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('data/projects.json','utf8')); const files=['assets/projects/hero-portfolio.png','assets/projects/process-portfolio.png','assets/projects/deploy-ready.png',...p.flatMap(x=>x.screenshots||[])]; const forbidden=['assets/projects/insight-studio-real.png']; const missing=files.filter(f=>!fs.existsSync(f)); const leaked=forbidden.filter(f=>fs.existsSync(f)); if(missing.length||leaked.length){console.error({missing, leaked}); process.exit(1)} console.log('projects json and assets ok')\""
+  }
+}

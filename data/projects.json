@@ -1,0 +1,50 @@
+[
+  {
+    "id": "insight-studio",
+    "name": "Insight Studio",
+    "role": "Flagship SaaS / AI Analysis",
+    "url": "https://insight-studio-chi.vercel.app/",
+    "accent": ["#62D8FF", "#8B7CFF"],
+    "problem": "広告運用・競合分析・AI考察を、次の意思決定につながる画面へ整理。",
+    "solution": "実際のダッシュボード画面で、分析体験と設計力を見せる。",
+    "tech": ["React", "Vite", "Python", "Vercel", "AI Review"],
+    "screenshots": ["assets/projects/insight-studio-redacted.png"],
+    "safeAssetNote": "ブラウザで確認した実画面を元に、識別につながる箇所をImage GenでDemo表記へ置換した安全版。"
+  },
+  {
+    "id": "namae-studio",
+    "name": "姓名診断",
+    "role": "Consumer Web Service",
+    "url": "https://namae-studio.com/",
+    "accent": ["#D8B56D", "#F3E7D0"],
+    "problem": "診断、漢字、候補管理が散らばりやすい名付け検討を扱いやすくする。",
+    "solution": "和モダンの温かいUIで、安心して候補を比べられる診断体験にする。",
+    "tech": ["HTML", "CSS", "JavaScript", "Handlebars", "Vercel"],
+    "screenshots": ["assets/projects/namae-studio-real.png"],
+    "safeAssetNote": "公開サイトをブラウザで開いて撮影した実スクリーンショット。"
+  },
+  {
+    "id": "krm-ryugaku",
+    "name": "KRM 留学LP",
+    "role": "Landing Page",
+    "url": "https://krm-ryugaku-lp.vercel.app/",
+    "accent": ["#2F80ED", "#F6C85F"],
+    "problem": "留学検討者に、安心感と相談までの近さを短時間で伝える。",
+    "solution": "明るく信頼感のあるLP構成で、ファーストビューから相談導線を明確化。",
+    "tech": ["LP Design", "Responsive", "Vercel"],
+    "screenshots": ["assets/projects/krm-ryugaku-status.png"],
+    "safeAssetNote": "公開サイトをブラウザで開いて撮影した実スクリーンショット。"
+  },
+  {
+    "id": "hidamari-sabou",
+    "name": "日だまり茶房",
+    "role": "Fictional Kominka Cafe LP",
+    "url": "https://hidamari-sabou-lp.vercel.app/",
+    "accent": ["#B98252", "#DCC7A3"],
+    "problem": "雰囲気だけで終わらせず、予約や営業日まで伝わる架空店舗LPにする。",
+    "solution": "古民家の空気感と、メニュー・空間・予約導線を同時に見せる構成へ。",
+    "tech": ["React", "Vite", "Generated Visuals", "Responsive"],
+    "screenshots": ["assets/projects/hidamari-sabou-real.png"],
+    "safeAssetNote": "公開サイトをブラウザで開いて撮影した実スクリーンショット。"
+  }
+]
