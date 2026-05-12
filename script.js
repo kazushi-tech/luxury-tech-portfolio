@@ -1,110 +1,135 @@
-const worksGrid = document.querySelector("#works-grid");
 const header = document.querySelector(".site-header");
+const worksGrid = document.querySelector("#works-grid");
+const filterBar = document.querySelector(".filter-bar");
 
 const fallbackProjects = [
   {
     id: "insight-studio",
     name: "Insight Studio",
-    role: "Flagship SaaS / AI Analysis",
+    category: "SaaS",
+    type: "AI Analysis Dashboard",
     url: "https://insight-studio-chi.vercel.app/",
-    accent: ["#62D8FF", "#8B7CFF"],
-    problem: "広告運用・競合分析・AI考察を、次の意思決定につながる画面へ整理。",
-    solution: "実際のダッシュボード画面で、分析体験と設計力を見せる。",
-    tech: ["React", "Vite", "Python", "Vercel", "AI Review"],
+    accent: ["#7debff", "#9b8cff"],
+    summary: "広告KPI、競合LP分析、AI考察を一画面で扱う業務ダッシュボード。",
+    tags: ["AI workflow", "Dashboard", "Redacted"],
     screenshots: ["assets/projects/insight-studio-redacted.png"],
-    safeAssetNote: "ブラウザで確認した実画面を元に、識別につながる箇所をImage GenでDemo表記へ置換した安全版。"
+    safeAssetNote: "実画面を元に識別情報を安全化"
   },
   {
     id: "namae-studio",
     name: "姓名診断",
-    role: "Consumer Web Service",
+    category: "Web Service",
+    type: "Naming Experience",
     url: "https://namae-studio.com/",
-    accent: ["#D8B56D", "#F3E7D0"],
-    problem: "診断、漢字、候補管理が散らばりやすい名付け検討を扱いやすくする。",
-    solution: "和モダンの温かいUIで、安心して候補を比べられる診断体験にする。",
-    tech: ["HTML", "CSS", "JavaScript", "Handlebars", "Vercel"],
+    accent: ["#f7e7b6", "#ffb6d5"],
+    summary: "姓名判断、候補管理、漢字検討を温かく扱える診断サービス。",
+    tags: ["Japanese UI", "Form UX", "Public site"],
     screenshots: ["assets/projects/namae-studio-real.png"],
-    safeAssetNote: "公開サイトをブラウザで開いて撮影した実スクリーンショット。"
+    safeAssetNote: "公開サイトをブラウザ撮影"
   },
   {
     id: "krm-ryugaku",
     name: "KRM 留学LP",
-    role: "Landing Page",
+    category: "Landing Page",
+    type: "Study Abroad LP",
     url: "https://krm-ryugaku-lp.vercel.app/",
-    accent: ["#2F80ED", "#F6C85F"],
-    problem: "留学検討者に、安心感と相談までの近さを短時間で伝える。",
-    solution: "明るく信頼感のあるLP構成で、ファーストビューから相談導線を明確化。",
-    tech: ["LP Design", "Responsive", "Vercel"],
+    accent: ["#6db7ff", "#f6c85f"],
+    summary: "留学相談の不安を減らし、CTAまで自然につなげる明るいLP。",
+    tags: ["CTA", "Trust", "Responsive"],
     screenshots: ["assets/projects/krm-ryugaku-status.png"],
-    safeAssetNote: "公開サイトをブラウザで開いて撮影した実スクリーンショット。"
+    safeAssetNote: "公開サイトをブラウザ撮影"
   },
   {
     id: "hidamari-sabou",
     name: "日だまり茶房",
-    role: "Fictional Kominka Cafe LP",
+    category: "Landing Page",
+    type: "Kominka Cafe LP",
     url: "https://hidamari-sabou-lp.vercel.app/",
-    accent: ["#B98252", "#DCC7A3"],
-    problem: "雰囲気だけで終わらせず、予約や営業日まで伝わる架空店舗LPにする。",
-    solution: "古民家の空気感と、メニュー・空間・予約導線を同時に見せる構成へ。",
-    tech: ["React", "Vite", "Generated Visuals", "Responsive"],
+    accent: ["#d9a36d", "#dcc7a3"],
+    summary: "古民家カフェの空気感と予約導線を同時に見せる架空店舗LP。",
+    tags: ["Atmosphere", "Menu", "Booking"],
     screenshots: ["assets/projects/hidamari-sabou-real.png"],
-    safeAssetNote: "公開サイトをブラウザで開いて撮影した実スクリーンショット。"
+    safeAssetNote: "公開サイトをブラウザ撮影"
   }
 ];
 
-function renderProject(project, index) {
-  const [accentA, accentB] = project.accent;
-  const image = project.screenshots?.[0];
+let projects = fallbackProjects;
 
-  return `
-    <article class="work-card reveal" id="${project.id}" style="--project-a: ${accentA}; --project-b: ${accentB};">
-      <a class="work-image" href="${project.url}" target="_blank" rel="noopener" aria-label="${project.name}を開く">
-        <img src="${image}" alt="${project.name}の生成UIプレビュー" loading="lazy" />
-      </a>
-      <div class="work-copy">
-        <div class="work-meta">
-          <span>${String(index + 1).padStart(2, "0")}</span>
-          <span>${project.role}</span>
-        </div>
-        <h3>${project.name}</h3>
-        <p>${project.solution}</p>
-        <dl>
-          <div>
-            <dt>Problem</dt>
-            <dd>${project.problem}</dd>
-          </div>
-          <div>
-            <dt>Asset</dt>
-            <dd>${project.safeAssetNote}</dd>
-          </div>
-        </dl>
-        <div class="tech-list">${project.tech.map((item) => `<span>${item}</span>`).join("")}</div>
-        <a class="text-link" href="${project.url}" target="_blank" rel="noopener">Open project</a>
-      </div>
-    </article>
-  `;
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
-async function loadProjects() {
-  let projects = fallbackProjects;
+function getFilters() {
+  return ["All", ...new Set(projects.map((project) => project.category))];
+}
 
-  try {
-    if (window.location.protocol !== "file:") {
-      const response = await fetch("data/projects.json");
-      if (response.ok) projects = await response.json();
-    }
-  } catch (error) {
-    console.warn("Using embedded project fallback.", error);
-  }
+function renderFilters(activeFilter = "All") {
+  filterBar.innerHTML = getFilters()
+    .map(
+      (filter) => `
+        <button class="filter-chip ${filter === activeFilter ? "is-active" : ""}" type="button" data-filter="${escapeHtml(filter)}">
+          ${escapeHtml(filter)}
+        </button>
+      `
+    )
+    .join("");
 
-  worksGrid.innerHTML = projects.map(renderProject).join("");
+  filterBar.querySelectorAll("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      renderFilters(button.dataset.filter);
+      renderProjects(button.dataset.filter);
+    });
+  });
+}
+
+function renderProjects(activeFilter = "All") {
+  const visibleProjects =
+    activeFilter === "All" ? projects : projects.filter((project) => project.category === activeFilter);
+
+  worksGrid.innerHTML = visibleProjects
+    .map((project, index) => {
+      const [accentA, accentB] = project.accent || ["#ffffff", "#7debff"];
+      const image = project.screenshots?.[0] || "";
+      const tags = (project.tags || []).slice(0, 3);
+
+      return `
+        <article class="work-card reveal" style="--accent-a: ${escapeHtml(accentA)}; --accent-b: ${escapeHtml(accentB)}">
+          <a class="work-image" href="${escapeHtml(project.url)}" target="_blank" rel="noopener" aria-label="${escapeHtml(project.name)}を開く">
+            <img src="${escapeHtml(image)}" alt="${escapeHtml(project.name)}の実画面スクリーンショット" loading="lazy" />
+            <span class="work-index">${String(index + 1).padStart(2, "0")}</span>
+          </a>
+          <div class="work-body">
+            <div class="work-meta">
+              <span>${escapeHtml(project.category)}</span>
+              <span>${escapeHtml(project.type || "Web Work")}</span>
+            </div>
+            <h3>${escapeHtml(project.name)}</h3>
+            <p>${escapeHtml(project.summary)}</p>
+            <div class="tag-row">
+              ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+            </div>
+            <div class="work-bottom">
+              <small>${escapeHtml(project.safeAssetNote)}</small>
+              <a href="${escapeHtml(project.url)}" target="_blank" rel="noopener">Open</a>
+            </div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
   observeReveals();
 }
 
 function observeReveals() {
-  const targets = document.querySelectorAll(".reveal");
+  const items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
-    targets.forEach((target) => target.classList.add("is-visible"));
+    items.forEach((item) => item.classList.add("is-visible"));
     return;
   }
 
@@ -120,7 +145,7 @@ function observeReveals() {
     { threshold: 0.12 }
   );
 
-  targets.forEach((target) => observer.observe(target));
+  items.forEach((item) => observer.observe(item));
 }
 
 function setupHeader() {
@@ -129,6 +154,19 @@ function setupHeader() {
   window.addEventListener("scroll", sync, { passive: true });
 }
 
+async function loadProjects() {
+  try {
+    if (window.location.protocol !== "file:") {
+      const response = await fetch("data/projects.json");
+      if (response.ok) projects = await response.json();
+    }
+  } catch (error) {
+    console.warn("Using embedded projects.", error);
+  }
+
+  renderFilters();
+  renderProjects();
+}
+
 setupHeader();
 loadProjects();
-observeReveals();
