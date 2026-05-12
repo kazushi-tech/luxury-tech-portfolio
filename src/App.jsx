@@ -7,7 +7,10 @@ import contactConcept from "../assets/portfolio/contact-heading.png";
 import galleryConcept from "../assets/portfolio/gallery-heading.png";
 import worksConcept from "../assets/portfolio/works-heading.png";
 import hidamariScreenshot from "../assets/projects/hidamari-sabou-real.png";
-import insightScreenshot from "../assets/projects/insight-studio-redacted.png";
+import insightAiResultClean from "../assets/projects/insight-studio-ai-result-clean.png";
+import insightGraphsClean from "../assets/projects/insight-studio-graphs-clean.png";
+import insightPeriodClean from "../assets/projects/insight-studio-period-clean.png";
+import insightSetupClean from "../assets/projects/insight-studio-setup-clean.png";
 import krmScreenshot from "../assets/projects/krm-ryugaku-status.png";
 import namaeScreenshot from "../assets/projects/namae-studio-real.png";
 import projects from "../data/projects.json";
@@ -25,7 +28,10 @@ const conceptImages = {
 };
 
 const screenshotByPath = {
-  "assets/projects/insight-studio-redacted.png": insightScreenshot,
+  "assets/projects/insight-studio-setup-clean.png": insightSetupClean,
+  "assets/projects/insight-studio-period-clean.png": insightPeriodClean,
+  "assets/projects/insight-studio-graphs-clean.png": insightGraphsClean,
+  "assets/projects/insight-studio-ai-result-clean.png": insightAiResultClean,
   "assets/projects/namae-studio-real.png": namaeScreenshot,
   "assets/projects/krm-ryugaku-status.png": krmScreenshot,
   "assets/projects/hidamari-sabou-real.png": hidamariScreenshot,
@@ -41,7 +47,7 @@ const detailConceptByProject = {
 const metrics = [
   ["4", "公開・実装済みの制作物"],
   ["2", "LP / Webサービスの両軸"],
-  ["100%", "Works画像は実スクショ"],
+  ["100%", "作品画像は実画面ベース"],
 ];
 
 const processSteps = [
@@ -99,10 +105,10 @@ function Shell({ children }) {
 function Header() {
   const [open, setOpen] = useState(false);
   const navItems = [
-    ["Home", "/"],
-    ["Works", "/works"],
-    ["About", "/about"],
-    ["Contact", "/contact"],
+    ["ホーム", "/"],
+    ["作品", "/works"],
+    ["自己紹介", "/about"],
+    ["相談", "/contact"],
   ];
 
   return (
@@ -114,7 +120,7 @@ function Header() {
           </span>
           <span className="hidden leading-none sm:grid">
             <b className="text-base">Kazushi</b>
-            <small className="mt-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/50">Motion Web Works</small>
+            <small className="mt-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/50">動く制作実績</small>
           </span>
         </Link>
         <div className="hidden items-center gap-1 rounded-full border border-gray-700/80 bg-black/40 p-1 backdrop-blur-2xl lg:flex">
@@ -130,7 +136,7 @@ function Header() {
             >
               <span className="inline-flex items-center gap-1.5">
                 {label}
-                {label === "Contact" && <ArrowRight size={13} strokeWidth={2.6} />}
+                {label === "相談" && <ArrowRight size={13} strokeWidth={2.6} />}
               </span>
             </NavLink>
           ))}
@@ -208,17 +214,17 @@ function Home() {
               実画面のスクリーンショットを主役に、LP・Webサービス・業務画面の導線設計まで短く伝えるモーションギャラリーです。
             </motion.p>
             <motion.p {...getMotion(reduce, 0.08)} className="font-black lg:text-right">
-              4 Works / SaaS・Web Service・Landing Page
+              4作品 / SaaS・Webサービス・LP
             </motion.p>
           </div>
 
           <motion.div {...getMotion(reduce, 0.12)} className="mx-auto w-full max-w-5xl text-center">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-white/80 md:text-sm">
-              Real Screenshots / Motion Portfolio
+              実画面スクリーンショット / モーションポートフォリオ
             </p>
             <h1 className="text-5xl font-medium leading-[0.9] tracking-tighter text-white sm:text-6xl md:text-7xl xl:text-8xl">
-              Real works.
-              <ShinyText className="mt-2 block">made to move.</ShinyText>
+              見て伝わる、
+              <ShinyText className="mt-2 block">動く制作実績。</ShinyText>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base font-bold leading-8 text-white/70">
               派手さよりも、見た瞬間に「何を作ったか」「どこへ進めばよいか」が分かることを優先したポートフォリオです。
@@ -254,7 +260,7 @@ function Home() {
         <section className="mt-16">
           <div className="mb-6 flex items-end justify-between gap-4">
             <div>
-              <p className="eyebrow">Selected Works</p>
+              <p className="eyebrow">代表作品</p>
               <h2 className="section-title">実画面から、詳細へ進む。</h2>
             </div>
             <Link className="hidden rounded-full border border-white/20 px-5 py-3 text-sm font-black text-white/70 transition hover:bg-white/10 hover:text-white md:inline-flex" to="/works">
@@ -293,7 +299,7 @@ function HeroPreviewCard({ project, reduce }) {
       transition={reduce ? undefined : { duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
     >
       <Link to={`/works/${project.id}`} className="group relative block h-28 overflow-hidden rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl md:h-36">
-        <img className="h-full w-full object-cover object-top opacity-[.82] transition duration-500 group-hover:scale-110 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の実画面`} />
+        <img className="h-full w-full object-cover object-top opacity-[.82] transition duration-500 group-hover:scale-110 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <p className="absolute bottom-3 left-3 text-sm font-black text-white">{project.name}</p>
       </Link>
@@ -328,7 +334,7 @@ function Works() {
     <Page>
       <section className="mb-9 grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
         <div>
-          <p className="eyebrow">Works</p>
+          <p className="eyebrow">作品一覧</p>
           <h1 className="section-title max-w-3xl">
             <span className="block">実画面で選ぶ、</span>
             <span className="block">制作実績。</span>
@@ -365,7 +371,7 @@ function ProofRail({ reduce }) {
               to={`/works/${project.id}`}
               className="group relative block w-[24rem] shrink-0 overflow-hidden rounded-[1.25rem] border border-white/10 bg-black md:w-[34rem]"
             >
-              <img className="h-full w-full object-cover object-top opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の実画面`} />
+              <img className="h-full w-full object-cover object-top opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-sm font-black text-white">{project.name}</p>
               </div>
@@ -392,7 +398,7 @@ function ProjectCard({ project, index }) {
     >
       <Link to={`/works/${project.id}`} className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan">
         <div className="relative overflow-hidden rounded-[1.45rem] border border-white/10 bg-ink">
-          <img className="h-72 w-full object-cover object-top transition duration-500 group-hover:scale-[1.035] md:h-80" src={image} alt={`${project.name}の実画面スクリーンショット`} />
+          <img className="h-72 w-full object-cover object-top transition duration-500 group-hover:scale-[1.035] md:h-80" src={image} alt={`${project.name}の画面プレビュー`} />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/86 to-transparent p-4">
             <span className="rounded-full border border-white/20 bg-ink/60 px-3 py-1 text-xs font-black backdrop-blur-xl">{project.category}</span>
           </div>
@@ -406,11 +412,11 @@ function ProjectCard({ project, index }) {
           <p className="mt-3 text-base font-bold leading-7 text-white/80">{project.shortValue}</p>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl border border-white/10 bg-black/24 p-4">
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/35">Audience</p>
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/35">対象</p>
               <p className="mt-2 line-clamp-2 text-sm font-bold leading-6 text-white/60">{project.audience}</p>
             </div>
             <div className="rounded-2xl border border-white/10 bg-black/24 p-4">
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/35">Focus</p>
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/35">設計</p>
               <p className="mt-2 line-clamp-2 text-sm font-bold leading-6 text-white/60">{project.designFocus}</p>
             </div>
           </div>
@@ -441,11 +447,13 @@ function ProjectDetail() {
   const screenshot = screenshotPath(project.screenshots[0]);
   const concept = detailConceptByProject[project.id] || conceptImages.works;
   const accent = project.accent?.[0] || "#72E2FF";
+  const hasCaseStudy = Boolean(project.galleryImages?.length || project.workflowSteps?.length || project.caseSections?.length);
+  const detailImageClass = hasCaseStudy ? "object-contain bg-white" : "object-cover object-top";
 
   return (
     <Page>
       <Link className="mb-8 inline-flex rounded-full border border-white/10 px-4 py-2 text-sm font-black text-white/60 transition hover:bg-white/10 hover:text-white" to="/works">
-        ← Worksへ戻る
+        ← 作品一覧へ戻る
       </Link>
       <section className="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-center">
         <motion.div {...getMotion(reduce, 0.04)}>
@@ -467,18 +475,28 @@ function ProjectDetail() {
           </a>
         </motion.div>
         <motion.div {...getMotion(reduce, 0.12)} className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-2 shadow-glow">
-          <img className="h-[460px] w-full rounded-[1.55rem] object-cover object-top" src={screenshot} alt={`${project.name}の実画面スクリーンショット`} />
-          <div className="pointer-events-none absolute right-5 top-5 hidden w-48 overflow-hidden rounded-[1.2rem] border border-white/20 bg-ink/70 p-1 opacity-75 backdrop-blur-2xl md:block">
-            <img className="h-28 w-full rounded-2xl object-cover" src={concept} alt={`${project.name}のページ演出用ビジュアル`} />
-          </div>
+          <img className={`h-[460px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面プレビュー`} />
+          {!hasCaseStudy && (
+            <div className="pointer-events-none absolute right-5 top-5 hidden w-48 overflow-hidden rounded-[1.2rem] border border-white/20 bg-ink/70 p-1 opacity-75 backdrop-blur-2xl md:block">
+              <img className="h-28 w-full rounded-2xl object-cover" src={concept} alt={`${project.name}のページ演出用ビジュアル`} />
+            </div>
+          )}
         </motion.div>
       </section>
 
       <section className="mt-16 grid gap-5 md:grid-cols-3">
-        <InfoPanel label="Design focus" text={project.designFocus} />
-        <InfoPanel label="Case flow" text={project.caseNote} />
-        <InfoPanel label="Source" text={project.contentSource} />
+        <InfoPanel label="設計の焦点" text={project.designFocus} />
+        <InfoPanel label="見せ方の流れ" text={project.caseNote} />
+        <InfoPanel label="参照元" text={project.contentSource} />
       </section>
+
+      {hasCaseStudy && (
+        <>
+          <CaseStudyIntro project={project} accent={accent} />
+          <CaseStudyGallery project={project} accent={accent} reduce={reduce} />
+          <WorkflowSteps project={project} accent={accent} reduce={reduce} />
+        </>
+      )}
 
       <section className="mt-16 grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
         <div className="sticky-panel rounded-[2rem] border border-white/10 bg-white/[0.055] p-7">
@@ -493,9 +511,9 @@ function ProjectDetail() {
         </div>
         <div className="grid gap-4">
           {[
-            ["What", project.overview],
-            ["Who", project.audience],
-            ["How", project.designFocus],
+            ["何を作ったか", project.overview],
+            ["誰向けか", project.audience],
+            ["どう設計したか", project.designFocus],
           ].map(([label, text], index) => (
             <motion.article
               key={label}
@@ -512,9 +530,108 @@ function ProjectDetail() {
       </section>
 
       <section className="mt-16 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-3">
-        <img className="max-h-[760px] w-full rounded-[1.55rem] object-cover object-top" src={screenshot} alt={`${project.name}の実画面全体プレビュー`} />
+        <img className={`max-h-[760px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面全体プレビュー`} />
       </section>
     </Page>
+  );
+}
+
+function CaseStudyIntro({ project, accent }) {
+  if (!project.caseSections?.length) return null;
+
+  return (
+    <section className="mt-16">
+      <div className="grid gap-7 lg:grid-cols-[.88fr_1.12fr] lg:items-end">
+        <div>
+          <p className="eyebrow" style={{ color: accent }}>
+            ケーススタディ
+          </p>
+          <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em] md:text-5xl">
+            AI考察までの流れを、実務の判断順に見せる。
+          </h2>
+        </div>
+        <div className="rounded-[1.7rem] border border-white/10 bg-white/[0.055] p-5">
+          <p className="text-sm font-bold leading-7 text-white/68">{project.privacyNote}</p>
+        </div>
+      </div>
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        {project.caseSections.map((section) => (
+          <article key={section.title} className="rounded-[1.7rem] border border-white/10 bg-black/24 p-6">
+            <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
+              {section.label}
+            </p>
+            <h3 className="mt-4 text-2xl font-black tracking-[-0.03em] text-white">{section.title}</h3>
+            <p className="mt-4 leading-8 text-white/62">{section.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CaseStudyGallery({ project, accent, reduce }) {
+  if (!project.galleryImages?.length) return null;
+
+  return (
+    <section className="mt-16">
+      <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p className="eyebrow" style={{ color: accent }}>
+            画面の流れ
+          </p>
+          <h2 className="mt-3 text-4xl font-black leading-tight tracking-[-0.04em]">設定、期間、グラフ、AI考察。</h2>
+        </div>
+        <p className="max-w-xl text-sm font-bold leading-7 text-white/55">
+          掲載画像は右カラムのブラウザで確認した実画面構成をベースに、識別につながる情報を架空の日本語サンプルへ置き換えて画面体験だけを伝えます。
+        </p>
+      </div>
+      <div className="grid gap-5">
+        {project.galleryImages.map((item, index) => (
+          <motion.article
+            key={item.src}
+            {...getMotion(reduce, index * 0.04)}
+            className="grid overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-3 lg:grid-cols-[1.08fr_.72fr]"
+          >
+            <img className="h-full min-h-[240px] w-full rounded-[1.5rem] bg-white object-contain" src={screenshotPath(item.src)} alt={`${project.name} ${item.title}`} />
+            <div className="flex flex-col justify-center p-5 lg:p-7">
+              <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
+                {item.label}
+              </p>
+              <h3 className="mt-4 text-3xl font-black leading-tight tracking-[-0.04em] text-white">{item.title}</h3>
+              <p className="mt-4 leading-8 text-white/64">{item.text}</p>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function WorkflowSteps({ project, accent, reduce }) {
+  if (!project.workflowSteps?.length) return null;
+
+  return (
+    <section className="mt-16 rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025))] p-6 md:p-8">
+      <div className="mb-6">
+        <p className="eyebrow" style={{ color: accent }}>
+          運用フロー
+        </p>
+        <h2 className="mt-3 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em]">
+          広告運用の確認作業を、次の一手まで短くする。
+        </h2>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {project.workflowSteps.map((step, index) => (
+          <motion.article key={step.title} {...getMotion(reduce, index * 0.04)} className="rounded-[1.55rem] border border-white/10 bg-black/28 p-5">
+            <span className="inline-flex rounded-full border border-white/10 bg-white/[0.055] px-3 py-1 text-xs font-black" style={{ color: accent }}>
+              {step.label}
+            </span>
+            <h3 className="mt-5 text-2xl font-black tracking-[-0.03em] text-white">{step.title}</h3>
+            <p className="mt-4 leading-8 text-white/62">{step.text}</p>
+          </motion.article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -534,7 +651,7 @@ function About() {
     <Page>
       <section className="grid gap-8 lg:grid-cols-[1fr_.9fr] lg:items-center">
         <div>
-          <p className="eyebrow">About</p>
+          <p className="eyebrow">自己紹介</p>
           <h1 className="section-title max-w-4xl">
             <span className="block">クリックされる理由を、</span>
             <span className="block">画面から設計する。</span>
@@ -551,7 +668,7 @@ function About() {
         <InfoPanel label="03 / Proof first" text="生成ビジュアルは演出用に留め、作品の証拠は実際のスクリーンショットで見せます。" />
       </section>
       <section className="mt-16">
-        <p className="eyebrow">Method</p>
+        <p className="eyebrow">制作姿勢</p>
         <h2 className="section-title mt-3 max-w-4xl">
           <span className="block">広告運用とLP改善の視点で、</span>
           <span className="block">画面の役割を決める。</span>
@@ -581,7 +698,7 @@ function Contact() {
     <Page>
       <section className="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
         <div>
-          <p className="eyebrow">Contact</p>
+          <p className="eyebrow">相談導線</p>
           <h1 className="section-title max-w-3xl">
             <span className="block">作品を見てから、</span>
             <span className="block">相談導線へ。</span>
@@ -590,7 +707,7 @@ function Contact() {
             まずは制作物の画面、対象ユーザー、導線設計を見て判断できるようにしています。連絡先を置く前提の場所として、作品一覧へ自然に戻れる導線を用意しています。
           </p>
           <Link className="motion-button mt-8 bg-milk text-ink" to="/works">
-            Worksへ戻る
+            作品一覧へ戻る
           </Link>
         </div>
         <img className="h-[520px] w-full rounded-[2rem] border border-white/10 object-cover shadow-rose" src={conceptImages.contact} alt="制作相談のための明るいコンタクトビジュアル" />
@@ -603,7 +720,7 @@ function Contact() {
             className="group rounded-[1.8rem] border border-white/10 bg-white/[0.055] p-4"
           >
             <Link to={`/works/${project.id}`} className="grid gap-4 sm:grid-cols-[10rem_1fr]">
-              <img className="h-32 w-full rounded-[1.2rem] object-cover object-top transition duration-500 group-hover:scale-[1.02] sm:h-full" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の実画面`} />
+              <img className="h-32 w-full rounded-[1.2rem] object-cover object-top transition duration-500 group-hover:scale-[1.02] sm:h-full" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} />
               <div className="p-2">
                 <p className="eyebrow">{project.category}</p>
                 <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-white">{project.name}</h2>

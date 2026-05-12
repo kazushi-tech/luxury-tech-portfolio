@@ -7,7 +7,8 @@
     "dev": "vite --host 127.0.0.1 --port 8017",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1 --port 8017",
-    "check": "node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('data/projects.json','utf8')); const files=['assets/portfolio/about-heading.png','assets/portfolio/contact-heading.png','assets/portfolio/gallery-heading.png','assets/portfolio/works-heading.png',...p.flatMap(x=>(x.screenshots||[]))]; const missing=files.filter(f=>!fs.existsSync(f)); if(missing.length){console.error({missing}); process.exit(1)} console.log('assets ok')\""
+    "serve": "node tools/serve.mjs",
+    "check": "node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('data/projects.json','utf8')); const files=['assets/portfolio/about-heading.png','assets/portfolio/contact-heading.png','assets/portfolio/gallery-heading.png','assets/portfolio/works-heading.png',...p.flatMap(x=>(x.screenshots||[])),...p.flatMap(x=>(x.galleryImages||[]).map(g=>g.src))]; const missing=files.filter(f=>!fs.existsSync(f)); if(missing.length){console.error({missing}); process.exit(1)} console.log('assets ok')\""
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.1",
