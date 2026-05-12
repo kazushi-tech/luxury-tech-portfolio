@@ -7,6 +7,7 @@
     "role": "Flagship SaaS / AI Analysis",
     "url": "https://insight-studio-chi.vercel.app/",
     "accent": ["#7DEBFF", "#9B8CFF"],
+    "shortValue": "広告分析から次アクションまでを一画面で追える業務用ダッシュボード。",
     "summary": "広告運用・競合分析・考察作成をまとめるPC向けSaaSダッシュボード。",
     "overview": "広告KPI、競合LP分析、考察作成をひとつの作業画面にまとめた業務向けプロダクトです。分析結果を眺めるだけでなく、次に確認することや改善アクションへ進みやすい構成にしています。",
     "audience": "広告運用者、Webマーケター、LP改善や競合調査を継続的に行うチーム。",
@@ -15,6 +16,8 @@
     "tags": ["Dashboard", "Ad analysis", "Workflow"],
     "tech": ["React", "Vite", "Python", "UI Review"],
     "screenshots": ["assets/projects/insight-studio-redacted.png"],
+    "ctaLabel": "広告分析ダッシュボードを見る",
+    "caseNote": "分析画面は情報量が多くなりやすいため、最初に全体像、次に確認すべき項目、最後に改善アクションへ進める順番で見せています。",
     "safeAssetNote": "実画面を元に識別情報を安全化"
   },
   {
@@ -25,6 +28,7 @@
     "role": "Consumer Web Service",
     "url": "https://namae-studio.com/",
     "accent": ["#F7E7B6", "#FFB6D5"],
+    "shortValue": "名付け候補を入力し、五格診断と比較をやさしく確認できるサービス。",
     "summary": "赤ちゃんの名付け向けに、姓名判断・五格診断・名前候補比較を扱う無料Webサービス。",
     "overview": "姓と名を入力して、天格・人格・地格・外格・総格の五格を確認できる名付け支援サイトです。名前候補や診断結果を比べながら、家族で検討しやすい体験を目指しています。",
     "audience": "赤ちゃんの名前を検討している保護者、候補名を比較したい家族。",
@@ -33,6 +37,8 @@
     "tags": ["Naming", "Form UX", "Japanese UI"],
     "tech": ["HTML", "CSS", "JavaScript", "Handlebars"],
     "screenshots": ["assets/projects/namae-studio-real.png"],
+    "ctaLabel": "診断フォームを試す",
+    "caseNote": "診断サービスは不安を煽りすぎると離脱につながるため、温かい見た目と分かりやすい入力導線を優先しています。",
     "safeAssetNote": "公開サイトをブラウザ撮影"
   },
   {
@@ -43,6 +49,7 @@
     "role": "Landing Page",
     "url": "https://krm-ryugaku-lp.vercel.app/",
     "accent": ["#6DB7FF", "#F6C85F"],
+    "shortValue": "留学検討者が相談前に不安を減らし、LINE相談へ進めるLP。",
     "summary": "LINE相談・無料相談・資料請求へつなげる、留学検討者向けの相談LP。",
     "overview": "初めて留学を考える人が、KRMの相談体制、留学プログラム、現地サポート、相談までの流れを確認できるLPです。まだ留学を決めていない段階でも相談しやすい入口を整えています。",
     "audience": "留学やワーキングホリデーを検討している人、相談先を探している保護者や学生。",
@@ -51,6 +58,8 @@
     "tags": ["Study abroad", "Consultation", "CTA"],
     "tech": ["LP Design", "Responsive"],
     "screenshots": ["assets/projects/krm-ryugaku-status.png"],
+    "ctaLabel": "相談LPの導線を見る",
+    "caseNote": "留学LPは憧れだけでなく不安解消が重要なので、サポート内容、相談のしやすさ、CTAまでの距離を意識しています。",
     "safeAssetNote": "公開サイトをブラウザ撮影"
   },
   {
@@ -61,6 +70,7 @@
     "role": "Fictional Kominka Cafe LP",
     "url": "https://hidamari-sabou-lp.vercel.app/",
     "accent": ["#D9A36D", "#DCC7A3"],
+    "shortValue": "空間の雰囲気、メニュー、予約導線までを世界観でつなぐ架空カフェLP。",
     "summary": "架空古民家カフェの雰囲気、メニュー、空間、営業日・予約導線を見せるLP。",
     "overview": "山あいの古民家で、季節のごはんと庭を眺める珈琲を楽しむ架空カフェのランディングページです。お品書き、空間、営業日、予約、アクセスまでを一つの世界観でつなげています。",
     "audience": "落ち着いたカフェを探している来店候補者、地域観光や半日のおでかけを検討する人。",
@@ -69,6 +79,8 @@
     "tags": ["Cafe LP", "Atmosphere", "Booking"],
     "tech": ["React", "Vite", "Visual Assets", "Responsive"],
     "screenshots": ["assets/projects/hidamari-sabou-real.png"],
+    "ctaLabel": "カフェLPを見る",
+    "caseNote": "架空店舗のLPでは、写真の空気感を入口にしつつ、営業日や予約へ自然に進める導線を崩さないことを重視しています。",
     "safeAssetNote": "公開サイトをブラウザ撮影"
   }
 ]
