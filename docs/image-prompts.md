@@ -4,6 +4,8 @@
 
 ## Generated asset mapping
 
+- 2026-05-12 MotionSites型刷新では、Worksカード本体は必ず `assets/projects/*` の実スクリーンショットをReactからimportして使う。
+- `assets/portfolio/*`: ページ背景、ヒーロー、Project Detailのムード演出、デザイン基準用。実績証拠としては使わない。
 - `assets/projects/hero-portfolio.png`: Hero/Featured用の高級デジタルギャラリー画像
 - `assets/projects/process-portfolio.png`: ポートフォリオ制作プロセス用の生成ビジュアル
 - `assets/projects/deploy-ready.png`: 公開準備・Vercel Import説明用の生成ビジュアル
@@ -12,6 +14,51 @@
 - `assets/portfolio/gallery-heading.png`: Gallery見出し用。Web制作物のサムネイルが壁面展示されている編集的ビジュアル。
 - `assets/portfolio/about-heading.png`: About見出し用。黒い制作机、ノート、UIワイヤー、柔らかい光のアトリエ風ビジュアル。
 - `assets/portfolio/contact-heading.png`: Contact見出し用。静かな相談導線、カード、メール、制作メモの高級感あるビジュアル。
+
+## 2026-05-12 MotionSites型刷新プロンプト
+
+### Home desktop reference
+
+Use case: ui-mockup
+Asset type: portfolio website reference image, Home desktop
+Primary request: Create a high-end motion-gallery portfolio homepage reference in the style of premium AI landing page galleries like motionsites.ai: bold editorial hero, large visual cards immediately below, dark luxury base but not gloomy, playful luminous accents, strong Japanese web portfolio feeling.
+Scene/backdrop: polished dark graphite web page with soft glass panels, metallic edge highlights, floating real-screen placeholders, bright warm/cyan/lavender glow.
+Subject: personal web works portfolio for Kazushi, showing four project cards as cinematic website previews; no real logos or private data.
+Style/medium: refined UI/UX mockup, premium landing page, high fidelity web design screenshot.
+Composition/framing: desktop 16:9 full page, top navigation Home Works About Contact, large hero with room for Japanese headline, 2-column gallery visible below the fold hint.
+Lighting/mood: confident, luminous, sophisticated, slightly playful, not cyberpunk.
+Color palette: black graphite, ivory, champagne gold, cyan, lavender, rose, soft sky blue.
+Text: minimal, if any text appears it should be generic and non-readable except short labels like Works.
+Constraints: no real people, no real company logos, no customer data, no readable numbers, no watermark.
+Avoid: dull all-black sections, dense paragraphs, generic dashboard stock art, AI robot imagery.
+
+### Works gallery reference
+
+Use case: ui-mockup
+Asset type: portfolio website reference image, Works desktop gallery
+Primary request: Create a premium works gallery page inspired by motionsites.ai with two-column masonry cards, large cinematic project previews, bold filters, and motion-ready hover states.
+Scene/backdrop: dark luxurious UI gallery with brighter card art, subtle paper/glass/champagne/cyan accents.
+Subject: four web project cards: SaaS dashboard, Japanese naming service, study abroad landing page, kominka cafe landing page; abstract previews only.
+Style/medium: high fidelity desktop web UI mockup.
+Composition/framing: 16:9 desktop screenshot, nav top, large Works heading, filter chips, two-column card grid visible.
+Lighting/mood: premium, energetic, polished, scroll-worthy.
+Color palette: graphite, ivory, champagne, cyan, lavender, peach, sky blue.
+Text: short generic labels only; avoid long readable copy.
+Constraints: no real logos, no personal data, no readable metrics, no people faces, no watermark.
+Avoid: dull black text-heavy case study, tiny cards, generic SaaS template.
+
+### Project detail reference
+
+Use case: ui-mockup
+Asset type: portfolio project detail page reference
+Primary request: Create a long-form premium project detail page for a web work, inspired by high-end motion landing pages from motionsites.ai.
+Scene/backdrop: bright glass UI panels on dark graphite, project-specific color accents, floating layers, elegant case-study sections.
+Subject: abstract product preview, overview, problem, solution, real-screenshot placement area, CTA.
+Style/medium: high fidelity desktop/mobile web UI mockup for React portfolio.
+Composition/framing: visible top of a long page; hero, sticky facts, large screenshot panel, next section peeking.
+Lighting/mood: polished, luminous, motion-ready, not gloomy.
+Constraints: no real client names, no private data, no real values, no logos, no watermark.
+Avoid: dark empty dashboard, dense paragraphs, fake analytics claims.
 
 ## 2026-05-12 section heading prompts
 

@@ -1,163 +1,16 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="実際に制作したWebサービスとLPを、実画面と設計意図で見せるKazushi Portfolio."
+      content="実際に制作したWebサービスとLPを、実画面と導線設計で見せるKazushi Portfolio."
     />
-    <title>Kazushi Portfolio | Web Works Gallery</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <title>Kazushi Portfolio | Motion Web Works</title>
   </head>
   <body>
-    <a class="skip-link" href="#works">作品一覧へ移動</a>
-
-    <header class="site-header" data-elevated="false">
-      <a class="brand" href="#top" aria-label="トップへ戻る">
-        <span class="brand-mark" aria-hidden="true">K</span>
-        <span class="brand-text">
-          <b>Kazushi</b>
-          <small>Web Works Gallery</small>
-        </span>
-      </a>
-      <nav class="site-nav" aria-label="主要ナビゲーション">
-        <a href="#works">Works</a>
-        <a href="#case-notes">Case Notes</a>
-        <a href="#about">About</a>
-        <a class="nav-cta" href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero section-shell" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="hero-pill">
-            <span>実画面で見る制作実績</span>
-            <span>Web / LP / Dashboard</span>
-          </p>
-          <h1 id="hero-title">
-            <span class="hero-title-line">実画面で伝わる</span>
-            <span class="hero-title-line hero-title-accent">Web制作実績</span>
-          </h1>
-          <p class="hero-lead">
-            LP、Webサービス、業務ダッシュボードの初見理解と行動導線を整えた制作実績です。
-            画面の印象、対象ユーザー、設計意図まで短く見られるようにまとめています。
-          </p>
-          <div class="hero-actions" aria-label="主要アクション">
-            <a class="button button-primary" href="#works">代表作を見る</a>
-            <a class="button button-soft" href="#case-notes">設計意図を見る</a>
-          </div>
-        </div>
-
-        <div class="hero-gallery" aria-label="制作実績のプレビュー">
-          <article class="hero-tile">
-            <img src="assets/projects/insight-studio-redacted.png" alt="Insight Studioの安全化済み実画面" width="1280" height="720" fetchpriority="high" />
-            <span>Insight Studio</span>
-          </article>
-          <article class="hero-tile">
-            <img src="assets/projects/namae-studio-real.png" alt="姓名診断の実画面" width="1280" height="720" fetchpriority="high" />
-            <span>姓名診断</span>
-          </article>
-          <article class="hero-tile">
-            <img src="assets/projects/krm-ryugaku-status.png" alt="KRM留学LPの実画面" width="1280" height="720" loading="lazy" />
-            <span>KRM留学LP</span>
-          </article>
-          <article class="hero-tile">
-            <img src="assets/projects/hidamari-sabou-real.png" alt="日だまり茶房LPの実画面" width="1280" height="720" loading="lazy" />
-            <span>日だまり茶房</span>
-          </article>
-        </div>
-      </section>
-
-      <section id="works" class="works section-shell" aria-labelledby="works-title">
-        <div class="section-top">
-          <div>
-            <p class="eyebrow">Selected Works</p>
-            <h2 id="works-title">どんなサービスか、何を設計したか。</h2>
-          </div>
-          <div class="filter-bar" aria-label="作品カテゴリ"></div>
-        </div>
-        <p class="filter-status" id="filter-status" aria-live="polite"></p>
-        <div class="works-grid" id="works-grid"></div>
-      </section>
-
-      <section id="case-notes" class="gallery section-shell" aria-labelledby="case-notes-title">
-        <div class="section-top section-top-narrow">
-          <div>
-            <p class="eyebrow">Case Notes</p>
-            <h2 id="case-notes-title">クリック前に、判断できる見せ方へ。</h2>
-          </div>
-          <p>
-            スクショは飾りではなく、作品の種類、対象ユーザー、導線の意図を伝える入口です。
-            読ませる前に、まず画面で「見てみたい」と思える順番を設計しています。
-          </p>
-        </div>
-        <div class="section-visual section-visual-compact reveal">
-          <img src="assets/portfolio/gallery-heading.png" alt="Web制作物のサムネイルが壁面に並ぶ見出し画像" width="1600" height="620" loading="lazy" />
-        </div>
-        <div class="gallery-grid">
-          <article class="gallery-note reveal">
-            <span>01</span>
-            <h3>実画面を先に見せる</h3>
-            <p>LPは第一印象、サービスは入力から結果、ダッシュボードは業務の流れが見える画面を先に出します。</p>
-          </article>
-          <article class="gallery-note reveal">
-            <span>02</span>
-            <h3>説明は短く、役割で書く</h3>
-            <p>「作りました」ではなく、誰のどんな判断を助ける画面なのかを短く添えます。</p>
-          </article>
-          <article class="gallery-note reveal">
-            <span>03</span>
-            <h3>CTAは作品ごとに変える</h3>
-            <p>ただの公開リンクではなく、診断を試す、相談導線を見るなど、次に見る理由が分かる言葉にします。</p>
-          </article>
-          <article class="gallery-note reveal">
-            <span>04</span>
-            <h3>動きは理解を邪魔しない</h3>
-            <p>スクロール表示とhoverだけに絞り、動きを切っても同じ順序で読める構成にします。</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="about" class="about section-shell" aria-labelledby="about-title">
-        <div class="section-visual reveal">
-          <img src="assets/portfolio/about-heading.png" alt="黒い制作机とUIワイヤーの見出し画像" width="1600" height="620" loading="lazy" />
-        </div>
-        <div class="about-panel reveal">
-          <div>
-            <p class="eyebrow">About</p>
-            <h2 id="about-title">見た目と目的を、同じ画面に置く。</h2>
-          </div>
-          <div class="about-copy">
-            <p>
-              きれいなだけのページではなく、誰が、どの順番で、何を判断するのかまで考えて制作します。
-              LPなら相談や予約へ進む理由を、Webサービスなら入力から結果までの迷いにくさを、業務画面なら次の行動につながる情報整理を大切にしています。
-            </p>
-            <ul>
-              <li>情報設計、UI、文言、導線をまとめて調整する</li>
-              <li>公開画面を見ながら、違和感を具体的に直す</li>
-              <li>実績紹介では、誤解を招く表現や過剰な見せ方を避ける</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="contact section-shell" aria-labelledby="contact-title">
-        <div class="section-visual reveal">
-          <img src="assets/portfolio/contact-heading.png" alt="制作相談を連想させる静かな見出し画像" width="1600" height="620" loading="lazy" />
-        </div>
-        <div class="contact-card reveal">
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">制作物を、伝わる形に整えます。</h2>
-          <p>
-            LP、Webサービス、業務画面の見せ方を、画面・文章・導線のセットで整えます。
-            まずは作品を見て、必要な情報が短時間で伝わるかを判断できるようにしています。
-          </p>
-          <a class="button button-primary" href="#works">相談前に作品を見る</a>
-        </div>
-      </section>
-    </main>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

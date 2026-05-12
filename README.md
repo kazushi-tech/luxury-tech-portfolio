@@ -1,6 +1,6 @@
-# Luxury Tech Portfolio
+# Motion Web Works Portfolio
 
-Insight Studio、姓名診断、KRM留学LP、日だまり茶房をまとめた静的ポートフォリオサイトです。
+Insight Studio、姓名診断、KRM留学LP、日だまり茶房をまとめた React + Tailwind 製ポートフォリオです。
 
 ## Local Preview
 
@@ -18,15 +18,12 @@ npm run check
 
 ## Vercel Import Settings
 
-- Framework Preset: `Other`
-- Build Command: empty
-- Output Directory: `.`
-- Install Command: empty or default
+- Framework Preset: `Vite`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Install Command: default
 
-This repository is plain HTML/CSS/JavaScript. No build step is required.
+## Asset Rule
 
-## Design Direction
-
-- Current static version: lightweight portfolio shell using verified project screenshots.
-- Next redesign reference: `docs/brand-direction-v2.md`
-- GPT Image reference mock: `assets/reference/portfolio-v2-concept.png`
+- Worksカードと作品詳細の証拠画像は `assets/projects/*` の実スクリーンショットをReactからimportして使います。
+- `assets/portfolio/*` は背景、ムード、ページ演出用です。

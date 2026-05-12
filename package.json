@@ -1,9 +1,24 @@
 {
   "name": "luxury-tech-portfolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "node tools/serve.mjs",
-    "check": "node --check script.js && node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('data/projects.json','utf8')); const files=['assets/portfolio/works-heading.png','assets/portfolio/gallery-heading.png','assets/portfolio/about-heading.png','assets/portfolio/contact-heading.png',...p.flatMap(x=>x.screenshots||[])]; const forbidden=['assets/projects/insight-studio-real.png']; const missing=files.filter(f=>!fs.existsSync(f)); const leaked=forbidden.filter(f=>fs.existsSync(f)); if(missing.length||leaked.length){console.error({missing, leaked}); process.exit(1)} console.log('projects json and assets ok')\""
+    "dev": "vite --host 127.0.0.1 --port 8017",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 8017",
+    "check": "node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('data/projects.json','utf8')); const files=['assets/portfolio/about-heading.png','assets/portfolio/contact-heading.png','assets/portfolio/gallery-heading.png','assets/portfolio/works-heading.png',...p.flatMap(x=>(x.screenshots||[]))]; const missing=files.filter(f=>!fs.existsSync(f)); if(missing.length){console.error({missing}); process.exit(1)} console.log('assets ok')\""
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "autoprefixer": "^10.4.22",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^1.14.0",
+    "postcss": "^8.5.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.10.1",
+    "tailwindcss": "^3.4.18",
+    "vite": "^7.2.7"
   }
 }
