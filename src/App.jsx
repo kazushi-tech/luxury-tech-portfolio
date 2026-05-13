@@ -22,6 +22,8 @@ import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams } from "
 import aboutEditorialPortrait from "../assets/portfolio/about-editorial-portrait.png";
 import aboutConcept from "../assets/portfolio/about-heading.png";
 import aboutDarkAtelier from "../assets/portfolio/about-dark-atelier.png";
+import aboutProfileJourney from "../assets/portfolio/about-profile-journey.png";
+import aboutProofBoard from "../assets/portfolio/about-proof-board.png";
 import contactEditorialBrief from "../assets/portfolio/contact-editorial-brief.png";
 import contactConcept from "../assets/portfolio/contact-heading.png";
 import contactDarkBrief from "../assets/portfolio/contact-dark-brief.png";
@@ -193,21 +195,47 @@ const workFilters = [
   ["LP", "2件"],
 ];
 
+const profileStoryCards = [
+  {
+    label: "Start",
+    title: "まず触る",
+    text: "AIツールを早めに試し、業務で使える形を探る。",
+  },
+  {
+    label: "Practice",
+    title: "数字を読む",
+    text: "広告レポートの数値を正確に扱い、考察へつなげる。",
+  },
+  {
+    label: "Build",
+    title: "形にする",
+    text: "Python、React、AIエージェントで実用画面へ落とす。",
+  },
+];
+
+const profileMotionChips = ["AI News", "Git / GitHub", "Python Data", "React UI"];
+
 const capabilityCards = [
   {
-    label: "広告運用視点",
-    title: "数字を見る前に、判断順を設計する。",
-    text: "ファーストビュー、CTA、信頼材料、比較軸を分け、見る人が次に何を判断するかを先に決めます。",
+    label: "広告分析UI",
+    title: "Insight Studioで、確認順と次アクションを整理。",
+    text: "広告データ、AI考察、競合比較、バナーレビューを分け、運用者が次に見るべき画面へ進める導線を設計しています。",
+    href: "/works/insight-studio",
+    cta: "業務画面を見る",
   },
   {
-    label: "LP改善",
-    title: "雰囲気ではなく、押す理由を作る。",
-    text: "相談、診断、閲覧、予約など、ページごとの主行動が迷子にならないように情報の順番を整えます。",
+    label: "相談・予約LP",
+    title: "KRMと日だまり茶房で、押す理由を作る。",
+    text: "ファーストビュー、信頼材料、相談や予約へのCTAを並べ、見た目の空気感から行動まで自然につながるLPに整えます。",
+    href: "/works/krm-ryugaku",
+    cta: "LP導線を見る",
   },
   {
-    label: "WebサービスUI",
-    title: "機能を並べず、使う順番で見せる。",
-    text: "業務画面や入力フォームでは、状態表示、確認導線、次アクションを一画面の流れとして組み立てます。",
+    label: "フォーム設計",
+    title: "姓名診断で、入力から結果比較まで迷わせない。",
+    text: "入力フォーム、診断結果、候補比較を順番に見せ、利用者が家族で確認しやすいWebサービスUIとして組み立てています。",
+    href: "/works/namae-studio",
+    cta: "フォーム設計を見る",
   },
 ];
 
@@ -394,7 +422,7 @@ function PageAtmosphere({ variant }) {
 
 function SubPage({ variant, children }) {
   return (
-    <Page className="relative">
+    <Page className="relative pt-36 md:pt-16">
       <PageAtmosphere variant={variant} />
       <div className="relative z-10">{children}</div>
     </Page>
@@ -1098,13 +1126,13 @@ function About() {
         <motion.div {...getMotion(reduce, 0.02)}>
           <p className="eyebrow text-[#D7B66D]">自己紹介</p>
           <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-[-0.04em] text-milk sm:text-5xl md:text-[3.6rem]">
-            広告運用とLP改善の視点で、画面の役割を決める。
+            マーケティング実務から、AIとコードで制作を形にする。
           </h1>
           <p className="mt-6 max-w-3xl text-base font-bold leading-8 text-white/68">
-            きれいな見た目だけで終わらせず、誰が何を判断し、どのCTAへ進むのかを先に決めてから画面を組み立てます。
+            広告レポートの分析や考察作成に向き合いながら、AIエージェント、Python、Reactを学び、実務で必要だと感じた画面やサービスを自分で形にしています。
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            {["LP導線", "広告分析UI", "Webサービス設計", "実画面ベースの見せ方"].map((item) => (
+            {["非エンジニア出発", "広告運用の現場感", "AIエージェント活用", "実画面で検証"].map((item) => (
               <span key={item} className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-white/72">
                 {item}
               </span>
@@ -1112,12 +1140,63 @@ function About() {
           </div>
         </motion.div>
 
-        <motion.div {...getMotion(reduce, 0.1)} className="overflow-hidden rounded-[2rem] border border-gold/[0.18] bg-white/[0.06] p-2 shadow-[0_28px_100px_rgba(216,184,106,.10)] backdrop-blur-xl">
-          <img className="h-[360px] w-full rounded-[1.55rem] object-cover opacity-88 md:h-[460px]" src={aboutEditorialPortrait} alt="制作姿勢を表す編集的なムード画像" />
+        <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame overflow-hidden rounded-[2rem] border border-gold/[0.18] bg-white/[0.06] p-2 shadow-[0_28px_100px_rgba(216,184,106,.10)] backdrop-blur-xl">
+          <img className="about-drift h-[360px] w-full rounded-[1.55rem] object-cover object-center opacity-92 md:h-[460px]" src={aboutProfileJourney} alt="AI活用から広告分析UI制作までの流れを示すジャーニーボード" />
         </motion.div>
       </section>
 
-      <section className="mt-14 grid gap-5 md:grid-cols-3">
+      <section className="mt-12 grid gap-6 lg:grid-cols-[1.18fr_.82fr] lg:items-stretch">
+        <motion.div {...getMotion(reduce, 0.02)} className="about-motion-frame relative min-h-[320px] overflow-hidden rounded-[2rem] border border-gold/[0.16] bg-white/[0.055] p-2 shadow-[0_24px_90px_rgba(0,0,0,.24)] backdrop-blur-xl">
+          <img className="about-drift h-full min-h-[320px] w-full rounded-[1.55rem] object-cover object-center opacity-88" src={aboutProofBoard} alt="広告分析、LP改善、UI導線設計を検討する制作ボード" />
+          <div className="pointer-events-none absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(5,6,10,.72),rgba(5,6,10,.12)_45%,rgba(5,6,10,.64))]" />
+          <div className="absolute left-6 top-6 max-w-xs">
+            <p className="eyebrow text-[#D7B66D]">Profile flow</p>
+            <h2 className="mt-3 text-3xl font-black leading-tight tracking-[-0.035em] text-white md:text-4xl">
+              触って、悩んで、仕事に使える形へ。
+            </h2>
+          </div>
+          <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2">
+            {profileMotionChips.map((chip, index) => (
+              <span key={chip} className="about-floating-chip rounded-full border border-white/15 bg-black/48 px-3 py-2 text-xs font-black text-white/76 backdrop-blur-xl" style={{ animationDelay: `${index * 0.22}s` }}>
+                {chip}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+        <motion.article {...getMotion(reduce, 0.08)} className="rounded-[2rem] border border-white/[0.12] bg-black/24 p-6 backdrop-blur-xl md:p-7">
+          <p className="eyebrow text-[#D7B66D]">Profile</p>
+          <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.035em] text-white">
+            AIを使う人から、AIで作る人へ。
+          </h2>
+          <div className="mt-6 grid gap-3">
+            {profileStoryCards.map((card, index) => (
+              <motion.div
+                key={card.title}
+                {...getMotion(reduce, index * 0.04)}
+                className="about-step-card rounded-2xl border border-white/[0.1] bg-white/[0.055] p-4"
+              >
+                <span className="text-xs font-black uppercase tracking-[0.16em] text-[#D7B66D]">{card.label}</span>
+                <h3 className="mt-2 text-xl font-black tracking-[-0.03em] text-white">{card.title}</h3>
+                <p className="mt-2 text-sm font-bold leading-6 text-white/58">{card.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.article>
+      </section>
+
+      <section className="mt-16">
+        <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="eyebrow text-[#D7B66D]">Works as proof</p>
+            <h2 className="section-title mt-3 max-w-3xl">自己紹介を、制作物で確認できるようにする。</h2>
+          </div>
+          <p className="max-w-xl text-sm font-bold leading-7 text-white/55">
+            広告運用、LP改善、WebサービスUIという言葉だけで終わらせず、それぞれ近い実績へつなげています。
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-0 grid gap-5 md:grid-cols-3">
         {capabilityCards.map((card, index) => (
           <motion.article
             key={card.title}
@@ -1127,6 +1206,10 @@ function About() {
             <span className="text-sm font-black text-[#D7B66D]">{card.label}</span>
             <h2 className="mt-5 text-2xl font-black leading-tight tracking-[-0.03em] text-white">{card.title}</h2>
             <p className="mt-4 leading-8 text-white/62">{card.text}</p>
+            <Link className="mt-6 inline-flex items-center gap-2 text-sm font-black text-white/82 transition hover:text-[#D7B66D]" to={card.href}>
+              {card.cta}
+              <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+            </Link>
           </motion.article>
         ))}
       </section>
@@ -1138,10 +1221,10 @@ function About() {
             見た目、導線、証拠を分けて考える。
           </h2>
           <p className="mt-5 leading-8 text-white/62">
-            発注者や利用者が最初に見る情報、押す理由、信頼する根拠を分け、画面上の優先順位へ落とし込みます。
+            発注者や利用者が最初に見る情報、押す理由、信頼する根拠を分け、近い実績を確認しながら相談内容を絞れる状態へ落とし込みます。
           </p>
           <Link className="motion-button mt-7 bg-milk text-ink" to="/works">
-            制作実績を見る
+            近い実績から相談内容を絞る
             <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
           </Link>
         </div>
