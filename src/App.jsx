@@ -220,6 +220,8 @@ const capabilityCards = [
     label: "広告分析UI",
     title: "Insight Studioで、確認順と次アクションを整理。",
     text: "広告データ、AI考察、競合比較、バナーレビューを分け、運用者が次に見るべき画面へ進める導線を設計しています。",
+    image: "assets/projects/insight-studio-dashboard-gpt.png",
+    imageAlt: "Insight Studioの広告分析ダッシュボード画面",
     href: "/works/insight-studio",
     cta: "業務画面を見る",
   },
@@ -227,6 +229,8 @@ const capabilityCards = [
     label: "相談・予約LP",
     title: "KRMと日だまり茶房で、押す理由を作る。",
     text: "ファーストビュー、信頼材料、相談や予約へのCTAを並べ、見た目の空気感から行動まで自然につながるLPに整えます。",
+    image: "assets/projects/krm-ryugaku-status.png",
+    imageAlt: "KRM 留学LPの相談導線画面",
     href: "/works/krm-ryugaku",
     cta: "LP導線を見る",
   },
@@ -234,6 +238,8 @@ const capabilityCards = [
     label: "フォーム設計",
     title: "姓名診断で、入力から結果比較まで迷わせない。",
     text: "入力フォーム、診断結果、候補比較を順番に見せ、利用者が家族で確認しやすいWebサービスUIとして組み立てています。",
+    image: "assets/projects/namae-studio-real.png",
+    imageAlt: "姓名診断の入力フォーム画面",
     href: "/works/namae-studio",
     cta: "フォーム設計を見る",
   },
@@ -1117,11 +1123,30 @@ function InfoPanel({ label, text }) {
   );
 }
 
+function AboutSectionNav() {
+  const items = [
+    ["Profile", "#about-profile"],
+    ["Works", "#about-works"],
+    ["Method", "#about-method"],
+  ];
+
+  return (
+    <nav className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 gap-1 rounded-full border border-white/12 bg-black/62 p-1 shadow-[0_20px_70px_rgba(0,0,0,.34)] backdrop-blur-2xl" aria-label="自己紹介ページ内ナビゲーション">
+      {items.map(([label, href]) => (
+        <a key={href} className="rounded-full px-3 py-2 text-xs font-black text-white/62 transition hover:bg-white/10 hover:text-white md:px-4" href={href}>
+          {label}
+        </a>
+      ))}
+    </nav>
+  );
+}
+
 function About() {
   const reduce = useReducedMotion();
 
   return (
     <SubPage variant="about">
+      <AboutSectionNav />
       <section className="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         <motion.div {...getMotion(reduce, 0.02)}>
           <p className="eyebrow text-[#D7B66D]">自己紹介</p>
@@ -1138,6 +1163,10 @@ function About() {
               </span>
             ))}
           </div>
+          <a className="motion-button mt-7 border border-white/10 bg-white/[0.07] text-white hover:bg-white/12" href="#about-profile">
+            下の自己紹介へ進む
+            <ArrowRight className="ml-2 h-4 w-4 rotate-90" strokeWidth={2.4} />
+          </a>
         </motion.div>
 
         <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame overflow-hidden rounded-[2rem] border border-gold/[0.18] bg-white/[0.06] p-2 shadow-[0_28px_100px_rgba(216,184,106,.10)] backdrop-blur-xl">
@@ -1145,7 +1174,7 @@ function About() {
         </motion.div>
       </section>
 
-      <section className="mt-12 grid gap-6 lg:grid-cols-[1.18fr_.82fr] lg:items-stretch">
+      <section id="about-profile" className="mt-12 scroll-mt-28 grid gap-6 lg:grid-cols-[1.18fr_.82fr] lg:items-stretch">
         <motion.div {...getMotion(reduce, 0.02)} className="about-motion-frame relative min-h-[320px] overflow-hidden rounded-[2rem] border border-gold/[0.16] bg-white/[0.055] p-2 shadow-[0_24px_90px_rgba(0,0,0,.24)] backdrop-blur-xl">
           <img className="about-drift h-full min-h-[320px] w-full rounded-[1.55rem] object-cover object-center opacity-88" src={aboutProofBoard} alt="広告分析、LP改善、UI導線設計を検討する制作ボード" />
           <div className="pointer-events-none absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(5,6,10,.72),rgba(5,6,10,.12)_45%,rgba(5,6,10,.64))]" />
@@ -1184,7 +1213,7 @@ function About() {
         </motion.article>
       </section>
 
-      <section className="mt-16">
+      <section id="about-works" className="mt-24 scroll-mt-28">
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-[#D7B66D]">Works as proof</p>
@@ -1196,48 +1225,61 @@ function About() {
         </div>
       </section>
 
-      <section className="mt-0 grid gap-5 md:grid-cols-3">
+      <section className="mt-8 grid gap-10">
         {capabilityCards.map((card, index) => (
           <motion.article
             key={card.title}
-            {...getMotion(reduce, index * 0.04)}
-            className="motion-surface rounded-2xl border border-white/[0.12] bg-white/[0.06] p-7 backdrop-blur-xl"
+            {...getMotion(reduce, index * 0.06)}
+            className={`motion-surface grid gap-5 rounded-[2rem] border border-white/[0.12] bg-white/[0.055] p-3 backdrop-blur-xl lg:grid-cols-[1.08fr_.92fr] lg:items-stretch ${
+              index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
+            }`}
           >
-            <span className="text-sm font-black text-[#D7B66D]">{card.label}</span>
-            <h2 className="mt-5 text-2xl font-black leading-tight tracking-[-0.03em] text-white">{card.title}</h2>
-            <p className="mt-4 leading-8 text-white/62">{card.text}</p>
-            <Link className="mt-6 inline-flex items-center gap-2 text-sm font-black text-white/82 transition hover:text-[#D7B66D]" to={card.href}>
-              {card.cta}
-              <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
-            </Link>
+            <div className="overflow-hidden rounded-[1.55rem] border border-white/[0.08] bg-black/30">
+              <img className="h-full min-h-[260px] w-full object-cover object-top opacity-92 transition duration-700 hover:scale-[1.035]" src={screenshotPath(card.image)} alt={card.imageAlt} />
+            </div>
+            <div className="flex min-h-[260px] flex-col justify-center p-4 md:p-7">
+              <span className="text-sm font-black text-[#D7B66D]">{card.label}</span>
+              <h2 className="mt-5 max-w-xl text-3xl font-black leading-tight tracking-[-0.035em] text-white md:text-4xl">{card.title}</h2>
+              <p className="mt-5 max-w-xl leading-8 text-white/62">{card.text}</p>
+              <Link className="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2.5 text-sm font-black text-white/82 transition hover:border-[#D7B66D]/40 hover:text-[#D7B66D]" to={card.href}>
+                {card.cta}
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+              </Link>
+            </div>
           </motion.article>
         ))}
       </section>
 
-      <section className="mt-16 grid gap-7 lg:grid-cols-[.82fr_1.18fr] lg:items-start">
-        <div className="sticky-panel rounded-[2rem] border border-gold/[0.16] bg-white/[0.06] p-7 shadow-[0_24px_80px_rgba(0,0,0,.24)] backdrop-blur-xl">
-          <p className="eyebrow">制作姿勢</p>
-          <h2 className="mt-4 text-4xl font-black leading-tight tracking-[-0.04em] text-white">
-            見た目、導線、証拠を分けて考える。
-          </h2>
-          <p className="mt-5 leading-8 text-white/62">
-            発注者や利用者が最初に見る情報、押す理由、信頼する根拠を分け、近い実績を確認しながら相談内容を絞れる状態へ落とし込みます。
-          </p>
-          <Link className="motion-button mt-7 bg-milk text-ink" to="/works">
-            近い実績から相談内容を絞る
-            <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
-          </Link>
+      <section id="about-method" className="mt-28 scroll-mt-28">
+        <div className="grid gap-6 lg:grid-cols-[.86fr_1.14fr] lg:items-end">
+          <div>
+            <p className="eyebrow text-[#D7B66D]">制作姿勢</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+              見た目、導線、証拠を分けて考える。
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-2xl leading-8 text-white/62">
+              発注者や利用者が最初に見る情報、押す理由、信頼する根拠を分け、近い実績を確認しながら相談内容を絞れる状態へ落とし込みます。
+            </p>
+            <Link className="motion-button mt-6 bg-milk text-ink" to="/works">
+              近い実績から相談内容を絞る
+              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            </Link>
+          </div>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-3">
           {processSteps.map((step, index) => (
             <motion.article
               key={step.title}
-              {...getMotion(reduce, index * 0.04)}
-              className="rounded-2xl border border-white/10 bg-black/24 p-6"
+              {...getMotion(reduce, index * 0.05)}
+              className="grid gap-4 border-t border-white/10 py-7 md:grid-cols-[8rem_1fr] md:items-start"
             >
               <span className="text-sm font-black text-[#D7B66D]">{step.label}</span>
-              <h3 className="mt-5 text-2xl font-black tracking-[-0.03em] text-white">{step.title}</h3>
-              <p className="mt-4 leading-8 text-white/62">{step.text}</p>
+              <div className="grid gap-3 md:grid-cols-[.72fr_1.28fr] md:items-start">
+                <h3 className="text-2xl font-black tracking-[-0.03em] text-white md:text-3xl">{step.title}</h3>
+                <p className="leading-8 text-white/62">{step.text}</p>
+              </div>
             </motion.article>
           ))}
         </div>
