@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kazushi portfolio icon">
+  <defs>
+    <radialGradient id="bg" cx="34%" cy="28%" r="76%">
+      <stop offset="0%" stop-color="#123E57" />
+      <stop offset="48%" stop-color="#071827" />
+      <stop offset="100%" stop-color="#05060A" />
+    </radialGradient>
+    <linearGradient id="ring" x1="12" y1="9" x2="53" y2="55">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="45%" stop-color="#DFF7FF" />
+      <stop offset="100%" stop-color="#64CEFB" />
+    </linearGradient>
+    <linearGradient id="spark" x1="21" y1="14" x2="48" y2="51">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="52%" stop-color="#64CEFB" />
+      <stop offset="100%" stop-color="#D7B66D" />
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.8" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.392 0 0 0 0 0.807 0 0 0 0 0.984 0 0 0 .62 0" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)" />
+  <path d="M10 36C18 15 43 9 54 26" fill="none" stroke="#64CEFB" stroke-width="2.6" stroke-linecap="round" opacity=".34" />
+  <path d="M7 44C19 29 37 23 56 29" fill="none" stroke="#D7B66D" stroke-width="1.6" stroke-linecap="round" opacity=".28" />
+  <circle cx="32" cy="32" r="19" fill="none" stroke="url(#ring)" stroke-width="4.5" />
+  <circle cx="32" cy="32" r="9.5" fill="#F4F1EA" filter="url(#glow)" />
+  <path d="M41 18l2.2 5.1 5.1 2.2-5.1 2.2L41 32.6l-2.2-5.1-5.1-2.2 5.1-2.2L41 18z" fill="url(#spark)" opacity=".96" />
+</svg>

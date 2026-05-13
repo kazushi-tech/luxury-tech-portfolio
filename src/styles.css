@@ -147,6 +147,17 @@
   .about-step-card {
     animation: about-float 6.5s ease-in-out infinite;
   }
+
+  .motion-ribbon {
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at 62% 46%, rgba(114, 226, 255, 0.16), transparent 13rem),
+      linear-gradient(115deg, rgba(114, 226, 255, 0), rgba(114, 226, 255, 0.22) 34%, rgba(168, 146, 255, 0.18) 48%, rgba(114, 226, 255, 0.14) 62%, rgba(114, 226, 255, 0));
+    filter: blur(2px);
+    mix-blend-mode: screen;
+    mask-image: radial-gradient(ellipse at center, transparent 46%, black 48%, black 58%, transparent 64%);
+    transform-origin: center;
+  }
 }
 
 @keyframes marquee-left {

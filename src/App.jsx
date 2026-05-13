@@ -399,10 +399,24 @@ function PageAtmosphere({ variant }) {
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className={`absolute inset-0 ${theme.base}`} />
       <img className={`absolute max-w-none rounded-[3rem] object-cover blur-[1px] saturate-[0.92] ${theme.imageClass}`} src={theme.image} alt="" />
+      <MotionRibbon className="right-[-16rem] top-[7rem] h-[42rem] w-[58rem] opacity-70" />
+      <MotionRibbon className="left-[-24rem] top-[24rem] h-[34rem] w-[52rem] rotate-[16deg] opacity-35" reverse />
       <div className={`absolute inset-0 mix-blend-soft-light ${theme.tint}`} />
       <div className={`absolute inset-0 ${theme.wash}`} />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:44px_44px] opacity-45 [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
     </div>
+  );
+}
+
+function MotionRibbon({ className = "", reverse = false }) {
+  const reduce = useReducedMotion();
+
+  return (
+    <motion.div
+      className={`motion-ribbon absolute ${className}`}
+      animate={reduce ? undefined : { rotate: reverse ? [10, -3, 10] : [-8, 6, -8], scale: reverse ? [1, 1.04, 1] : [1.03, 1, 1.03] }}
+      transition={reduce ? undefined : { duration: reverse ? 13 : 11, repeat: Infinity, ease: "easeInOut" }}
+    />
   );
 }
 
@@ -836,6 +850,7 @@ function ProjectDetail() {
     <Page className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-x-[-8rem] top-[-9rem] z-0 h-[62rem] overflow-hidden" aria-hidden="true">
         <img className="absolute right-[-4rem] top-0 h-[48rem] w-[78rem] max-w-none rounded-[4rem] object-cover object-top opacity-20 blur-[1px] saturate-[.9]" src={screenshot} alt="" />
+        <MotionRibbon className="right-[-10rem] top-[7rem] h-[36rem] w-[56rem] opacity-56" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_16%,rgba(114,226,255,.20),transparent_25rem),radial-gradient(circle_at_16%_24%,rgba(216,184,106,.12),transparent_20rem),linear-gradient(180deg,rgba(14,28,44,.88),rgba(9,16,24,.80)_54%,rgba(5,6,10,.96))]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:44px_44px] opacity-35 [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
       </div>
@@ -1290,15 +1305,23 @@ function Contact() {
         <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame relative overflow-hidden rounded-[2rem] border border-cyan/[0.16] bg-white/[0.07] p-2 shadow-[0_28px_90px_rgba(0,0,0,.26)] backdrop-blur-2xl">
           <img className="about-drift h-[430px] w-full rounded-[1.55rem] object-cover object-center opacity-95" src={contactMotionBrief} alt="作品確認から相談内容を絞る流れを示すブリーフボード" />
           <div className="absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(6,13,20,.74),rgba(6,13,20,.18)_50%,rgba(6,13,20,.46))]" />
-          <div className="absolute bottom-5 left-5 right-5 grid gap-3 rounded-[1.35rem] border border-white/12 bg-black/42 p-4 backdrop-blur-xl md:grid-cols-3">
+          <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2 rounded-full border border-white/12 bg-black/42 p-2 backdrop-blur-xl">
             {consultationSteps.map((step) => (
-              <div key={step.label}>
-                <p className="text-xs font-black text-cyan">{step.label}</p>
-                <p className="mt-2 text-xs font-bold leading-5 text-white/68">{step.text}</p>
-              </div>
+              <span key={step.label} className="inline-flex min-h-10 flex-1 items-center justify-center rounded-full border border-white/10 bg-white/[0.07] px-3 text-center text-xs font-black text-white/78">
+                {step.label.split(" / ")[1]}
+              </span>
             ))}
           </div>
         </motion.div>
+      </section>
+
+      <section className="mt-6 grid gap-3 md:grid-cols-3">
+        {consultationSteps.map((step, index) => (
+          <motion.article key={step.label} {...getMotion(reduce, index * 0.04)} className="rounded-[1.35rem] border border-white/[0.12] bg-white/[0.055] p-5 backdrop-blur-xl">
+            <p className="text-sm font-black text-cyan">{step.label}</p>
+            <p className="mt-3 text-sm font-bold leading-7 text-white/64">{step.text}</p>
+          </motion.article>
+        ))}
       </section>
 
       <section className="mt-14 grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
@@ -1306,7 +1329,7 @@ function Contact() {
           image={contactMotionBrief}
           alt="制作相談のための編集的なブリーフ画像"
           label="Project Brief"
-          title="相談前に、方向性を揃える。"
+          title="方向性を揃えてから相談。"
           text="問い合わせ先を急に出すのではなく、近い制作物と見たい導線を確認してから話し始められる状態にしています。"
         />
         <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-1">
