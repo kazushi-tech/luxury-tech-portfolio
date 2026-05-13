@@ -75,6 +75,38 @@
     top: 6rem;
   }
 
+  .motion-stage,
+  .home-motion-stage {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .home-motion-stage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.34;
+    mask-image: linear-gradient(180deg, transparent, black 8%, black 86%, transparent);
+  }
+
+  .home-motion-stage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(95, 196, 255, 0.26), transparent 24rem),
+      radial-gradient(circle at 84% 36%, rgba(61, 131, 255, 0.24), transparent 28rem),
+      linear-gradient(180deg, rgba(5, 18, 38, 0.62), rgba(4, 22, 52, 0.72) 44%, rgba(4, 8, 18, 0.9));
+    mix-blend-mode: screen;
+    opacity: 0.72;
+  }
+
   .editorial-feature {
     color: #f4f1ea;
   }
@@ -184,6 +216,19 @@
 
 .animate-marquee-right {
   animation: marquee-right 26s linear infinite;
+}
+
+.animate-scroll-down {
+  animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+@keyframes scroll-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(250%);
+  }
 }
 
 @keyframes about-drift {
