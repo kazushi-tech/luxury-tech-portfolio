@@ -12,10 +12,10 @@
     "overview": "広告KPI、競合LP分析、考察作成をひとつの作業画面にまとめた業務向けプロダクトです。分析結果を眺めるだけでなく、次に確認することや改善アクションへ進みやすい構成にしています。",
     "audience": "広告運用者、Webマーケター、LP改善や競合調査を継続的に行うチーム。",
     "designFocus": "情報量の多い分析画面でも迷わないよう、ナビゲーション、カード、状態表示を整理。実績掲載では識別につながる情報を安全化しています。",
-    "contentSource": "Insight Studioの公開画面、ログイン後ダッシュボード、セットアップ、AI考察導線のブラウザ確認内容をもとに記載。",
+    "contentSource": "Insight Studioの公開画面、ログイン後ダッシュボード、AI考察、Discovery Hub、LP比較・競合分析、バナーレビューのブラウザ確認内容をもとに記載。",
     "tags": ["ダッシュボード", "広告分析", "運用フロー"],
     "tech": ["React", "Vite", "Python", "UI Review"],
-    "screenshots": ["assets/projects/insight-studio-setup-clean.png"],
+    "screenshots": ["assets/projects/insight-studio-dashboard-gpt.png"],
     "galleryImages": [
       {
         "src": "assets/projects/insight-studio-setup-clean.png",
@@ -64,6 +64,60 @@
         "text": "未取得データがある場合は、次に確認すべきクエリタイプや担当別の確認タスクへ落とし込みます。"
       }
     ],
+    "caseTabs": [
+      {
+        "id": "ai-insight",
+        "label": "AI考察",
+        "title": "広告グラフからAI考察へ進む",
+        "lead": "広告分析セットアップとグラフ確認のあと、未取得データや確認観点を整理し、次に見るべきクエリへつなぎます。",
+        "images": [
+          {
+            "src": "assets/projects/insight-studio-ai-gpt.png",
+            "title": "AI考察結果",
+            "text": "実画面で確認したAI考察導線をもとに、深緑のサイドバーとプロンプト候補カードを架空情報で再構成しています。"
+          }
+        ]
+      },
+      {
+        "id": "discovery",
+        "label": "統合分析 / 競合発見",
+        "title": "Discovery Hubで候補を分類する",
+        "lead": "発見候補を同列に扱わず、直接競合、隣接競合、参考ブランド、対象外に分けて、比較へ進む前の判断を整理します。",
+        "images": [
+          {
+            "src": "assets/projects/insight-studio-discovery-gpt.png",
+            "title": "競合発見アシスタント",
+            "text": "候補URLの妥当性、除外した理由、Compareへ送る前の確認点を、AIアシスタントと発見レポートの並びで確認できます。"
+          }
+        ]
+      },
+      {
+        "id": "compare",
+        "label": "競合比較",
+        "title": "LP比較を施策まで読む",
+        "lead": "自社LPと競合LPを並べて、CTA、信頼要素、訴求差分を確認し、最初に直す施策へ落とします。",
+        "images": [
+          {
+            "src": "assets/projects/insight-studio-compare-gpt.png",
+            "title": "LP比較・競合分析",
+            "text": "URL入力、差分確認、施策化の順番を同じ画面で見せ、比較結果を次のアクションまで読みやすくしています。"
+          }
+        ]
+      },
+      {
+        "id": "creative-review",
+        "label": "バナーレビュー",
+        "title": "クリエイティブを根拠つきで見直す",
+        "lead": "バナー画像をアップロードし、総合スコア、最初の修正、良い点、質問導線を分けて確認します。",
+        "images": [
+          {
+            "src": "assets/projects/insight-studio-creative-review-gpt.png",
+            "title": "バナーレビュー",
+            "text": "架空デモ素材、レビュー結果、アップロード欄、AI質問導線を並べ、実在ブランドや実商品と誤認されない説明用画面にしています。"
+          }
+        ]
+      }
+    ],
     "caseSections": [
       {
         "label": "運用者向け",
@@ -82,9 +136,9 @@
       }
     ],
     "ctaLabel": "広告分析ダッシュボードを見る",
-    "caseNote": "分析画面は情報量が多くなりやすいため、最初にクエリタイプ、次に分析期間、広告グラフ、最後にAI考察へ進める順番で見せています。",
+    "caseNote": "分析画面は情報量が多くなりやすいため、AI考察、競合発見、LP比較、バナーレビューをタブで分け、確認したい機能へすぐ移れるようにしています。",
     "safeAssetNote": "実画面構成をもとに架空情報で再構成",
-    "privacyNote": "掲載画像は右カラムのブラウザでセットアップ、広告グラフ、AI考察を1回だけ実行確認したうえで、社名、案件名、広告アカウント、数値、AI本文、ユーザー情報を架空の日本語サンプルへ置き換えて作成しています。"
+    "privacyNote": "掲載画像は右カラムのブラウザでダッシュボード、AI考察、Discovery Hub、LP比較・競合分析、バナーレビューを確認したうえで、社名、案件名、広告アカウント、数値、AI本文、ユーザー情報を架空の日本語サンプルへ置き換えて作成しています。"
   },
   {
     "id": "namae-studio",
