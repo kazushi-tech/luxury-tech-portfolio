@@ -20,16 +20,12 @@ import {
 import { useState } from "react";
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import aboutEditorialPortrait from "../assets/portfolio/about-editorial-portrait.png";
-import aboutConcept from "../assets/portfolio/about-heading.png";
 import aboutDarkAtelier from "../assets/portfolio/about-dark-atelier.png";
 import aboutProfileJourney from "../assets/portfolio/about-profile-journey.png";
 import aboutProofBoard from "../assets/portfolio/about-proof-board.png";
 import contactEditorialBrief from "../assets/portfolio/contact-editorial-brief.png";
-import contactConcept from "../assets/portfolio/contact-heading.png";
-import contactDarkBrief from "../assets/portfolio/contact-dark-brief.png";
-import galleryConcept from "../assets/portfolio/gallery-heading.png";
+import contactMotionBrief from "../assets/portfolio/contact-motion-brief.png";
 import worksEditorialBoard from "../assets/portfolio/works-editorial-board.png";
-import worksConcept from "../assets/portfolio/works-heading.png";
 import worksDarkGallery from "../assets/portfolio/works-dark-gallery.png";
 import hidamariScreenshot from "../assets/projects/hidamari-sabou-real.png";
 import insightAiResultClean from "../assets/projects/insight-studio-ai-result-clean.png";
@@ -57,15 +53,6 @@ const maxReedVideos = {
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_153148_d7a3e1dd-e5d0-4ce6-8306-00d7522ecc44.mp4",
 };
 
-const conceptImages = {
-  about: aboutConcept,
-  contact: contactConcept,
-  insight: worksConcept,
-  namae: aboutConcept,
-  krm: contactConcept,
-  hidamari: galleryConcept,
-};
-
 const screenshotByPath = {
   "assets/projects/insight-studio-dashboard-gpt.png": insightDashboardGpt,
   "assets/projects/insight-studio-setup-clean.png": insightSetupClean,
@@ -79,13 +66,6 @@ const screenshotByPath = {
   "assets/projects/namae-studio-real.png": namaeScreenshot,
   "assets/projects/krm-ryugaku-status.png": krmScreenshot,
   "assets/projects/hidamari-sabou-real.png": hidamariScreenshot,
-};
-
-const detailConceptByProject = {
-  "insight-studio": conceptImages.insight,
-  "namae-studio": conceptImages.namae,
-  "krm-ryugaku": conceptImages.krm,
-  "hidamari-sabou": conceptImages.hidamari,
 };
 
 const metrics = [
@@ -218,7 +198,7 @@ const profileMotionChips = ["AI News", "Git / GitHub", "Python Data", "React UI"
 const capabilityCards = [
   {
     label: "広告分析UI",
-    title: "Insight Studioで、確認順と次アクションを整理。",
+    title: "確認順を整える。",
     text: "広告データ、AI考察、競合比較、バナーレビューを分け、運用者が次に見るべき画面へ進める導線を設計しています。",
     image: "assets/projects/insight-studio-dashboard-gpt.png",
     imageAlt: "Insight Studioの広告分析ダッシュボード画面",
@@ -236,7 +216,7 @@ const capabilityCards = [
   },
   {
     label: "フォーム設計",
-    title: "姓名診断で、入力から結果比較まで迷わせない。",
+    title: "入力から比較まで迷わせない。",
     text: "入力フォーム、診断結果、候補比較を順番に見せ、利用者が家族で確認しやすいWebサービスUIとして組み立てています。",
     image: "assets/projects/namae-studio-real.png",
     imageAlt: "姓名診断の入力フォーム画面",
@@ -276,11 +256,11 @@ const pageAtmospheres = {
     tint: "bg-gold/[0.08]",
   },
   contact: {
-    image: contactDarkBrief,
+    image: contactMotionBrief,
     base: "bg-briefSlate",
-    imageClass: "right-[-15%] top-[-6%] h-[56rem] w-[76rem] opacity-30",
-    wash: "bg-[radial-gradient(circle_at_76%_14%,rgba(114,226,255,.18),transparent_22rem),radial-gradient(circle_at_14%_28%,rgba(216,184,106,.11),transparent_18rem),linear-gradient(180deg,rgba(9,10,15,.50),rgba(9,10,15,.88)_62%,#090A0F)]",
-    tint: "bg-briefSlate/40",
+    imageClass: "right-[-10%] top-[-8%] h-[54rem] w-[82rem] opacity-42",
+    wash: "bg-[radial-gradient(circle_at_74%_12%,rgba(114,226,255,.20),transparent_24rem),radial-gradient(circle_at_16%_30%,rgba(216,184,106,.12),transparent_18rem),linear-gradient(180deg,rgba(9,16,24,.34),rgba(9,16,24,.72)_58%,#091018)]",
+    tint: "bg-cyan/[0.08]",
   },
 };
 
@@ -847,96 +827,99 @@ function ProjectDetail() {
   if (!project) return <Navigate to="/works" replace />;
 
   const screenshot = screenshotPath(project.screenshots[0]);
-  const concept = detailConceptByProject[project.id] || conceptImages.works;
   const accent = project.accent?.[0] || "#72E2FF";
   const hasTabbedCase = Boolean(project.caseTabs?.length);
   const hasCaseStudy = Boolean(hasTabbedCase || project.galleryImages?.length || project.workflowSteps?.length || project.caseSections?.length);
   const detailImageClass = hasCaseStudy ? "object-contain bg-white" : "object-cover object-top";
 
   return (
-    <Page>
-      <Link className="mb-8 inline-flex rounded-full border border-white/10 px-4 py-2 text-sm font-black text-white/60 transition hover:bg-white/10 hover:text-white" to="/works">
-        ← 作品一覧へ戻る
-      </Link>
-      <section className="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-center">
-        <motion.div {...getMotion(reduce, 0.04)}>
-          <p className="eyebrow" style={{ color: accent }}>
-            {project.category}
-          </p>
-          <h1 className="text-balance text-5xl font-black leading-tight tracking-[-0.04em] md:text-6xl">{project.name}</h1>
-          <p className="mt-5 text-xl font-bold leading-9 text-white/80">{project.shortValue}</p>
-          <div className="mt-7 grid gap-3 text-sm text-white/60">
-            <p>
-              <b className="text-white">何のサービスか:</b> {project.overview}
+    <Page className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-x-[-8rem] top-[-9rem] z-0 h-[62rem] overflow-hidden" aria-hidden="true">
+        <img className="absolute right-[-4rem] top-0 h-[48rem] w-[78rem] max-w-none rounded-[4rem] object-cover object-top opacity-20 blur-[1px] saturate-[.9]" src={screenshot} alt="" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_16%,rgba(114,226,255,.20),transparent_25rem),radial-gradient(circle_at_16%_24%,rgba(216,184,106,.12),transparent_20rem),linear-gradient(180deg,rgba(14,28,44,.88),rgba(9,16,24,.80)_54%,rgba(5,6,10,.96))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:44px_44px] opacity-35 [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
+      </div>
+      <div className="relative z-10">
+        <Link className="mb-8 inline-flex rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm font-black text-white/66 backdrop-blur-xl transition hover:bg-white/10 hover:text-white" to="/works">
+          ← 作品一覧へ戻る
+        </Link>
+        <section className="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-center">
+          <motion.div {...getMotion(reduce, 0.04)}>
+            <p className="eyebrow" style={{ color: accent }}>
+              {project.category}
             </p>
-            <p>
-              <b className="text-white">誰向けか:</b> {project.audience}
-            </p>
-          </div>
-          <a className="motion-button mt-8 bg-milk text-ink" href={project.url} target="_blank" rel="noreferrer">
-            {project.ctaLabel}
-          </a>
-        </motion.div>
-        <motion.div {...getMotion(reduce, 0.12)} className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-2 shadow-glow">
-          <img className={`h-[460px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面プレビュー`} />
-          {!hasCaseStudy && (
-            <div className="pointer-events-none absolute right-5 top-5 hidden w-48 overflow-hidden rounded-[1.2rem] border border-white/20 bg-ink/70 p-1 opacity-75 backdrop-blur-2xl md:block">
-              <img className="h-28 w-full rounded-2xl object-cover" src={concept} alt={`${project.name}のページ演出用ビジュアル`} />
-            </div>
-          )}
-        </motion.div>
-      </section>
-
-      {hasTabbedCase && <CaseStudyTabs project={project} accent={accent} reduce={reduce} />}
-
-      <section className="mt-16 grid gap-5 md:grid-cols-3">
-        <InfoPanel label="設計の焦点" text={project.designFocus} />
-        <InfoPanel label="見せ方の流れ" text={project.caseNote} />
-        <InfoPanel label="参照元" text={project.contentSource} />
-      </section>
-
-      {hasCaseStudy && !hasTabbedCase && (
-        <>
-          <CaseStudyIntro project={project} accent={accent} />
-          <CaseStudyGallery project={project} accent={accent} reduce={reduce} />
-          <WorkflowSteps project={project} accent={accent} reduce={reduce} />
-        </>
-      )}
-
-      <section className="mt-16 grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
-        <div className="sticky-panel rounded-[2rem] border border-white/10 bg-white/[0.055] p-7">
-          <p className="eyebrow">Flow</p>
-          <h2 className="mt-4 text-4xl font-black leading-tight tracking-[-0.04em]">見せたいのは、画面の先にある行動。</h2>
-          <p className="mt-5 leading-8 text-white/60">
-            スクリーンショットを大きく置き、短い説明で「誰が、何を判断して、どのCTAへ進むか」を補足します。見た目だけではなく、遷移する理由まで設計対象にしています。
-          </p>
-          <a className="motion-button mt-7 bg-milk text-ink" href={project.url} target="_blank" rel="noreferrer">
-            {project.ctaLabel}
-          </a>
-        </div>
-        <div className="grid gap-4">
-          {[
-            ["何を作ったか", project.overview],
-            ["誰向けか", project.audience],
-            ["どう設計したか", project.designFocus],
-          ].map(([label, text], index) => (
-            <motion.article
-              key={label}
-              {...getMotion(reduce, index * 0.04)}
-              className="rounded-[1.7rem] border border-white/10 bg-black/24 p-6"
-            >
-              <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
-                {label}
+            <h1 className="text-balance text-5xl font-black leading-tight tracking-normal md:text-6xl">{project.name}</h1>
+            <p className="mt-5 text-xl font-bold leading-9 text-white/82">{project.shortValue}</p>
+            <div className="mt-7 grid gap-3 text-sm text-white/66">
+              <p>
+                <b className="text-white">何のサービスか:</b> {project.overview}
               </p>
-              <p className="mt-3 leading-8 text-white/70">{text}</p>
-            </motion.article>
-          ))}
-        </div>
-      </section>
+              <p>
+                <b className="text-white">誰向けか:</b> {project.audience}
+              </p>
+            </div>
+            <a className="motion-button mt-8 bg-milk text-ink" href={project.url} target="_blank" rel="noreferrer">
+              {project.ctaLabel}
+            </a>
+          </motion.div>
+          <motion.div {...getMotion(reduce, 0.12)} className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-white/[0.07] p-2 shadow-glow backdrop-blur-xl">
+            <img className={`h-[460px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面プレビュー`} />
+          </motion.div>
+        </section>
 
-      <section className="mt-16 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] p-3">
-        <img className={`max-h-[760px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面全体プレビュー`} />
-      </section>
+        {hasTabbedCase && <CaseStudyTabs project={project} accent={accent} reduce={reduce} />}
+
+        <section className="mt-16 grid gap-5 md:grid-cols-3">
+          <InfoPanel label="設計の焦点" text={project.designFocus} />
+          <InfoPanel label="見せ方の流れ" text={project.caseNote} />
+          <InfoPanel label="参照元" text={project.contentSource} />
+        </section>
+
+        {hasCaseStudy && !hasTabbedCase && (
+          <>
+            <CaseStudyIntro project={project} accent={accent} />
+            <CaseStudyGallery project={project} accent={accent} reduce={reduce} />
+            <WorkflowSteps project={project} accent={accent} reduce={reduce} />
+          </>
+        )}
+
+        <section className="mt-16 grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+          <div className="sticky-panel rounded-[2rem] border border-white/12 bg-white/[0.07] p-7 backdrop-blur-xl">
+            <p className="eyebrow">Flow</p>
+            <h2 className="mt-4 max-w-md text-3xl font-black leading-tight tracking-normal text-white md:text-4xl">
+              画面の先にある行動を見る。
+            </h2>
+            <p className="mt-5 leading-8 text-white/64">
+              スクリーンショットを大きく置き、短い説明で「誰が、何を判断して、どのCTAへ進むか」を補足します。見た目だけではなく、遷移する理由まで設計対象にしています。
+            </p>
+            <a className="motion-button mt-7 bg-milk text-ink" href={project.url} target="_blank" rel="noreferrer">
+              {project.ctaLabel}
+            </a>
+          </div>
+          <div className="grid gap-4">
+            {[
+              ["何を作ったか", project.overview],
+              ["誰向けか", project.audience],
+              ["どう設計したか", project.designFocus],
+            ].map(([label, text], index) => (
+              <motion.article
+                key={label}
+                {...getMotion(reduce, index * 0.04)}
+                className="rounded-[1.7rem] border border-white/12 bg-white/[0.055] p-6 backdrop-blur-xl"
+              >
+                <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
+                  {label}
+                </p>
+                <p className="mt-3 leading-8 text-white/72">{text}</p>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-16 overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.065] p-3 backdrop-blur-xl">
+          <img className={`max-h-[760px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面全体プレビュー`} />
+        </section>
+      </div>
     </Page>
   );
 }
@@ -954,8 +937,8 @@ function CaseStudyTabs({ project, accent, reduce }) {
           <p className="eyebrow" style={{ color: accent }}>
             ケーススタディ
           </p>
-          <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em] md:text-5xl">
-            実画面で確認した機能を、タブで見る。
+          <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-normal md:text-5xl">
+            確認した機能をタブで見る。
           </h2>
         </div>
         <div className="rounded-[1.7rem] border border-white/10 bg-white/[0.055] p-5">
@@ -1150,23 +1133,19 @@ function About() {
       <section className="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         <motion.div {...getMotion(reduce, 0.02)}>
           <p className="eyebrow text-[#D7B66D]">自己紹介</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-[-0.04em] text-milk sm:text-5xl md:text-[3.6rem]">
-            マーケティング実務から、AIとコードで制作を形にする。
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-black leading-tight tracking-normal text-milk sm:text-5xl md:text-[3.05rem]">
+            マーケ実務をAIとコードで形にする。
           </h1>
           <p className="mt-6 max-w-3xl text-base font-bold leading-8 text-white/68">
             広告レポートの分析や考察作成に向き合いながら、AIエージェント、Python、Reactを学び、実務で必要だと感じた画面やサービスを自分で形にしています。
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 grid max-w-2xl grid-cols-2 gap-3">
             {["非エンジニア出発", "広告運用の現場感", "AIエージェント活用", "実画面で検証"].map((item) => (
-              <span key={item} className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-black text-white/72">
+              <span key={item} className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-center text-sm font-black text-white/72">
                 {item}
               </span>
             ))}
           </div>
-          <a className="motion-button mt-7 border border-white/10 bg-white/[0.07] text-white hover:bg-white/12" href="#about-profile">
-            下の自己紹介へ進む
-            <ArrowRight className="ml-2 h-4 w-4 rotate-90" strokeWidth={2.4} />
-          </a>
         </motion.div>
 
         <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame overflow-hidden rounded-[2rem] border border-gold/[0.18] bg-white/[0.06] p-2 shadow-[0_28px_100px_rgba(216,184,106,.10)] backdrop-blur-xl">
@@ -1180,8 +1159,8 @@ function About() {
           <div className="pointer-events-none absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(5,6,10,.72),rgba(5,6,10,.12)_45%,rgba(5,6,10,.64))]" />
           <div className="absolute left-6 top-6 max-w-xs">
             <p className="eyebrow text-[#D7B66D]">Profile flow</p>
-            <h2 className="mt-3 text-3xl font-black leading-tight tracking-[-0.035em] text-white md:text-4xl">
-              触って、悩んで、仕事に使える形へ。
+            <h2 className="mt-3 max-w-[24rem] text-balance text-3xl font-black leading-tight tracking-normal text-white md:text-[2rem]">
+              試し、悩み、実務へ。
             </h2>
           </div>
           <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2">
@@ -1194,8 +1173,8 @@ function About() {
         </motion.div>
         <motion.article {...getMotion(reduce, 0.08)} className="rounded-[2rem] border border-white/[0.12] bg-black/24 p-6 backdrop-blur-xl md:p-7">
           <p className="eyebrow text-[#D7B66D]">Profile</p>
-          <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.035em] text-white">
-            AIを使う人から、AIで作る人へ。
+          <h2 className="mt-4 max-w-sm text-balance text-3xl font-black leading-tight tracking-normal text-white">
+            使う側から作る側へ。
           </h2>
           <div className="mt-6 grid gap-3">
             {profileStoryCards.map((card, index) => (
@@ -1217,10 +1196,10 @@ function About() {
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-[#D7B66D]">Works as proof</p>
-            <h2 className="section-title mt-3 max-w-3xl">自己紹介を、制作物で確認できるようにする。</h2>
+            <h2 className="section-title mt-3 max-w-2xl tracking-normal">強みを作品で見る。</h2>
           </div>
-          <p className="max-w-xl text-sm font-bold leading-7 text-white/55">
-            広告運用、LP改善、WebサービスUIという言葉だけで終わらせず、それぞれ近い実績へつなげています。
+          <p className="max-w-2xl text-sm font-bold leading-8 text-white/58 md:text-base">
+            広告運用、LP改善、WebサービスUIという言葉だけで終わらせず、近い実績へつなげています。
           </p>
         </div>
       </section>
@@ -1239,7 +1218,7 @@ function About() {
             </div>
             <div className="flex min-h-[260px] flex-col justify-center p-4 md:p-7">
               <span className="text-sm font-black text-[#D7B66D]">{card.label}</span>
-              <h2 className="mt-5 max-w-xl text-3xl font-black leading-tight tracking-[-0.035em] text-white md:text-4xl">{card.title}</h2>
+              <h2 className="mt-5 max-w-xl text-balance text-3xl font-black leading-tight tracking-normal text-white md:text-[2.2rem]">{card.title}</h2>
               <p className="mt-5 max-w-xl leading-8 text-white/62">{card.text}</p>
               <Link className="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2.5 text-sm font-black text-white/82 transition hover:border-[#D7B66D]/40 hover:text-[#D7B66D]" to={card.href}>
                 {card.cta}
@@ -1296,7 +1275,7 @@ function Contact() {
       <section className="grid gap-8 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
         <motion.div {...getMotion(reduce, 0.02)}>
           <p className="eyebrow text-cyan">相談前の入口</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight tracking-[-0.04em] text-milk sm:text-5xl md:text-[3.6rem]">
+          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-black leading-tight tracking-normal text-milk sm:text-5xl md:text-[3.25rem]">
             近い実績を見て、相談内容を絞る。
           </h1>
           <p className="mt-6 max-w-3xl text-base font-bold leading-8 text-white/68">
@@ -1308,13 +1287,14 @@ function Contact() {
           </Link>
         </motion.div>
 
-        <motion.div {...getMotion(reduce, 0.1)} className="rounded-[2rem] border border-cyan/[0.14] bg-white/[0.065] p-5 shadow-[0_28px_90px_rgba(0,0,0,.26)] backdrop-blur-2xl md:p-7">
-          <p className="eyebrow">Before Contact</p>
-          <div className="mt-5 grid gap-4">
+        <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame relative overflow-hidden rounded-[2rem] border border-cyan/[0.16] bg-white/[0.07] p-2 shadow-[0_28px_90px_rgba(0,0,0,.26)] backdrop-blur-2xl">
+          <img className="about-drift h-[430px] w-full rounded-[1.55rem] object-cover object-center opacity-95" src={contactMotionBrief} alt="作品確認から相談内容を絞る流れを示すブリーフボード" />
+          <div className="absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(6,13,20,.74),rgba(6,13,20,.18)_50%,rgba(6,13,20,.46))]" />
+          <div className="absolute bottom-5 left-5 right-5 grid gap-3 rounded-[1.35rem] border border-white/12 bg-black/42 p-4 backdrop-blur-xl md:grid-cols-3">
             {consultationSteps.map((step) => (
-              <div key={step.label} className="rounded-[1.35rem] border border-white/[0.12] bg-black/20 p-5">
-                <p className="text-sm font-black text-cyan">{step.label}</p>
-                <p className="mt-3 leading-7 text-white/68">{step.text}</p>
+              <div key={step.label}>
+                <p className="text-xs font-black text-cyan">{step.label}</p>
+                <p className="mt-2 text-xs font-bold leading-5 text-white/68">{step.text}</p>
               </div>
             ))}
           </div>
@@ -1323,7 +1303,7 @@ function Contact() {
 
       <section className="mt-14 grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
         <EditorialImageCard
-          image={contactEditorialBrief}
+          image={contactMotionBrief}
           alt="制作相談のための編集的なブリーフ画像"
           label="Project Brief"
           title="相談前に、方向性を揃える。"

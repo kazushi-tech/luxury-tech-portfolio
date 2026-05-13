@@ -72,7 +72,7 @@
         "lead": "広告分析セットアップとグラフ確認のあと、未取得データや確認観点を整理し、次に見るべきクエリへつなぎます。",
         "images": [
           {
-            "src": "assets/projects/insight-studio-ai-gpt.png",
+            "src": "assets/projects/insight-studio-ai-result-clean.png",
             "title": "AI考察結果",
             "text": "実画面で確認したAI考察導線をもとに、深緑のサイドバーとプロンプト候補カードを架空情報で再構成しています。"
           }
