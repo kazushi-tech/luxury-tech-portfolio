@@ -6,6 +6,9 @@ export default {
       colors: {
         ink: "#090A0F",
         graphite: "#11131A",
+        editorialNavy: "#101722",
+        atelierCharcoal: "#171511",
+        briefSlate: "#111A1D",
         milk: "#F7F4EE",
         muted: "#B8B2C4",
         cyan: "#72E2FF",
