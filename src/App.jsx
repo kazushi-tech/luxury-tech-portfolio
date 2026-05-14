@@ -80,9 +80,9 @@ const toolRows = [
 const editorialPages = {
   works: {
     eyebrow: "WORKS FEATURE",
-    title: "実績を、編集する。",
-    lead: "スクリーンショットを証拠として扱いながら、作品ごとの温度、対象ユーザー、導線設計を一枚ずつ読ませるポートフォリオです。",
-    note: "実画面を手がかりに、制作物の狙いと導線を短く読む。背景の動きは視線を奥へ逃がし、作品カードが前に出る余白を作ります。",
+    title: "実画面で、判断できる。",
+    lead: "作品の雰囲気ではなく、誰のどんな行動を設計したかまで見えるポートフォリオです。",
+    note: "実画面を起点に、狙い、導線、担当範囲を短く読む。装飾より、実績そのものが前に出る見せ方です。",
     cta: "代表作を見る",
     tone: "bg-[#324444]",
     boardImage: worksEditorialBoard,
@@ -92,7 +92,7 @@ const editorialPages = {
     bigCaption: "Published works",
     quoteTitle: "DESIGN NOTE",
     quote:
-      "実績は派手な生成画像ではなく、実画面で見せる。背景や動きは、作品を見る理由を作るための舞台装置に留めています。",
+      "派手な生成画像ではなく、実画面で証明する。動きは飾りではなく、作品へ視線を運ぶために使います。",
     timeline: [
       ["SaaS", "Insight Studio", "AI Analysis"],
       ["Service", "姓名診断", "Form Design"],
@@ -101,9 +101,9 @@ const editorialPages = {
   },
   contact: {
     eyebrow: "CONTACT FEATURE",
-    title: "作品を見て、相談へ。",
-    lead: "いきなり連絡先ではなく、制作物の画面、対象ユーザー、設計意図を確認してから相談できる入口にします。",
-    note: "近い実績を確認してから、相談したい制作対象を絞る。連絡導線も作品体験の延長として静かに置きます。",
+    title: "近い実績から、相談へ。",
+    lead: "近い実績を先に見て、依頼内容を具体化してから相談できる入口です。",
+    note: "近い実績を先に見る。だから初回相談で、目的、導線、優先順位まで話しやすくなります。",
     cta: "作品一覧へ戻る",
     tone: "bg-[#323C44]",
     boardImage: contactEditorialBrief,
@@ -113,9 +113,9 @@ const editorialPages = {
     bigCaption: "Start from works",
     quoteTitle: "BRIEF",
     quote:
-      "相談前に作品の方向性を共有できると、依頼内容も判断軸もシャープになります。まずは近い実績から見られる導線にしています。",
+      "近い実績があると、相談は早い。目的、画面、CTAの話まで一気に進められます。",
     timeline: [
-      ["View", "作品を見る", "Screens"],
+      ["View", "実績を見る", "Screens"],
       ["Scope", "対象を決める", "LP / App"],
       ["Talk", "相談へ進む", "Next"],
     ],
@@ -125,18 +125,18 @@ const editorialPages = {
 const processSteps = [
   {
     label: "01",
-    title: "初見で分かる",
-    text: "最初に見る見出し、数字、カードの順番を整え、何を見るべきかをすぐ判断できる画面にします。",
+    title: "3秒で伝わる",
+    text: "見出し、数字、カードの順番を整え、最初の3秒で価値が伝わる画面へ。",
   },
   {
     label: "02",
-    title: "次に押す理由",
-    text: "ただ並べるのではなく、比較、診断、相談、分析など、次の行動が自然に見える導線を作ります。",
+    title: "押す理由を作る",
+    text: "比較、診断、相談、分析。次の行動が自然に見える導線へ。",
   },
   {
     label: "03",
-    title: "実画面で検証",
-    text: "雰囲気だけで終わらせず、スクリーンショットや実装画面で読みやすさと行動導線を確かめます。",
+    title: "画面で確かめる",
+    text: "雰囲気で終わらせず、実装画面で読みやすさ、押しやすさ、迷いの少なさを確認。",
   },
 ];
 
@@ -150,49 +150,49 @@ const workFilters = [
 const profileStoryCards = [
   {
     label: "Start",
-    title: "まず触る",
-    text: "AIツールを早めに試し、業務で使える形を探る。",
+    title: "早く試す",
+    text: "AIツールを早く触り、業務で使える形まで落とす。",
   },
   {
     label: "Practice",
-    title: "数字を読む",
-    text: "広告レポートの数値を正確に扱い、考察へつなげる。",
+    title: "数字を読み解く",
+    text: "広告数値を読み、違和感と次の一手へつなげる。",
   },
   {
     label: "Build",
-    title: "形にする",
-    text: "Python、React、AIエージェントで実用画面へ落とす。",
+    title: "動く形にする",
+    text: "React、Python、AIエージェントで、使える画面にする。",
   },
 ];
 
 const aboutSignalCards = [
   {
     label: "Field",
-    title: "広告運用の現場感",
-    text: "数値、考察、改善案を読む側の違和感から画面を設計する。",
+    title: "広告運用の判断軸",
+    text: "数値、考察、改善案を読む側の迷いから画面を組み立てる。",
   },
   {
     label: "Agent",
     title: "AIエージェント活用",
-    text: "調査、実装、検証を短いサイクルで回し、実画面まで持っていく。",
+    text: "調査、実装、検証を短く回し、机上案で止めない。",
   },
   {
     label: "Build",
     title: "React UI",
-    text: "見た目の雰囲気ではなく、クリックできる状態で導線を確認する。",
+    text: "雰囲気で終わらせず、クリックできる状態で導線を確認する。",
   },
   {
     label: "Proof",
-    title: "実画面で検証",
-    text: "スクリーンショットとブラウザ確認で、作品として見せられる形に整える。",
+    title: "画面で確かめる",
+    text: "スクリーンショットとブラウザ確認で、提出できる見え方まで整える。",
   },
 ];
 
 const capabilityCards = [
   {
     label: "広告分析UI",
-    title: "分析の確認順を作る。",
-    text: "状態表示、AI考察、比較、レビューを分け、運用者が次に見る画面へ進める導線を作ります。",
+    title: "分析画面に、読む順番を作る。",
+    text: "状態、AI考察、比較、レビューを分け、運用者が次に見る場所を迷わせません。",
     image: "assets/projects/insight-studio-dashboard-gpt.png",
     imageAlt: "Insight Studioの広告分析ダッシュボード画面",
     href: "/works/insight-studio",
@@ -200,8 +200,8 @@ const capabilityCards = [
   },
   {
     label: "相談・予約LP",
-    title: "相談LPの導線を整える。",
-    text: "ファーストビュー、信頼材料、CTAを整理し、興味から相談まで自然につながるLPに整えます。",
+    title: "相談までの温度を上げる。",
+    text: "ファーストビュー、信頼材料、CTAを整理し、興味を相談へつなぎます。",
     image: "assets/projects/krm-ryugaku-status.png",
     imageAlt: "KRM 留学LPの相談導線画面",
     href: "/works/krm-ryugaku",
@@ -209,8 +209,8 @@ const capabilityCards = [
   },
   {
     label: "フォーム設計",
-    title: "診断と比較を迷わせない。",
-    text: "入力、診断結果、候補比較を順番に見せ、家族で確認しやすいWebサービスUIにします。",
+    title: "入力から比較まで、迷わせない。",
+    text: "入力、診断結果、候補比較を順番に見せ、家族で話し合いやすいUIへ整えます。",
     image: "assets/projects/namae-studio-real.png",
     imageAlt: "姓名診断の入力フォーム画面",
     href: "/works/namae-studio",
@@ -223,9 +223,9 @@ const consultationSteps = [
     label: "LP",
     eyebrow: "Landing Page",
     title: "LP制作を相談する",
-    text: "ファーストビュー、信頼材料、CTAまでの流れを確認し、問い合わせにつながるLPへ整えます。",
+    text: "最初の印象、信頼材料、CTAを整理し、相談までの流れを設計。",
     proof: "KRM 留学LP / 日だまり茶房",
-    mailHint: "LPの目的、参考にしたい実績、希望CTAを書いて送れます。",
+    mailHint: "目的、近い実績、目標CTAを書くだけで相談できます。",
     href: "/works/krm-ryugaku",
     icon: Frame,
   },
@@ -233,9 +233,9 @@ const consultationSteps = [
     label: "Webサービス",
     eyebrow: "Web Service",
     title: "WebサービスUIを相談する",
-    text: "入力、結果確認、比較の順番を整理し、ユーザーが迷わず進める画面にします。",
+    text: "入力、結果、比較の順番を整え、迷わず進める体験へ。",
     proof: "姓名診断",
-    mailHint: "入力項目、結果画面、ユーザーが迷う箇所を書いて送れます。",
+    mailHint: "入力項目、結果画面、迷いが出る箇所を書いて送れます。",
     href: "/works/namae-studio",
     icon: Component,
   },
@@ -243,7 +243,7 @@ const consultationSteps = [
     label: "業務画面",
     eyebrow: "Business UI",
     title: "業務画面を相談する",
-    text: "状態表示、分析、次アクションを分け、情報量の多い画面でも判断しやすくします。",
+    text: "状態、分析、次アクションを分け、情報量の多い画面を読みやすく。",
     proof: "Insight Studio",
     mailHint: "整理したい業務、画面数、判断に使う情報を書いて送れます。",
     href: "/works/insight-studio",
@@ -254,33 +254,33 @@ const consultationSteps = [
 const consultationBriefItems = [
   {
     label: "01",
-    title: "目的を決める",
-    text: "問い合わせを増やしたいのか、入力完了を増やしたいのか、運用画面を整理したいのかを先に分けます。",
+    title: "目的をひとつ決める",
+    text: "問い合わせ、入力完了、業務効率化。まず一番変えたい行動を決めます。",
   },
   {
     label: "02",
-    title: "近い作品を選ぶ",
-    text: "雰囲気だけでなく、対象ユーザー、CTA、画面の密度が近い実績を選びます。",
+    title: "近い実績を選ぶ",
+    text: "雰囲気だけでなく、ユーザー、CTA、情報量が近い実績から話を始めます。",
   },
   {
     label: "03",
-    title: "必要な導線を拾う",
-    text: "ファーストビュー、フォーム、結果画面、分析画面など、相談で話したい部分を具体化します。",
+    title: "必要な導線を絞る",
+    text: "ファーストビュー、フォーム、結果画面、分析画面。相談で見るべき箇所を絞ります。",
   },
 ];
 
 const contactReadinessItems = [
   {
     label: "相談できる内容",
-    text: "LP、Webサービス、業務画面の設計と実装相談。",
+    text: "LP、Webサービス、業務画面の設計・実装相談。",
   },
   {
     label: "初回で話すこと",
-    text: "目的、近い実績、必要な導線、公開までの優先順。",
+    text: "目的、近い実績、必要な導線、公開までの優先順位。",
   },
   {
     label: "返信目安",
-    text: "内容確認後、初回の整理ポイントを返信します。",
+    text: "内容を確認し、初回で整理すべき論点を返信します。",
   },
 ];
 
@@ -288,26 +288,26 @@ const contactWorkGuides = [
   {
     projectId: "krm-ryugaku",
     label: "LP相談なら",
-    title: "不安を減らしてCTAへ進める流れを見る",
-    text: "留学検討者が相談前に確認したい情報、信頼材料、LINE相談までの距離感を見られます。",
+    title: "不安をほどき、CTAへ進める流れを見る",
+    text: "相談前に必要な情報、信頼材料、LINE相談までの距離感を確認できます。",
   },
   {
     projectId: "hidamari-sabou",
     label: "世界観LPなら",
-    title: "空気感から予約導線へつなぐ構成を見る",
-    text: "写真の印象を入口にしながら、メニュー、営業日、予約へ自然に進めるLPの見せ方を確認できます。",
+    title: "空気感を予約導線へつなぐ構成を見る",
+    text: "写真の印象を入口に、メニュー、営業日、予約へ進める構成を確認できます。",
   },
   {
     projectId: "namae-studio",
     label: "Webサービスなら",
-    title: "入力、診断、比較を迷わせない流れを見る",
-    text: "フォームから結果確認まで、家族で比較しやすい情報設計を相談材料にできます。",
+    title: "入力から比較まで、迷わせない流れを見る",
+    text: "フォームから結果確認まで、家族で比較しやすい設計を確認できます。",
   },
   {
     projectId: "insight-studio",
     label: "業務画面なら",
-    title: "分析から次アクションへ進む画面を見る",
-    text: "状態表示、AI考察、競合比較など、情報量の多い業務UIの整理方法を確認できます。",
+    title: "分析を、次アクションへ変える画面を見る",
+    text: "状態表示、AI考察、競合比較など、業務UIの整理方法を確認できます。",
   },
 ];
 
@@ -390,7 +390,7 @@ function Header() {
           </span>
           <span className="hidden leading-none sm:grid">
             <b className="text-base">Kazushi</b>
-            <small className="mt-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/50">動く制作実績</small>
+            <small className="mt-1 text-[0.68rem] font-black uppercase tracking-[0.14em] text-white/50">実画面の制作実績</small>
           </span>
         </Link>
         <div className="hidden items-center gap-1 rounded-full border border-gray-700/80 bg-black/40 p-1 backdrop-blur-2xl lg:flex">
@@ -619,8 +619,8 @@ function EditorialFeatureSection({ page, mode }) {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <FeatureLabel align="start">{isContact ? "REACH ME" : "NEXT ROUTE"}</FeatureLabel>
-                <p className="mt-5 text-2xl font-normal tracking-tight text-white">{isContact ? "相談は作品確認から" : "実績一覧へ進む"}</p>
-                <p className="mt-2 text-sm leading-6 text-white/58">{isContact ? "導線や近い制作物を見ながら、相談内容を絞れます。" : "各作品の画面、対象、設計意図を続けて確認できます。"}</p>
+                <p className="mt-5 text-2xl font-normal tracking-tight text-white">{isContact ? "相談は、近い実績から。" : "実績を見に行く"}</p>
+                <p className="mt-2 text-sm leading-6 text-white/58">{isContact ? "近い実績を見ながら、相談内容を絞れます。" : "画面、対象、設計意図を続けて確認できます。"}</p>
               </div>
               <Link className="liquid-glass grid h-9 w-9 shrink-0 place-items-center rounded-full text-white" to="/works" aria-label="作品一覧へ移動">
                 <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
@@ -682,7 +682,7 @@ function Home() {
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-between gap-10">
           <div className="grid gap-5 pt-8 text-sm leading-6 text-white/78 md:text-base lg:grid-cols-2">
             <motion.p {...getMotion(reduce, 0.04)} className="max-w-[30rem]">
-              LP・Webサービス・業務UIを、実画面で検証して作る。
+              LP・Webサービス・業務UIを、実画面で判断できる形へ。
             </motion.p>
             <motion.p {...getMotion(reduce, 0.08)} className="font-black text-[#D8B96E] lg:text-right">
               4 works / verified screens / client-ready flow
@@ -699,13 +699,13 @@ function Home() {
                 <ShinyText className="mt-1 block">制作実績。</ShinyText>
               </span>
               <span className="hidden sm:block">
-                作れるものが、
-                <ShinyText className="mt-2 block">初見で伝わる。</ShinyText>
+                何を任せられるか、
+                <ShinyText className="mt-2 block">初見でわかる。</ShinyText>
               </span>
             </h1>
             <p className="mt-6 max-w-2xl break-words text-base font-bold leading-8 text-white/72 [overflow-wrap:anywhere] md:text-lg">
-              <span className="block sm:hidden">実画面で、発注前に判断しやすく見せます。</span>
-              <span className="hidden sm:block">広告運用の現場感、React実装、AI活用、ブラウザ検証をまとめて、発注前に判断しやすい形で見せます。</span>
+              <span className="block sm:hidden">実画面で、依頼前の不安を減らします。</span>
+              <span className="hidden sm:block">広告運用の判断軸、React実装、AI活用を、依頼前に見極めやすい実画面で提示します。</span>
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link className="motion-button bg-milk text-ink" to="/works">
@@ -713,7 +713,7 @@ function Home() {
                 <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
               </Link>
               <Link className="motion-button border border-[#D8B96E]/36 bg-[#D8B96E]/12 text-[#F5F1E8]" to="/contact">
-                制作相談を始める
+                相談する
                 <Send className="ml-2 h-4 w-4" strokeWidth={2.2} />
               </Link>
             </div>
@@ -846,15 +846,15 @@ function HomeSelectedWorks({ reduce }) {
           <motion.div {...getMotion(reduce, 0.02)}>
             <p className="eyebrow text-cyan">Works</p>
             <h2 className="mt-3 max-w-3xl text-3xl font-black leading-[1.12] tracking-normal text-white sm:text-4xl md:text-[2.85rem]">
-              見たい制作物を選ぶ。
+              近い実績から見る。
             </h2>
             <p className="mt-5 max-w-2xl text-base font-bold leading-8 text-white/62">
-              SaaS、Webサービス、LPを実画面ベースで並べています。気になるカードから、画面の狙いと導線を確認できます。
+              SaaS、Webサービス、LPを実画面で掲載。近い実績から、狙いと導線を確認できます。
             </p>
           </motion.div>
           <motion.div {...getMotion(reduce, 0.08)} className="md:justify-self-end">
             <Link className="motion-button bg-milk text-ink" to="/works">
-              作品一覧を見る
+              すべての実績を見る
               <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
             </Link>
           </motion.div>
@@ -878,7 +878,7 @@ function HomeAboutPreview({ reduce }) {
           <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-5">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan">Builder profile</p>
-              <h3 className="mt-2 text-2xl font-black tracking-normal text-white">現場から、画面へ。</h3>
+              <h3 className="mt-2 text-2xl font-black tracking-normal text-white">現場の違和感を、画面にする。</h3>
             </div>
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-cyan/[0.2] bg-cyan/[0.08] text-cyan">
               <Component className="h-5 w-5" strokeWidth={2.1} />
@@ -898,10 +898,10 @@ function HomeAboutPreview({ reduce }) {
         <motion.div {...getMotion(reduce, 0.08)}>
           <p className="eyebrow text-cyan">About Preview</p>
           <h2 className="mt-4 max-w-xl text-3xl font-black leading-[1.14] tracking-normal text-white sm:text-4xl md:text-[2.85rem]">
-            何を見て作る人かを知る。
+            どんな視点で作るか。
           </h2>
           <p className="mt-6 max-w-xl text-base font-bold leading-8 text-white/64">
-            広告レポート、LP改善、WebサービスUIを使う側の目線から見直し、必要だと感じた画面を自分で形にしています。
+            広告レポート、LP改善、WebサービスUIを、使う側の違和感から設計します。
           </p>
           <div className="mt-7 grid gap-3">
             {profileStoryCards.map((card, index) => (
@@ -930,10 +930,10 @@ function HomeContactCTA({ reduce }) {
           <motion.div {...getMotion(reduce, 0.02)}>
             <p className="eyebrow text-cyan">Consultation</p>
             <h2 className="mt-4 max-w-xl text-3xl font-black leading-[1.12] tracking-normal text-white sm:text-4xl md:text-[2.85rem]">
-              相談前に、見るべき作品を決める。
+              相談前に、近い実績を選ぶ。
             </h2>
             <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/64">
-              LP、Webサービス、業務画面のどれに近いかを先に選び、目的に合う画面から相談内容を整理できます。
+              LP、Webサービス、業務画面。近い領域を選ぶだけで、相談内容が具体になります。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link className="motion-button bg-milk text-ink" to="/contact">
@@ -941,7 +941,7 @@ function HomeContactCTA({ reduce }) {
                 <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
               </Link>
               <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/works">
-                作品から選ぶ
+                実績から選ぶ
               </Link>
             </div>
           </motion.div>
@@ -1019,7 +1019,7 @@ function Works() {
             制作実績
           </h1>
           <p className="mt-4 max-w-2xl text-base font-bold leading-8 text-white/70 md:text-lg">
-            実案件、自主制作、検証用デモを分けて、依頼前に近い制作物と担当範囲を確認できます。
+            公開サービス、自主開発、検証用LPを分類。依頼前に、近い実績と担当範囲を確認できます。
           </p>
         </motion.div>
 
@@ -1046,13 +1046,13 @@ function Works() {
       <section className="mt-8">
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="eyebrow">制作物</p>
+            <p className="eyebrow">掲載作品</p>
             <h2 className="mt-3 max-w-3xl text-3xl font-black leading-tight tracking-[-0.03em] text-white md:text-4xl">
-              制作物を確認する
+              近い実績を確認する
             </h2>
           </div>
           <p className="max-w-xl text-sm font-bold leading-7 text-white/58">
-            {selectedFilter.label}の掲載中作品です。カード内の種別ラベルで、実案件・自主制作・検証用デモを確認できます。
+            {selectedFilter.label}の掲載中作品です。カードの種別ラベルで、公開サービス、自主開発、架空LPを見分けられます。
           </p>
         </div>
         <motion.div layout className="grid gap-5 md:grid-cols-2">
@@ -1066,10 +1066,10 @@ function Works() {
 
       <section className="mt-10 flex flex-col justify-between gap-4 rounded-[1.6rem] border border-cyan/[0.14] bg-white/[0.055] p-5 backdrop-blur-xl md:flex-row md:items-center">
         <p className="max-w-2xl text-sm font-bold leading-7 text-white/62">
-          相談前にどの実績が近いか迷う場合は、制作対象と見たい導線から整理できます。
+          近い実績に迷う場合は、制作対象と見たい導線から整理できます。
         </p>
         <Link className="motion-button bg-milk text-ink" to="/contact">
-          相談前の見方を確認
+          相談の入口を見る
           <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
         </Link>
       </section>
@@ -1177,7 +1177,7 @@ function ProjectDetail() {
       </div>
       <div className="relative z-10">
         <Link className="mb-8 inline-flex rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-sm font-black text-white/66 backdrop-blur-xl transition hover:bg-white/10 hover:text-white" to="/works">
-          ← 作品一覧へ戻る
+          ← 実績一覧へ戻る
         </Link>
         <section className="grid gap-7 lg:grid-cols-[.78fr_1.22fr] lg:items-center">
           <motion.div {...getMotion(reduce, 0.04)}>
@@ -1188,10 +1188,10 @@ function ProjectDetail() {
             <p className="mt-5 text-xl font-bold leading-9 text-white/82">{project.shortValue}</p>
             <div className="mt-7 grid gap-3 text-sm text-white/66">
               <p>
-                <b className="text-white">何のサービスか:</b> {project.overview}
+                <b className="text-white">概要:</b> {project.overview}
               </p>
               <p>
-                <b className="text-white">誰向けか:</b> {project.audience}
+                <b className="text-white">対象:</b> {project.audience}
               </p>
             </div>
             <a className="motion-button mt-8 bg-milk text-ink" href={project.url} target="_blank" rel="noreferrer">
@@ -1210,9 +1210,9 @@ function ProjectDetail() {
         {hasTabbedCase && <CaseStudyTabs project={project} accent={accent} reduce={reduce} />}
 
         <section className="mt-16 grid gap-5 md:grid-cols-3">
-          <InfoPanel label="設計の焦点" text={project.designFocus} />
-          <InfoPanel label="見せ方の流れ" text={project.caseNote} />
-          <InfoPanel label="参照元" text={project.contentSource} />
+          <InfoPanel label="設計の狙い" text={project.designFocus} />
+          <InfoPanel label="導線の考え方" text={project.caseNote} />
+          <InfoPanel label="掲載根拠" text={project.contentSource} />
         </section>
 
         {hasCaseStudy && !hasTabbedCase && (
@@ -1227,10 +1227,10 @@ function ProjectDetail() {
           <div className="sticky-panel rounded-[2rem] border border-white/12 bg-white/[0.07] p-7 backdrop-blur-xl">
             <p className="eyebrow">Flow</p>
             <h2 className="mt-4 max-w-md text-3xl font-black leading-tight tracking-normal text-white md:text-4xl">
-              画面の先にある行動を見る。
+              画面の先の行動まで見る。
             </h2>
             <p className="mt-5 leading-8 text-white/64">
-              スクリーンショットを大きく置き、短い説明で「誰が、何を判断して、どのCTAへ進むか」を補足します。見た目だけではなく、遷移する理由まで設計対象にしています。
+              スクリーンショットだけで終わらせず、誰が何を判断し、どのCTAへ進むのかまで確認できます。
             </p>
             <a className="motion-button mt-7 bg-milk text-ink" href={project.url} target="_blank" rel="noreferrer">
               {project.ctaLabel}
@@ -1238,9 +1238,9 @@ function ProjectDetail() {
           </div>
           <div className="grid gap-4">
             {[
-              ["何を作ったか", project.overview],
-              ["誰向けか", project.audience],
-              ["どう設計したか", project.designFocus],
+              ["制作内容", project.overview],
+              ["対象ユーザー", project.audience],
+              ["設計意図", project.designFocus],
             ].map(([label, text], index) => (
               <motion.article
                 key={label}
@@ -1268,7 +1268,7 @@ function ProjectTrustSummary({ project, accent, reduce }) {
   const summaryItems = [
     ["制作区分", proofLabel(project)],
     ["担当範囲", compactList(project.deliverables) || project.scope || "画面設計 / UI実装 / ブラウザ確認"],
-    ["相談に使える理由", project.businessValue || project.clientReadiness || project.shortValue],
+    ["依頼判断の材料", project.businessValue || project.clientReadiness || project.shortValue],
   ];
 
   return (
@@ -1292,11 +1292,11 @@ function ProjectTrustSummary({ project, accent, reduce }) {
 
 function ProjectDecisionPanel({ project, accent, reduce }) {
   const decisionItems = [
-    ["課題", project.challenge || `${project.audience}が、何を見るべきか迷わず判断できる入口を作ること。`],
-    ["担当範囲", project.scope || "画面構成、コピー整理、UI実装、ブラウザ確認までを担当。"],
+    ["課題", project.challenge || `${project.audience}が、最初に見るべき情報がすぐ分かる入口を作ること。`],
+    ["担当範囲", project.scope || "画面構成、コピー整理、UI実装、ブラウザ確認まで対応。"],
     ["画面設計", project.designApproach || project.designFocus],
-    ["成果・検証", project.outcome || "公開画面とスクリーンショットで導線、表示崩れ、掲載安全性を確認。"],
-    ["次に改善するなら", project.nextImprovement || "問い合わせ導線と実データ検証の粒度をさらに増やす。"],
+    ["成果・検証", project.outcome || "公開画面とスクリーンショットで、導線、表示崩れ、掲載安全性を確認。"],
+    ["次に改善するなら", project.nextImprovement || "問い合わせ導線と実データ検証を、さらに細かく見せる。"],
   ];
   const evidence = project.evidence || [project.safeAssetNote, project.contentSource].filter(Boolean);
 
@@ -1305,7 +1305,7 @@ function ProjectDecisionPanel({ project, accent, reduce }) {
       <motion.div {...getMotion(reduce, 0.04)} className="border border-white/12 bg-[#F4F1EA] p-5 text-[#05060A] md:p-7">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-black/48">Client decision sheet</p>
         <h2 className="mt-3 max-w-2xl text-3xl font-black leading-tight tracking-normal md:text-4xl">
-          発注前に見たい判断材料。
+          依頼前に見たい判断材料。
         </h2>
         <div className="mt-6 grid gap-3">
           {decisionItems.map(([label, text]) => (
@@ -1328,7 +1328,7 @@ function ProjectDecisionPanel({ project, accent, reduce }) {
             <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
               Proof and safety
             </p>
-            <h3 className="mt-2 text-2xl font-black tracking-normal text-white">{project.clientReadiness || "提出用に説明可能な素材"}</h3>
+            <h3 className="mt-2 text-2xl font-black tracking-normal text-white">{project.clientReadiness || "提出時に説明できる素材"}</h3>
           </div>
         </div>
         <div className="mt-5 grid gap-3">
@@ -1362,11 +1362,11 @@ function ScreenBreakdownGrid({ project, accent, reduce }) {
             Screen breakdown
           </p>
           <h2 className="mt-3 text-3xl font-black leading-tight tracking-normal text-white md:text-4xl">
-            画面のどこを見ればよいか。
+            見るべき画面を分解する。
           </h2>
         </div>
         <p className="max-w-2xl text-sm font-bold leading-7 text-white/58">
-          作品を雰囲気だけで見せず、発注前に確認したい導線、CTA、情報設計のポイントへ分解します。
+          雰囲気だけで見せず、導線、CTA、情報設計の確認ポイントへ分解します。
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -1403,7 +1403,7 @@ function CaseStudyTabs({ project, accent, reduce }) {
             ケーススタディ
           </p>
           <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-normal md:text-5xl">
-            確認した機能をタブで見る。
+            機能ごとの判断材料を見る。
           </h2>
         </div>
         <div className="rounded-[1.7rem] border border-white/10 bg-white/[0.055] p-5">
@@ -1476,7 +1476,7 @@ function CaseStudyIntro({ project, accent }) {
             ケーススタディ
           </p>
           <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em] md:text-5xl">
-            AI考察までの流れを、実務の判断順に見せる。
+            AI考察まで、実務の順番で見せる。
           </h2>
         </div>
         <div className="rounded-[1.7rem] border border-white/10 bg-white/[0.055] p-5">
@@ -1508,10 +1508,10 @@ function CaseStudyGallery({ project, accent, reduce }) {
           <p className="eyebrow" style={{ color: accent }}>
             画面の流れ
           </p>
-          <h2 className="mt-3 text-4xl font-black leading-tight tracking-[-0.04em]">設定、期間、グラフ、AI考察。</h2>
+          <h2 className="mt-3 text-4xl font-black leading-tight tracking-[-0.04em]">設定、期間、グラフ、AI考察へ。</h2>
         </div>
         <p className="max-w-xl text-sm font-bold leading-7 text-white/55">
-          掲載画像は右カラムのブラウザで確認した実画面構成をベースに、識別につながる情報を架空の日本語サンプルへ置き換えて画面体験だけを伝えます。
+          掲載画像は実画面構成をベースに、識別につながる情報を架空サンプルへ置き換えています。
         </p>
       </div>
       <div className="grid gap-5">
@@ -1546,7 +1546,7 @@ function WorkflowSteps({ project, accent, reduce }) {
           運用フロー
         </p>
         <h2 className="mt-3 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em]">
-          広告運用の確認作業を、次の一手まで短くする。
+          広告運用の確認作業を、次の一手まで近づける。
         </h2>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -1586,18 +1586,18 @@ function About() {
             <br />
             <span className="whitespace-nowrap">AIとコードで</span>
             <br />
-            形にする。
+            動く画面にする。
           </h1>
           <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/66">
-            広告レポートやLP改善に向き合う中で、判断しやすい画面、押す理由のある導線、実際に触れるUIを自分で作るようになりました。
+            広告レポートやLP改善の現場で感じた迷いを、判断しやすい画面と押す理由のある導線に変えています。
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link className="motion-button bg-milk text-ink" to="/works">
-              作品を見る
+              実績を見る
               <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
             </Link>
             <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/contact">
-              相談前に整理する
+              相談を整理する
             </Link>
           </div>
         </motion.div>
@@ -1606,7 +1606,7 @@ function About() {
           <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-5">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan">Kazushi / Builder</p>
-              <h2 className="mt-2 text-2xl font-black tracking-normal text-white">見る軸</h2>
+              <h2 className="mt-2 text-2xl font-black tracking-normal text-white">判断軸</h2>
             </div>
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cyan/[0.2] bg-cyan/[0.08] text-cyan">
               <Component className="h-5 w-5" strokeWidth={2.1} />
@@ -1627,9 +1627,9 @@ function About() {
       <section id="about-profile" className="mt-20 scroll-mt-28 md:mt-24">
         <div className="mb-6 max-w-3xl">
           <p className="eyebrow text-cyan">Profile flow</p>
-          <h2 className="mt-4 text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">使う側から、作る側へ。</h2>
+          <h2 className="mt-4 text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">使う側の違和感から作る。</h2>
           <p className="mt-5 font-bold leading-8 text-white/62">
-            経歴を長く語るより、どんな順番で画面を見ているかが伝わるほうがよい。ここではその判断の流れだけを短く置きます。
+            経歴よりも、何を見て判断するか。その視点が伝わるように、制作の流れを短くまとめています。
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
@@ -1647,10 +1647,10 @@ function About() {
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="eyebrow text-cyan">Works as proof</p>
-            <h2 className="section-title mt-3 max-w-2xl tracking-normal">実績でわかること。</h2>
+            <h2 className="section-title mt-3 max-w-2xl tracking-normal">実績で、任せられることが分かる。</h2>
           </div>
           <p className="max-w-2xl text-sm font-bold leading-8 text-white/58 md:text-base">
-            広告運用、LP改善、WebサービスUIという言葉を、近い作品と確認ポイントへつなげます。
+            広告運用、LP改善、WebサービスUIを、近い実績と確認ポイントへつなげます。
           </p>
         </div>
         <div className="grid gap-5 lg:grid-cols-3">
@@ -1684,15 +1684,15 @@ function About() {
           <div>
             <p className="eyebrow text-cyan">制作姿勢</p>
             <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">
-              見た目、導線、証拠を分けて考える。
+              見た目、導線、証拠を分けて設計する。
             </h2>
           </div>
           <div>
             <p className="max-w-2xl leading-8 text-white/62">
-              発注者や利用者が最初に見る情報、押す理由、信頼する根拠を分け、近い実績を確認しながら相談内容を絞れる状態へ落とし込みます。
+              最初に見る情報、押す理由、信頼する根拠を分け、相談内容を絞りやすい形へ落とし込みます。
             </p>
             <Link className="motion-button mt-6 bg-milk text-ink" to="/works">
-              近い実績から相談内容を絞る
+              近い実績から相談する
               <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
             </Link>
           </div>
@@ -1718,18 +1718,18 @@ function About() {
         <motion.div {...getMotion(reduce, 0.02)} className="max-w-4xl">
           <p className="eyebrow text-cyan">Next step</p>
           <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-[2.65rem]">
-            作品を見ると、作る人の判断軸が分かる。
+            実績を見ると、判断軸が見える。
           </h2>
           <p className="mt-5 max-w-2xl font-bold leading-8 text-white/62">
-            背景よりも、実画面にどう表れているかを見るほうが早い。気になる導線から作品へ進めます。
+            言葉より、実画面のほうが早い。気になる導線から確認できます。
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link className="motion-button bg-milk text-ink" to="/works">
-              作品を見る
+              実績を見る
               <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
             </Link>
             <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/contact">
-              相談前に整理する
+              相談を整理する
             </Link>
           </div>
         </motion.div>
@@ -1750,15 +1750,16 @@ function Contact() {
         <motion.div {...getMotion(reduce, 0.02)} className="max-w-3xl">
           <p className="eyebrow text-[#D8B96E]">Start a project</p>
           <h1 className="mt-4 text-balance text-[2.65rem] font-black leading-[1.08] tracking-normal text-milk sm:text-5xl md:text-[3.2rem]">
-            <span className="block sm:hidden">制作相談を開始。</span>
+            <span className="block sm:hidden">制作相談を始める。</span>
             <span className="hidden sm:block">
               制作相談を、
               <br />
               ここから始める。
             </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/66">
-            LP、Webサービス、業務画面のどれに近いかを選び、参考実績を見ながら初回相談に進めます。
+          <p className="mt-6 max-w-2xl break-words text-base font-bold leading-8 text-white/66 [overflow-wrap:anywhere]">
+            <span className="block sm:hidden">近い実績から、目的と優先順位を整理できます。</span>
+            <span className="hidden sm:block">近い実績を選びながら、目的、導線、優先順位を整理して相談できます。</span>
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a className="motion-button bg-milk text-ink" href={contactMailHref}>
@@ -1816,9 +1817,9 @@ function Contact() {
       <section className="mt-14 grid gap-5 border border-[#D8B96E]/20 bg-[#F4F1EA] p-5 text-[#05060A] md:grid-cols-[.9fr_1.1fr] md:p-7">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.16em] text-black/48">Inquiry ready</p>
-          <h2 className="mt-3 text-3xl font-black leading-tight tracking-normal md:text-4xl">初回相談で話せること。</h2>
+          <h2 className="mt-3 text-3xl font-black leading-tight tracking-normal md:text-4xl">初回相談で、ここまで話せます。</h2>
           <p className="mt-4 text-sm font-bold leading-7 text-black/62">
-            完成イメージが固まっていなくても、目的、参考実績、必要な導線を一緒に整理できます。
+            完成イメージは曖昧で大丈夫です。目的、近い実績、必要な導線から整理します。
           </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-3">
@@ -1836,7 +1837,7 @@ function Contact() {
           <p className="eyebrow text-cyan">Brief checklist</p>
           <h2 className="mt-4 text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">相談前に決めるのは、3つだけ。</h2>
           <p className="mt-5 font-bold leading-8 text-white/62">
-            完成イメージを全部固める必要はありません。目的、近い作品、必要な導線が分かるだけで、相談内容はかなり具体的になります。
+            完成イメージは固まっていなくて大丈夫です。目的、近い実績、必要な導線があれば、相談は具体になります。
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
@@ -1854,10 +1855,10 @@ function Contact() {
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="eyebrow">Choose from works</p>
-            <h2 className="section-title mt-3 max-w-3xl tracking-normal">この相談なら、この作品を見る。</h2>
+            <h2 className="section-title mt-3 max-w-3xl tracking-normal">相談内容に近い実績を見る。</h2>
           </div>
           <p className="max-w-xl text-sm font-bold leading-7 text-white/55">
-            単なる作品一覧ではなく、相談したい内容に合わせて確認するポイントを添えています。
+            ただの作品一覧ではなく、相談内容に合わせて見るポイントを添えています。
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
@@ -1890,10 +1891,10 @@ function Contact() {
         <motion.div {...getMotion(reduce, 0.02)} className="max-w-4xl">
           <p className="eyebrow text-[#D8B96E]">Next step</p>
           <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-[2.65rem]">
-            近い作品を見ながら、初回相談へ進む。
+            近い実績から、初回相談へ進む。
           </h2>
           <p className="mt-5 max-w-2xl font-bold leading-8 text-white/62">
-            依頼内容がまだ曖昧でも大丈夫です。近い作品、優先したい画面、必要なCTAから相談内容を組み立てます。
+            依頼内容は曖昧で大丈夫です。近い実績、優先したい画面、必要なCTAから組み立てます。
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <a className="motion-button bg-milk text-ink" href={contactMailHref}>
