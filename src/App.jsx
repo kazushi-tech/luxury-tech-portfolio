@@ -19,12 +19,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
-import aboutEditorialPortrait from "../assets/portfolio/about-editorial-portrait.png";
-import aboutDarkAtelier from "../assets/portfolio/about-dark-atelier.png";
-import aboutProfileJourney from "../assets/portfolio/about-profile-journey.png";
-import aboutProofBoard from "../assets/portfolio/about-proof-board.png";
 import contactEditorialBrief from "../assets/portfolio/contact-editorial-brief.png";
-import contactMotionBrief from "../assets/portfolio/contact-motion-brief.png";
 import worksEditorialBoard from "../assets/portfolio/works-editorial-board.png";
 import worksDarkGallery from "../assets/portfolio/works-dark-gallery.png";
 import hidamariScreenshot from "../assets/projects/hidamari-sabou-real.png";
@@ -95,27 +90,6 @@ const editorialPages = {
       ["LP", "KRM 留学LP", "CTA Design"],
     ],
   },
-  about: {
-    eyebrow: "ABOUT FEATURE",
-    title: "画面の理由を、設計する。",
-    lead: "広告運用、LP改善、Webサービス設計の視点から、見た目だけでなく次に押す理由まで組み立てます。",
-    note: "第一印象、行動導線、証拠画像を分けて考える。美しさだけで終わらせず、判断できる画面として整えます。",
-    cta: "作品を見る",
-    tone: "bg-[#3B3B32]",
-    boardImage: aboutEditorialPortrait,
-    boardAlt: "制作姿勢を表す編集的なポートレートムード画像",
-    bigLabel: "CRAFT",
-    bigTitle: "3",
-    bigCaption: "Strategy layers",
-    quoteTitle: "CREATOR VIEW",
-    quote:
-      "きれいに並べるだけでは足りない。誰が何を判断し、どこへ進むのかを先に決めてから画面を作ります。",
-    timeline: [
-      ["First", "初見で分かる", "Hero / Headline"],
-      ["Action", "迷わず進める", "CTA / Flow"],
-      ["Proof", "実画面で示す", "Screenshot"],
-    ],
-  },
   contact: {
     eyebrow: "CONTACT FEATURE",
     title: "作品を見て、相談へ。",
@@ -142,23 +116,18 @@ const editorialPages = {
 const processSteps = [
   {
     label: "01",
-    title: "初見で分かる画面設計",
-    text: "見出し、ファーストビュー、カードの順番を整え、何のサービスかを数秒で判断できる状態にします。",
+    title: "初見で分かる",
+    text: "最初に見る見出し、数字、カードの順番を整え、何を見るべきかをすぐ判断できる画面にします。",
   },
   {
     label: "02",
-    title: "遷移したくなる作品カード",
-    text: "実スクショを大きく見せ、対象ユーザーと導線設計を短く添えて、詳細ページへの理由を作ります。",
+    title: "次に押す理由",
+    text: "ただ並べるのではなく、比較、診断、相談、分析など、次の行動が自然に見える導線を作ります。",
   },
   {
     label: "03",
-    title: "広告運用目線のCTA",
-    text: "雰囲気だけで終わらせず、相談、診断、閲覧、予約など、次に押すべき行動が分かる構成にします。",
-  },
-  {
-    label: "04",
-    title: "軽いリッチモーション",
-    text: "重い3Dではなく、画像のマスク表示、カードの奥行き、ページ遷移で印象を作ります。",
+    title: "実画面で検証",
+    text: "雰囲気だけで終わらせず、スクリーンショットや実装画面で読みやすさと行動導線を確かめます。",
   },
 ];
 
@@ -187,13 +156,34 @@ const profileStoryCards = [
   },
 ];
 
-const profileMotionChips = ["AI News", "Git / GitHub", "Python Data", "React UI"];
+const aboutSignalCards = [
+  {
+    label: "Field",
+    title: "広告運用の現場感",
+    text: "数値、考察、改善案を読む側の違和感から画面を設計する。",
+  },
+  {
+    label: "Agent",
+    title: "AIエージェント活用",
+    text: "調査、実装、検証を短いサイクルで回し、実画面まで持っていく。",
+  },
+  {
+    label: "Build",
+    title: "React UI",
+    text: "見た目の雰囲気ではなく、クリックできる状態で導線を確認する。",
+  },
+  {
+    label: "Proof",
+    title: "実画面で検証",
+    text: "スクリーンショットとブラウザ確認で、作品として見せられる形に整える。",
+  },
+];
 
 const capabilityCards = [
   {
     label: "広告分析UI",
-    title: "確認順を整える。",
-    text: "広告データ、AI考察、競合比較、バナーレビューを分け、運用者が次に見るべき画面へ進める導線を設計しています。",
+    title: "分析の確認順を作る。",
+    text: "状態表示、AI考察、比較、レビューを分け、運用者が次に見る画面へ進める導線を作ります。",
     image: "assets/projects/insight-studio-dashboard-gpt.png",
     imageAlt: "Insight Studioの広告分析ダッシュボード画面",
     href: "/works/insight-studio",
@@ -202,7 +192,7 @@ const capabilityCards = [
   {
     label: "相談・予約LP",
     title: "相談LPの導線を整える。",
-    text: "ファーストビュー、信頼材料、相談や予約へのCTAを並べ、見た目の空気感から行動まで自然につながるLPに整えます。",
+    text: "ファーストビュー、信頼材料、CTAを整理し、興味から相談まで自然につながるLPに整えます。",
     image: "assets/projects/krm-ryugaku-status.png",
     imageAlt: "KRM 留学LPの相談導線画面",
     href: "/works/krm-ryugaku",
@@ -211,7 +201,7 @@ const capabilityCards = [
   {
     label: "フォーム設計",
     title: "診断と比較を迷わせない。",
-    text: "入力フォーム、診断結果、候補比較を順番に見せ、利用者が家族で確認しやすいWebサービスUIとして組み立てています。",
+    text: "入力、診断結果、候補比較を順番に見せ、家族で確認しやすいWebサービスUIにします。",
     image: "assets/projects/namae-studio-real.png",
     imageAlt: "姓名診断の入力フォーム画面",
     href: "/works/namae-studio",
@@ -221,16 +211,76 @@ const capabilityCards = [
 
 const consultationSteps = [
   {
-    label: "01 / 近い実績を選ぶ",
-    text: "SaaS、Webサービス、LPのどれに近いかを先に確認し、相談内容の前提を揃えます。",
+    label: "LP",
+    eyebrow: "Landing Page",
+    title: "LPの相談材料を見る",
+    text: "ファーストビュー、信頼材料、CTAまでの流れを見て、相談前に必要な説得材料を整理します。",
+    proof: "KRM 留学LP / 日だまり茶房",
+    href: "/works/krm-ryugaku",
+    icon: Frame,
   },
   {
-    label: "02 / 見たい導線を決める",
-    text: "問い合わせ、診断、予約、分析など、ユーザーに取ってほしい行動を作品ページで見比べます。",
+    label: "Webサービス",
+    eyebrow: "Web Service",
+    title: "Webサービスの導線を見る",
+    text: "入力、結果確認、比較の順番を見て、ユーザーが迷わず進める画面設計を確認します。",
+    proof: "姓名診断",
+    href: "/works/namae-studio",
+    icon: Component,
   },
   {
-    label: "03 / 相談内容を絞る",
-    text: "実連絡先はまだ置かず、まずは依頼タイプと近い画面を選べる入口として整理しています。",
+    label: "業務画面",
+    eyebrow: "Business UI",
+    title: "業務画面の設計を見る",
+    text: "状態表示、分析、次アクションを分けて、情報量の多い画面でも判断しやすい構成を見ます。",
+    proof: "Insight Studio",
+    href: "/works/insight-studio",
+    icon: Layers,
+  },
+];
+
+const consultationBriefItems = [
+  {
+    label: "01",
+    title: "目的を決める",
+    text: "問い合わせを増やしたいのか、入力完了を増やしたいのか、運用画面を整理したいのかを先に分けます。",
+  },
+  {
+    label: "02",
+    title: "近い作品を選ぶ",
+    text: "雰囲気だけでなく、対象ユーザー、CTA、画面の密度が近い実績を選びます。",
+  },
+  {
+    label: "03",
+    title: "必要な導線を拾う",
+    text: "ファーストビュー、フォーム、結果画面、分析画面など、相談で話したい部分を具体化します。",
+  },
+];
+
+const contactWorkGuides = [
+  {
+    projectId: "krm-ryugaku",
+    label: "LP相談なら",
+    title: "不安を減らしてCTAへ進める流れを見る",
+    text: "留学検討者が相談前に確認したい情報、信頼材料、LINE相談までの距離感を見られます。",
+  },
+  {
+    projectId: "hidamari-sabou",
+    label: "世界観LPなら",
+    title: "空気感から予約導線へつなぐ構成を見る",
+    text: "写真の印象を入口にしながら、メニュー、営業日、予約へ自然に進めるLPの見せ方を確認できます。",
+  },
+  {
+    projectId: "namae-studio",
+    label: "Webサービスなら",
+    title: "入力、診断、比較を迷わせない流れを見る",
+    text: "フォームから結果確認まで、家族で比較しやすい情報設計を相談材料にできます。",
+  },
+  {
+    projectId: "insight-studio",
+    label: "業務画面なら",
+    title: "分析から次アクションへ進む画面を見る",
+    text: "状態表示、AI考察、競合比較など、情報量の多い業務UIの整理方法を確認できます。",
   },
 ];
 
@@ -243,18 +293,18 @@ const pageAtmospheres = {
     tint: "bg-cyan/[0.08]",
   },
   about: {
-    image: aboutDarkAtelier,
-    base: "bg-atelierCharcoal",
-    imageClass: "right-[-16%] top-[-5%] h-[56rem] w-[78rem] opacity-30",
-    wash: "bg-[radial-gradient(circle_at_76%_16%,rgba(216,184,106,.20),transparent_22rem),radial-gradient(circle_at_12%_28%,rgba(255,244,238,.08),transparent_18rem),linear-gradient(180deg,rgba(9,10,15,.48),rgba(9,10,15,.88)_64%,#090A0F)]",
-    tint: "bg-gold/[0.08]",
+    base: "bg-briefSlate",
+    imageClass: "",
+    wash: "bg-[radial-gradient(circle_at_72%_10%,rgba(114,226,255,.095),transparent_23rem),radial-gradient(circle_at_12%_18%,rgba(216,184,106,.075),transparent_18rem),linear-gradient(180deg,rgba(7,9,13,.96),rgba(8,12,18,.985)_48%,#07090D)]",
+    tint: "bg-cyan/[0.025]",
+    ribbons: false,
   },
   contact: {
-    image: contactMotionBrief,
     base: "bg-briefSlate",
-    imageClass: "right-[-10%] top-[-8%] h-[54rem] w-[82rem] opacity-42",
-    wash: "bg-[radial-gradient(circle_at_74%_12%,rgba(114,226,255,.20),transparent_24rem),radial-gradient(circle_at_16%_30%,rgba(216,184,106,.12),transparent_18rem),linear-gradient(180deg,rgba(9,16,24,.34),rgba(9,16,24,.72)_58%,#091018)]",
-    tint: "bg-cyan/[0.08]",
+    imageClass: "",
+    wash: "bg-[radial-gradient(circle_at_72%_8%,rgba(114,226,255,.10),transparent_22rem),radial-gradient(circle_at_10%_18%,rgba(216,184,106,.08),transparent_18rem),linear-gradient(180deg,rgba(7,9,13,.96),rgba(8,12,18,.98)_46%,#07090D)]",
+    tint: "bg-cyan/[0.025]",
+    ribbons: false,
   },
 };
 
@@ -403,9 +453,13 @@ function PageAtmosphere({ variant }) {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className={`absolute inset-0 ${theme.base}`} />
-      <img className={`absolute max-w-none rounded-[3rem] object-cover blur-[1px] saturate-[0.92] ${theme.imageClass}`} src={theme.image} alt="" />
-      <MotionRibbon className="right-[-16rem] top-[7rem] h-[42rem] w-[58rem] opacity-70" />
-      <MotionRibbon className="left-[-24rem] top-[24rem] h-[34rem] w-[52rem] rotate-[16deg] opacity-35" reverse />
+      {theme.image && <img className={`absolute max-w-none rounded-[3rem] object-cover blur-[1px] saturate-[0.92] ${theme.imageClass}`} src={theme.image} alt="" />}
+      {theme.ribbons !== false && (
+        <>
+          <MotionRibbon className="right-[-16rem] top-[7rem] h-[42rem] w-[58rem] opacity-70" />
+          <MotionRibbon className="left-[-24rem] top-[24rem] h-[34rem] w-[52rem] rotate-[16deg] opacity-35" reverse />
+        </>
+      )}
       <div className={`absolute inset-0 mix-blend-soft-light ${theme.tint}`} />
       <div className={`absolute inset-0 ${theme.wash}`} />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:44px_44px] opacity-45 [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
@@ -677,22 +731,31 @@ function HomeAboutPreview({ reduce }) {
   return (
     <section className="relative px-4 py-16 md:px-8 md:py-24">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
-        <motion.div {...getMotion(reduce, 0.02)} className="about-motion-frame relative min-h-[360px] overflow-hidden rounded-[2rem] border border-gold/[0.16] bg-white/[0.055] p-2 shadow-[0_28px_100px_rgba(216,184,106,.10)] backdrop-blur-xl">
-          <img className="about-drift h-full min-h-[360px] w-full rounded-[1.55rem] object-cover object-center opacity-90" src={aboutProfileJourney} alt="AI活用から広告分析UI制作までの流れを示すジャーニーボード" />
-          <div className="absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(5,6,10,.70),rgba(5,6,10,.16)_52%,rgba(5,6,10,.56))]" />
-          <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2">
-            {profileMotionChips.map((chip, index) => (
-              <span key={chip} className="about-floating-chip rounded-full border border-white/15 bg-black/48 px-3 py-2 text-xs font-black text-white/76 backdrop-blur-xl" style={{ animationDelay: `${index * 0.22}s` }}>
-                {chip}
-              </span>
+        <motion.div {...getMotion(reduce, 0.02)} className="rounded-[2rem] border border-white/[0.12] bg-[#0C1117]/72 p-5 shadow-[0_28px_100px_rgba(0,0,0,.18)] backdrop-blur-xl md:p-6">
+          <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan">Builder profile</p>
+              <h3 className="mt-2 text-2xl font-black tracking-normal text-white">現場から、画面へ。</h3>
+            </div>
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-cyan/[0.2] bg-cyan/[0.08] text-cyan">
+              <Component className="h-5 w-5" strokeWidth={2.1} />
+            </span>
+          </div>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {aboutSignalCards.map((card) => (
+              <div key={card.title} className="min-h-[8.5rem] rounded-[1.25rem] border border-white/[0.09] bg-white/[0.045] p-4">
+                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-cyan">{card.label}</span>
+                <p className="mt-2 text-lg font-black text-white">{card.title}</p>
+                <p className="mt-2 text-sm font-bold leading-6 text-white/56">{card.text}</p>
+              </div>
             ))}
           </div>
         </motion.div>
 
         <motion.div {...getMotion(reduce, 0.08)}>
-          <p className="eyebrow text-[#D7B66D]">About Preview</p>
+          <p className="eyebrow text-cyan">About Preview</p>
           <h2 className="mt-4 max-w-xl text-3xl font-black leading-[1.14] tracking-normal text-white sm:text-4xl md:text-[2.85rem]">
-            作る人の背景を見る。
+            何を見て作る人かを知る。
           </h2>
           <p className="mt-6 max-w-xl text-base font-bold leading-8 text-white/64">
             広告レポート、LP改善、WebサービスUIを使う側の目線から見直し、必要だと感じた画面を自分で形にしています。
@@ -700,7 +763,7 @@ function HomeAboutPreview({ reduce }) {
           <div className="mt-7 grid gap-3">
             {profileStoryCards.map((card, index) => (
               <div key={card.title} className="rounded-[1.35rem] border border-white/10 bg-white/[0.055] p-4">
-                <span className="text-xs font-black uppercase tracking-[0.16em] text-[#D7B66D]">{card.label}</span>
+                <span className="text-xs font-black uppercase tracking-[0.16em] text-cyan">{card.label}</span>
                 <p className="mt-2 text-xl font-black text-white">{card.title}</p>
                 <p className="mt-2 text-sm font-bold leading-6 text-white/56">{card.text}</p>
               </div>
@@ -724,14 +787,14 @@ function HomeContactCTA({ reduce }) {
           <motion.div {...getMotion(reduce, 0.02)}>
             <p className="eyebrow text-cyan">Consultation</p>
             <h2 className="mt-4 max-w-xl text-3xl font-black leading-[1.12] tracking-normal text-white sm:text-4xl md:text-[2.85rem]">
-              相談前に見る順番を決める。
+              相談前に、見るべき作品を決める。
             </h2>
             <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/64">
-              いきなり連絡先ではなく、近い制作物、対象ユーザー、見たい導線を先に整理できる入口へつなぎます。
+              LP、Webサービス、業務画面のどれに近いかを先に選び、目的に合う画面から相談内容を整理できます。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link className="motion-button bg-milk text-ink" to="/contact">
-                相談前の見方へ
+                相談内容を整理する
                 <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
               </Link>
               <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/works">
@@ -740,14 +803,20 @@ function HomeContactCTA({ reduce }) {
             </div>
           </motion.div>
 
-          <motion.div {...getMotion(reduce, 0.1)} className="relative grid gap-3 rounded-[1.7rem] border border-white/12 bg-black/24 p-4 backdrop-blur-xl md:p-5">
-              {consultationSteps.map((step) => (
-                <article key={step.label} className="motion-surface rounded-[1.35rem] border border-cyan/[0.16] bg-cyan/[0.08] p-5">
-                  <p className="text-sm font-black text-cyan">{step.label}</p>
-                  <h3 className="mt-3 text-2xl font-black tracking-normal text-white">{step.label.split(" / ")[1]}</h3>
+          <motion.div {...getMotion(reduce, 0.1)} className="grid gap-3 md:grid-cols-3">
+            {consultationSteps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <Link key={step.label} to={step.href} className="motion-surface rounded-[1.35rem] border border-cyan/[0.16] bg-black/24 p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan/35">
+                  <span className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.07] text-cyan">
+                    <Icon className="h-4 w-4" strokeWidth={2.2} />
+                  </span>
+                  <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-cyan">{step.eyebrow}</p>
+                  <h3 className="mt-2 text-xl font-black tracking-normal text-white">{step.title}</h3>
                   <p className="mt-3 text-sm font-bold leading-7 text-white/62">{step.text}</p>
-                </article>
-              ))}
+                </Link>
+              );
+            })}
           </motion.div>
         </div>
       </div>
@@ -1200,142 +1269,117 @@ function InfoPanel({ label, text }) {
   );
 }
 
-function AboutSectionNav() {
-  const items = [
-    ["Profile", "#about-profile"],
-    ["Works", "#about-works"],
-    ["Method", "#about-method"],
-  ];
-
-  return (
-    <nav className="fixed bottom-4 left-1/2 z-40 flex -translate-x-1/2 gap-1 rounded-full border border-white/12 bg-black/62 p-1 shadow-[0_20px_70px_rgba(0,0,0,.34)] backdrop-blur-2xl" aria-label="自己紹介ページ内ナビゲーション">
-      {items.map(([label, href]) => (
-        <a key={href} className="rounded-full px-3 py-2 text-xs font-black text-white/62 transition hover:bg-white/10 hover:text-white md:px-4" href={href}>
-          {label}
-        </a>
-      ))}
-    </nav>
-  );
-}
-
 function About() {
   const reduce = useReducedMotion();
 
   return (
     <SubPage variant="about">
-      <AboutSectionNav />
-      <section className="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
-        <motion.div {...getMotion(reduce, 0.02)}>
-          <p className="eyebrow text-[#D7B66D]">自己紹介</p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-black leading-tight tracking-normal text-milk sm:text-5xl md:text-[3.05rem]">
-            マーケ実務をAIとコードで形にする。
+      <section className="grid gap-8 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
+        <motion.div {...getMotion(reduce, 0.02)} className="max-w-3xl">
+          <p className="eyebrow text-cyan">自己紹介</p>
+          <h1 className="mt-4 max-w-3xl text-balance text-[2.08rem] font-black leading-[1.12] tracking-normal text-milk sm:text-5xl md:text-[3.15rem]">
+            マーケ実務を
+            <br />
+            <span className="whitespace-nowrap">AIとコードで</span>
+            <br />
+            形にする。
           </h1>
-          <p className="mt-6 max-w-3xl text-base font-bold leading-8 text-white/68">
-            広告レポートの分析や考察作成に向き合いながら、AIエージェント、Python、Reactを学び、実務で必要だと感じた画面やサービスを自分で形にしています。
+          <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/66">
+            広告レポートやLP改善に向き合う中で、判断しやすい画面、押す理由のある導線、実際に触れるUIを自分で作るようになりました。
           </p>
-          <div className="mt-8 grid max-w-2xl grid-cols-2 gap-3">
-            {["非エンジニア出発", "広告運用の現場感", "AIエージェント活用", "実画面で検証"].map((item) => (
-              <span key={item} className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] px-3 py-2 text-center text-sm font-black text-white/72">
-                {item}
-              </span>
-            ))}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link className="motion-button bg-milk text-ink" to="/works">
+              作品を見る
+              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            </Link>
+            <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/contact">
+              相談前に整理する
+            </Link>
           </div>
         </motion.div>
 
-        <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame overflow-hidden rounded-[2rem] border border-gold/[0.18] bg-white/[0.06] p-2 shadow-[0_28px_100px_rgba(216,184,106,.10)] backdrop-blur-xl">
-          <img className="about-drift h-[360px] w-full rounded-[1.55rem] object-cover object-center opacity-92 md:h-[460px]" src={aboutProfileJourney} alt="AI活用から広告分析UI制作までの流れを示すジャーニーボード" />
-        </motion.div>
-      </section>
-
-      <section id="about-profile" className="mt-12 scroll-mt-28 grid gap-6 lg:grid-cols-[1.18fr_.82fr] lg:items-stretch">
-        <motion.div {...getMotion(reduce, 0.02)} className="about-motion-frame relative min-h-[420px] overflow-hidden rounded-[2rem] border border-gold/[0.16] bg-white/[0.055] p-2 shadow-[0_24px_90px_rgba(0,0,0,.24)] backdrop-blur-xl">
-          <img className="about-drift h-full min-h-[420px] w-full rounded-[1.55rem] object-cover object-center opacity-78" src={aboutProofBoard} alt="広告分析、LP改善、UI導線設計を検討する制作ボード" />
-          <div className="pointer-events-none absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(5,6,10,.78),rgba(5,6,10,.30)_45%,rgba(5,6,10,.66))]" />
-          <div className="absolute left-6 top-6 max-w-xs">
-            <p className="eyebrow text-[#D7B66D]">Profile flow</p>
-            <h2 className="mt-3 max-w-[24rem] text-balance text-3xl font-black leading-tight tracking-normal text-white md:text-[2rem]">
-              試し、悩み、実務へ。
-            </h2>
+        <motion.div {...getMotion(reduce, 0.1)} className="rounded-[1.8rem] border border-white/[0.12] bg-[#0C1117]/82 p-5 shadow-[0_24px_90px_rgba(0,0,0,.22)] backdrop-blur-xl md:p-6">
+          <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-5">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan">Kazushi / Builder</p>
+              <h2 className="mt-2 text-2xl font-black tracking-normal text-white">見る軸</h2>
+            </div>
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-cyan/[0.2] bg-cyan/[0.08] text-cyan">
+              <Component className="h-5 w-5" strokeWidth={2.1} />
+            </span>
           </div>
-          <div className="absolute left-6 right-6 top-[9.5rem] hidden gap-3 sm:grid sm:grid-cols-3">
-            {profileStoryCards.map((card) => (
-              <div key={card.label} className="rounded-[1.2rem] border border-white/12 bg-black/42 p-4 backdrop-blur-xl">
-                <span className="text-[10px] font-black uppercase tracking-[0.16em] text-[#D7B66D]">{card.label}</span>
-                <p className="mt-2 text-lg font-black text-white">{card.title}</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {aboutSignalCards.map((card) => (
+              <div key={card.title} className="min-h-[8.6rem] rounded-[1.2rem] border border-white/[0.09] bg-white/[0.045] p-4">
+                <span className="text-[11px] font-black uppercase tracking-[0.16em] text-cyan">{card.label}</span>
+                <h3 className="mt-2 text-lg font-black tracking-normal text-white">{card.title}</h3>
+                <p className="mt-2 text-sm font-bold leading-6 text-white/56">{card.text}</p>
               </div>
             ))}
           </div>
-          <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2">
-            {profileMotionChips.map((chip, index) => (
-              <span key={chip} className="about-floating-chip rounded-full border border-white/15 bg-black/48 px-3 py-2 text-xs font-black text-white/76 backdrop-blur-xl" style={{ animationDelay: `${index * 0.22}s` }}>
-                {chip}
-              </span>
-            ))}
-          </div>
         </motion.div>
-        <motion.article {...getMotion(reduce, 0.08)} className="rounded-[2rem] border border-white/[0.12] bg-black/24 p-6 backdrop-blur-xl md:p-7">
-          <p className="eyebrow text-[#D7B66D]">Profile</p>
-          <h2 className="mt-4 max-w-sm text-balance text-3xl font-black leading-tight tracking-normal text-white">
-            使う側から作る側へ。
-          </h2>
-          <div className="mt-6 grid gap-3">
-            {profileStoryCards.map((card, index) => (
-              <motion.div
-                key={card.title}
-                {...getMotion(reduce, index * 0.04)}
-                className="about-step-card rounded-2xl border border-white/[0.1] bg-white/[0.055] p-4"
-              >
-                <span className="text-xs font-black uppercase tracking-[0.16em] text-[#D7B66D]">{card.label}</span>
-                <h3 className="mt-2 text-xl font-black tracking-[-0.03em] text-white">{card.title}</h3>
-                <p className="mt-2 text-sm font-bold leading-6 text-white/58">{card.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.article>
+      </section>
+
+      <section id="about-profile" className="mt-20 scroll-mt-28 md:mt-24">
+        <div className="mb-6 max-w-3xl">
+          <p className="eyebrow text-cyan">Profile flow</p>
+          <h2 className="mt-4 text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">使う側から、作る側へ。</h2>
+          <p className="mt-5 font-bold leading-8 text-white/62">
+            経歴を長く語るより、どんな順番で画面を見ているかが伝わるほうがよい。ここではその判断の流れだけを短く置きます。
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {profileStoryCards.map((card, index) => (
+            <motion.article key={card.title} {...getMotion(reduce, index * 0.04)} className="rounded-[1.35rem] border border-white/[0.11] bg-[#0C1117]/76 p-5 backdrop-blur-xl">
+              <span className="text-xs font-black uppercase tracking-[0.16em] text-cyan">{card.label}</span>
+              <h3 className="mt-4 text-2xl font-black tracking-normal text-white">{card.title}</h3>
+              <p className="mt-4 text-sm font-bold leading-7 text-white/62">{card.text}</p>
+            </motion.article>
+          ))}
+        </div>
       </section>
 
       <section id="about-works" className="mt-24 scroll-mt-28">
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="eyebrow text-[#D7B66D]">Works as proof</p>
+            <p className="eyebrow text-cyan">Works as proof</p>
             <h2 className="section-title mt-3 max-w-2xl tracking-normal">実績でわかること。</h2>
           </div>
           <p className="max-w-2xl text-sm font-bold leading-8 text-white/58 md:text-base">
-            広告運用、LP改善、WebサービスUIという言葉だけで終わらせず、近い実績へつなげています。
+            広告運用、LP改善、WebサービスUIという言葉を、近い作品と確認ポイントへつなげます。
           </p>
         </div>
-      </section>
-
-      <section className="mt-8 grid gap-10">
-        {capabilityCards.map((card, index) => (
-          <motion.article
-            key={card.title}
-            {...getMotion(reduce, index * 0.06)}
-            className={`motion-surface grid gap-5 rounded-[2rem] border border-white/[0.12] bg-white/[0.055] p-3 backdrop-blur-xl lg:grid-cols-[1.08fr_.92fr] lg:items-stretch ${
-              index % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
-            }`}
-          >
-            <div className="overflow-hidden rounded-[1.55rem] border border-white/[0.08] bg-black/30">
-              <img className="h-full min-h-[260px] w-full object-cover object-top opacity-92 transition duration-700 hover:scale-[1.035]" src={screenshotPath(card.image)} alt={card.imageAlt} />
-            </div>
-            <div className="flex min-h-[260px] flex-col justify-center p-4 md:p-7">
-              <span className="text-sm font-black text-[#D7B66D]">{card.label}</span>
-              <h2 className="mt-5 max-w-xl text-balance text-3xl font-black leading-tight tracking-normal text-white md:text-[2.2rem]">{card.title}</h2>
-              <p className="mt-5 max-w-xl leading-8 text-white/62">{card.text}</p>
-              <Link className="mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.07] px-4 py-2.5 text-sm font-black text-white/82 transition hover:border-[#D7B66D]/40 hover:text-[#D7B66D]" to={card.href}>
-                {card.cta}
-                <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+        <div className="grid gap-5 lg:grid-cols-3">
+          {capabilityCards.map((card, index) => (
+            <motion.article
+              key={card.title}
+              {...getMotion(reduce, index * 0.06)}
+              className="group rounded-2xl border border-white/[0.12] bg-white/[0.055] p-3 backdrop-blur-xl"
+            >
+              <Link to={card.href} className="block">
+                <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-black/28">
+                  <img className="aspect-[16/9] w-full object-cover object-top opacity-90 transition duration-500 group-hover:scale-[1.025]" src={screenshotPath(card.image)} alt={card.imageAlt} />
+                </div>
+                <div className="p-3 md:p-4">
+                  <span className="text-xs font-black uppercase tracking-[0.16em] text-cyan">{card.label}</span>
+                  <h3 className="mt-3 text-2xl font-black leading-tight tracking-normal text-white">{card.title}</h3>
+                  <p className="mt-3 text-sm font-bold leading-7 text-white/60">{card.text}</p>
+                  <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#F4F1EA] px-4 py-2 text-sm font-black text-[#05060A] transition group-hover:translate-x-1">
+                    {card.cta}
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={1.7} />
+                  </span>
+                </div>
               </Link>
-            </div>
-          </motion.article>
-        ))}
+            </motion.article>
+          ))}
+        </div>
       </section>
 
       <section id="about-method" className="mt-28 scroll-mt-28">
         <div className="grid gap-6 lg:grid-cols-[.86fr_1.14fr] lg:items-end">
           <div>
-            <p className="eyebrow text-[#D7B66D]">制作姿勢</p>
-            <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-[-0.04em] text-white md:text-5xl">
+            <p className="eyebrow text-cyan">制作姿勢</p>
+            <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">
               見た目、導線、証拠を分けて考える。
             </h2>
           </div>
@@ -1356,7 +1400,7 @@ function About() {
               {...getMotion(reduce, index * 0.05)}
               className="grid gap-4 border-t border-white/10 py-7 md:grid-cols-[8rem_1fr] md:items-start"
             >
-              <span className="text-sm font-black text-[#D7B66D]">{step.label}</span>
+              <span className="text-sm font-black text-cyan">{step.label}</span>
               <div className="grid gap-3 md:grid-cols-[.72fr_1.28fr] md:items-start">
                 <h3 className="text-2xl font-black tracking-[-0.03em] text-white md:text-3xl">{step.title}</h3>
                 <p className="leading-8 text-white/62">{step.text}</p>
@@ -1365,64 +1409,105 @@ function About() {
           ))}
         </div>
       </section>
+
+      <section className="mt-20 rounded-[2rem] border border-cyan/[0.16] bg-[linear-gradient(135deg,rgba(114,226,255,.10),rgba(255,255,255,.035)_42%,rgba(216,184,106,.075))] p-5 backdrop-blur-xl md:p-8">
+        <motion.div {...getMotion(reduce, 0.02)} className="max-w-4xl">
+          <p className="eyebrow text-cyan">Next step</p>
+          <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-[2.65rem]">
+            作品を見ると、作る人の判断軸が分かる。
+          </h2>
+          <p className="mt-5 max-w-2xl font-bold leading-8 text-white/62">
+            背景よりも、実画面にどう表れているかを見るほうが早い。気になる導線から作品へ進めます。
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link className="motion-button bg-milk text-ink" to="/works">
+              作品を見る
+              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            </Link>
+            <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/contact">
+              相談前に整理する
+            </Link>
+          </div>
+        </motion.div>
+      </section>
     </SubPage>
   );
 }
 
 function Contact() {
   const reduce = useReducedMotion();
+  const workGuides = contactWorkGuides
+    .map((guide) => ({ ...guide, project: projects.find((project) => project.id === guide.projectId) }))
+    .filter((guide) => guide.project);
 
   return (
     <SubPage variant="contact">
-      <section className="grid gap-8 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
-        <motion.div {...getMotion(reduce, 0.02)}>
+      <section className="grid gap-8 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
+        <motion.div {...getMotion(reduce, 0.02)} className="max-w-3xl">
           <p className="eyebrow text-cyan">相談前の入口</p>
-          <h1 className="mt-4 max-w-3xl text-balance text-4xl font-black leading-tight tracking-normal text-milk sm:text-5xl md:text-[3.25rem]">
-            近い実績を見て、相談内容を絞る。
+          <h1 className="mt-4 text-balance text-[2.65rem] font-black leading-[1.08] tracking-normal text-milk sm:text-5xl md:text-[3.2rem]">
+            相談したい内容を、近い作品から整理する。
           </h1>
-          <p className="mt-6 max-w-3xl text-base font-bold leading-8 text-white/68">
-            ここでは実連絡先や外部フォームを置かず、まず制作物の画面、対象ユーザー、導線設計を確認できる入口にしています。
+          <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/66">
+            LP、Webサービス、業務画面のどれに近いかを選び、ファーストビュー、フォーム、分析画面など見たい導線を先に絞れます。
           </p>
-          <Link className="motion-button mt-7 bg-milk text-ink" to="/works">
-            作品一覧から選ぶ
-            <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a className="motion-button bg-milk text-ink" href="#contact-types">
+              相談タイプを選ぶ
+              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            </a>
+            <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/works">
+              作品一覧を見る
+            </Link>
+          </div>
         </motion.div>
 
-        <motion.div {...getMotion(reduce, 0.1)} className="about-motion-frame relative overflow-hidden rounded-[2rem] border border-cyan/[0.16] bg-white/[0.07] p-2 shadow-[0_28px_90px_rgba(0,0,0,.26)] backdrop-blur-2xl">
-          <img className="about-drift h-[430px] w-full rounded-[1.55rem] object-cover object-center opacity-95" src={contactMotionBrief} alt="作品確認から相談内容を絞る流れを示すブリーフボード" />
-          <div className="absolute inset-2 rounded-[1.55rem] bg-[linear-gradient(90deg,rgba(6,13,20,.74),rgba(6,13,20,.18)_50%,rgba(6,13,20,.46))]" />
-          <div className="absolute bottom-5 left-5 right-5 flex flex-wrap gap-2 rounded-full border border-white/12 bg-black/42 p-2 backdrop-blur-xl">
+        <motion.div id="contact-types" {...getMotion(reduce, 0.1)} className="rounded-[1.8rem] border border-white/[0.12] bg-[#0C1117]/86 p-4 shadow-[0_24px_90px_rgba(0,0,0,.22)] backdrop-blur-xl md:p-5">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan">Choose a brief</p>
+              <h2 className="mt-2 text-2xl font-black tracking-normal text-white">相談タイプを選ぶ</h2>
+            </div>
+            <span className="hidden rounded-full border border-white/10 bg-white/[0.055] px-3 py-2 text-xs font-black text-white/46 sm:inline-flex">
+              3 paths
+            </span>
+          </div>
+          <div className="grid gap-3">
             {consultationSteps.map((step) => (
-              <span key={step.label} className="inline-flex min-h-10 flex-1 items-center justify-center rounded-full border border-white/10 bg-white/[0.07] px-3 text-center text-xs font-black text-white/78">
-                {step.label.split(" / ")[1]}
-              </span>
+              <Link key={step.label} to={step.href} className="group grid gap-4 rounded-[1.25rem] border border-white/[0.11] bg-white/[0.045] p-4 transition hover:-translate-y-0.5 hover:border-cyan/32 hover:bg-white/[0.07] sm:grid-cols-[3rem_1fr_auto] sm:items-center">
+                <span className="grid h-12 w-12 place-items-center rounded-full border border-cyan/[0.18] bg-cyan/[0.07] text-cyan">
+                  <step.icon className="h-5 w-5" strokeWidth={2.1} />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs font-black uppercase tracking-[0.16em] text-cyan">{step.eyebrow}</span>
+                  <span className="mt-1 block text-xl font-black tracking-normal text-white">{step.title}</span>
+                  <span className="mt-2 block text-sm font-bold leading-6 text-white/56">{step.text}</span>
+                </span>
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-milk text-ink transition group-hover:translate-x-1">
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={2.3} />
+                </span>
+              </Link>
             ))}
           </div>
         </motion.div>
       </section>
 
-      <section className="mt-6 grid gap-3 md:grid-cols-3">
-        {consultationSteps.map((step, index) => (
-          <motion.article key={step.label} {...getMotion(reduce, index * 0.04)} className="rounded-[1.35rem] border border-white/[0.12] bg-white/[0.055] p-5 backdrop-blur-xl">
-            <p className="text-sm font-black text-cyan">{step.label}</p>
-            <p className="mt-3 text-sm font-bold leading-7 text-white/64">{step.text}</p>
-          </motion.article>
-        ))}
-      </section>
-
-      <section className="mt-14 grid gap-5 lg:grid-cols-[.88fr_1.12fr]">
-        <EditorialImageCard
-          image={contactMotionBrief}
-          alt="制作相談のための編集的なブリーフ画像"
-          label="Project Brief"
-          title="方向性を揃えてから相談。"
-          text="問い合わせ先を急に出すのではなく、近い制作物と見たい導線を確認してから話し始められる状態にしています。"
-        />
-        <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-1">
-          <InfoPanel label="LPを相談したい" text="KRM 留学LP、日だまり茶房で、ファーストビュー、信頼材料、CTAまでの流れを確認できます。" />
-          <InfoPanel label="Webサービスを相談したい" text="姓名診断で、入力フォーム、結果確認、家族で比較しやすい情報設計を確認できます。" />
-          <InfoPanel label="業務画面を相談したい" text="Insight Studioで、広告分析、状態表示、次アクションへ進む業務UIを確認できます。" />
+      <section className="mt-20">
+        <div className="mb-6 max-w-3xl">
+          <p className="eyebrow text-cyan">Brief checklist</p>
+          <h2 className="mt-4 text-3xl font-black leading-tight tracking-normal text-white md:text-5xl">相談前に決めるのは、3つだけ。</h2>
+          <p className="mt-5 font-bold leading-8 text-white/62">
+            完成イメージを全部固める必要はありません。目的、近い作品、必要な導線が分かるだけで、相談内容はかなり具体的になります。
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {consultationBriefItems.map((item, index) => (
+            <motion.article key={item.label} {...getMotion(reduce, index * 0.04)} className="rounded-[1.3rem] border border-white/[0.11] bg-[#0C1117]/78 p-5 backdrop-blur-xl">
+              <p className="text-sm font-black text-[#D7B66D]">{item.label}</p>
+              <h3 className="mt-4 text-2xl font-black tracking-normal text-white">{item.title}</h3>
+              <p className="mt-4 text-sm font-bold leading-7 text-white/62">{item.text}</p>
+            </motion.article>
+          ))}
         </div>
       </section>
 
@@ -1430,34 +1515,60 @@ function Contact() {
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="eyebrow">Choose from works</p>
-            <h2 className="section-title mt-3 max-w-3xl">近い制作物から見る。</h2>
+            <h2 className="section-title mt-3 max-w-3xl tracking-normal">この相談なら、この作品を見る。</h2>
           </div>
           <p className="max-w-xl text-sm font-bold leading-7 text-white/55">
-            実連絡先は掲載せず、作品体験から相談前の判断材料を揃えるための一覧です。
+            単なる作品一覧ではなく、相談したい内容に合わせて確認するポイントを添えています。
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-        {projects.map((project, index) => (
-          <motion.article
-            key={project.id}
-            {...getMotion(reduce, index * 0.04)}
-            className="group rounded-2xl border border-white/[0.12] bg-white/[0.065] p-3 backdrop-blur-xl"
-          >
-            <Link to={`/works/${project.id}`} className="grid gap-4 sm:grid-cols-[12rem_1fr]">
-              <img className="h-40 w-full rounded-xl object-cover object-top transition duration-500 group-hover:scale-[1.02] sm:h-full" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} />
-              <div className="flex flex-col justify-center p-3">
-                <p className="eyebrow">{project.category}</p>
-                <h2 className="mt-2 text-2xl font-normal tracking-tight text-white">{project.name}</h2>
-                <p className="mt-3 line-clamp-2 text-sm font-bold leading-6 text-white/60">{project.shortValue}</p>
-                <span className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-[#F4F1EA] px-4 py-2 text-sm font-black text-[#05060A]">
-                  {project.ctaLabel}
-                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
-                </span>
-              </div>
-            </Link>
-          </motion.article>
-        ))}
+          {workGuides.map((guide, index) => (
+            <motion.article
+              key={guide.project.id}
+              {...getMotion(reduce, index * 0.04)}
+              className="group rounded-2xl border border-white/[0.12] bg-white/[0.065] p-3 backdrop-blur-xl"
+            >
+              <Link to={`/works/${guide.project.id}`} className="grid gap-4 sm:grid-cols-[12rem_1fr]">
+                <div className="overflow-hidden rounded-xl bg-black/24">
+                  <img className="h-40 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02] sm:h-full" src={screenshotPath(guide.project.screenshots[0])} alt={`${guide.project.name}の画面プレビュー`} />
+                </div>
+                <div className="flex flex-col justify-center p-3">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan">{guide.label}</p>
+                  <h2 className="mt-2 text-2xl font-black tracking-normal text-white">{guide.title}</h2>
+                  <p className="mt-3 text-sm font-bold leading-6 text-white/60">{guide.text}</p>
+                  <span className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-[#F4F1EA] px-4 py-2 text-sm font-black text-[#05060A]">
+                    {guide.project.name}を見る
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+                  </span>
+                </div>
+              </Link>
+            </motion.article>
+          ))}
         </div>
+      </section>
+
+      <section className="mt-20 rounded-[2rem] border border-cyan/[0.16] bg-[linear-gradient(135deg,rgba(114,226,255,.10),rgba(255,255,255,.035)_42%,rgba(216,184,106,.08))] p-5 backdrop-blur-xl md:p-8">
+        <motion.div {...getMotion(reduce, 0.02)} className="max-w-4xl">
+          <p className="eyebrow text-cyan">Next step</p>
+          <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-[2.65rem]">
+            まず作品を見て、相談の輪郭を作る。
+          </h2>
+          <p className="mt-5 max-w-2xl font-bold leading-8 text-white/62">
+            近い作品と見たい導線が決まると、依頼内容、優先したい画面、必要なCTAを話しやすくなります。
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link className="motion-button bg-milk text-ink" to="/works">
+              まず作品を見る
+              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            </Link>
+            <a className="motion-button border border-white/12 bg-white/[0.065] text-white" href="#contact-types">
+              相談タイプへ戻る
+            </a>
+          </div>
+          <p className="mt-5 max-w-2xl text-xs font-bold leading-6 text-white/42">
+            このページでは実連絡先や外部フォームを掲載せず、作品確認から相談前の判断材料を揃える入口として整理しています。
+          </p>
+        </motion.div>
       </section>
     </SubPage>
   );
