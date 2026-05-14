@@ -16,6 +16,7 @@
     min-width: 320px;
     font-family: Inter, "Noto Sans JP", "Zen Kaku Gothic New", system-ui, sans-serif;
     background: #05060a;
+    overflow-wrap: anywhere;
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
   }
@@ -190,6 +191,176 @@
     mask-image: radial-gradient(ellipse at center, transparent 46%, black 48%, black 58%, transparent 64%);
     transform-origin: center;
   }
+
+  .hero-proof-stage {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .hero-proof-glow {
+    background:
+      radial-gradient(circle at 45% 34%, rgba(216, 185, 110, 0.18), transparent 18rem),
+      radial-gradient(circle at 55% 48%, rgba(114, 226, 255, 0.18), transparent 24rem);
+    filter: blur(10px);
+    animation: hero-glow-shift 8s ease-in-out infinite;
+  }
+
+  .hero-proof-rail {
+    transform-style: preserve-3d;
+  }
+
+  .hero-proof-card {
+    transform-style: preserve-3d;
+    filter: saturate(0.94) contrast(1.04);
+  }
+
+  .hero-proof-card > div {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-proof-card > div::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 16%, rgba(255, 255, 255, 0.24) 36%, transparent 52%);
+    mix-blend-mode: soft-light;
+    transform: translateX(-130%);
+    animation: hero-card-sheen 7s ease-in-out infinite;
+    animation-delay: var(--sheen-delay, 0s);
+  }
+
+  .hero-proof-card:nth-child(2) > div::after {
+    --sheen-delay: 1.2s;
+  }
+
+  .hero-proof-card:nth-child(3) > div::after {
+    --sheen-delay: 2.4s;
+  }
+
+  .hero-proof-card:nth-child(4) > div::after {
+    --sheen-delay: 3.2s;
+  }
+
+  .hero-proof-card-lead {
+    transform: translateZ(58px);
+  }
+
+  .hero-scan-line {
+    background: linear-gradient(90deg, transparent, rgba(216, 185, 110, 0.75), transparent);
+    animation: hero-scan 5.5s ease-in-out infinite;
+  }
+
+  .hero-orbit-ring {
+    border: 1px solid rgba(114, 226, 255, 0.18);
+    border-radius: 9999px;
+    transform: rotate(-14deg);
+    box-shadow:
+      inset 0 0 28px rgba(114, 226, 255, 0.08),
+      0 0 48px rgba(114, 226, 255, 0.08);
+    animation: hero-ring-drift 13s ease-in-out infinite;
+  }
+
+  .hero-proof-reel,
+  .work-card,
+  .project-trust-card,
+  .screen-breakdown-card,
+  .contact-ready-card {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-proof-reel::before,
+  .work-card::after,
+  .project-trust-card::before,
+  .screen-breakdown-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(120deg, transparent 10%, rgba(255, 255, 255, 0.14) 34%, transparent 52%),
+      radial-gradient(circle at 14% 0%, color-mix(in srgb, var(--accent, #d8b96e) 30%, transparent), transparent 16rem);
+    opacity: 0;
+    transition: opacity 260ms ease;
+  }
+
+  .hero-proof-reel:hover::before,
+  .work-card:hover::after,
+  .project-trust-card:hover::before,
+  .screen-breakdown-card:hover::before {
+    opacity: 1;
+  }
+
+  .hero-proof-reel {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 18px 70px rgba(0, 0, 0, 0.24);
+  }
+
+  .hero-proof-reel::after {
+    content: "";
+    position: absolute;
+    inset-block: 2.45rem 0.5rem;
+    right: 0;
+    width: 6rem;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(5, 6, 10, 0.94));
+  }
+
+  .hero-reel-card {
+    transform: translateZ(0);
+    transition:
+      border-color 240ms ease,
+      transform 280ms ease,
+      box-shadow 280ms ease;
+  }
+
+  .hero-reel-card:hover {
+    border-color: rgba(216, 185, 110, 0.46);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    transform: translateY(-3px);
+  }
+
+  .work-card {
+    transition:
+      border-color 240ms ease,
+      box-shadow 280ms ease,
+      filter 280ms ease;
+  }
+
+  .work-card:hover {
+    border-color: color-mix(in srgb, var(--accent, #d8b96e) 42%, rgba(255, 255, 255, 0.2));
+    box-shadow:
+      0 34px 100px rgba(0, 0, 0, 0.38),
+      0 0 0 1px color-mix(in srgb, var(--accent, #d8b96e) 18%, transparent);
+    filter: saturate(1.05);
+  }
+
+  .work-proof-badge {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent, #d8b96e) 24%, transparent);
+  }
+
+  .project-trust-card,
+  .screen-breakdown-card,
+  .contact-ready-card {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .screen-breakdown-card {
+    transition:
+      transform 240ms ease,
+      border-color 240ms ease,
+      background-color 240ms ease;
+  }
+
+  .screen-breakdown-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--accent, #72e2ff) 36%, rgba(255, 255, 255, 0.14));
+    background-color: rgba(255, 255, 255, 0.078);
+  }
 }
 
 @keyframes marquee-left {
@@ -264,6 +435,62 @@
   100% {
     transform: translateX(68%);
     opacity: 0;
+  }
+}
+
+@keyframes hero-card-sheen {
+  0%,
+  34% {
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+  46% {
+    opacity: 0.48;
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateX(130%);
+  }
+}
+
+@keyframes hero-glow-shift {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.88;
+    transform: translate3d(-3%, 2%, 0) scale(1.04);
+  }
+}
+
+@keyframes hero-scan {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateX(-8rem);
+  }
+  38%,
+  58% {
+    opacity: 0.75;
+  }
+  78% {
+    opacity: 0;
+    transform: translateX(9rem);
+  }
+}
+
+@keyframes hero-ring-drift {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: rotate(-14deg) scale(1);
+  }
+  50% {
+    opacity: 0.58;
+    transform: rotate(-9deg) scale(1.04);
   }
 }
 

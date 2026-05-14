@@ -6,38 +6,43 @@ import {
   Box,
   Brush,
   Camera,
+  CheckCircle2,
   Component,
   Frame,
   Globe,
   Layers,
+  Mail,
   Menu,
   Palette,
   PenTool,
+  Send,
+  ShieldCheck,
   Sparkle,
   Type,
   Wand2,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, NavLink, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
-import contactEditorialBrief from "../assets/portfolio/contact-editorial-brief.png";
-import worksEditorialBoard from "../assets/portfolio/works-editorial-board.png";
-import worksDarkGallery from "../assets/portfolio/works-dark-gallery.png";
-import hidamariScreenshot from "../assets/projects/hidamari-sabou-real.png";
-import insightAiResultClean from "../assets/projects/insight-studio-ai-result-clean.png";
-import insightAiGpt from "../assets/projects/insight-studio-ai-gpt.png";
-import insightCompareGpt from "../assets/projects/insight-studio-compare-gpt.png";
-import insightCreativeReviewGpt from "../assets/projects/insight-studio-creative-review-gpt.png";
-import insightDashboardGpt from "../assets/projects/insight-studio-dashboard-gpt.png";
-import insightDiscoveryGpt from "../assets/projects/insight-studio-discovery-gpt.png";
-import insightGraphsClean from "../assets/projects/insight-studio-graphs-clean.png";
-import insightPeriodClean from "../assets/projects/insight-studio-period-clean.png";
-import insightSetupClean from "../assets/projects/insight-studio-setup-clean.png";
-import krmScreenshot from "../assets/projects/krm-ryugaku-status.png";
-import namaeScreenshot from "../assets/projects/namae-studio-real.png";
+import contactEditorialBrief from "../assets/portfolio/contact-editorial-brief.webp";
+import worksEditorialBoard from "../assets/portfolio/works-editorial-board.webp";
+import worksDarkGallery from "../assets/portfolio/works-dark-gallery.webp";
+import hidamariScreenshot from "../assets/projects/hidamari-sabou-real.webp";
+import insightAiResultClean from "../assets/projects/insight-studio-ai-result-clean.webp";
+import insightAiGpt from "../assets/projects/insight-studio-ai-gpt.webp";
+import insightCompareGpt from "../assets/projects/insight-studio-compare-gpt.webp";
+import insightCreativeReviewGpt from "../assets/projects/insight-studio-creative-review-gpt.webp";
+import insightDashboardGpt from "../assets/projects/insight-studio-dashboard-gpt.webp";
+import insightDiscoveryGpt from "../assets/projects/insight-studio-discovery-gpt.webp";
+import insightGraphsClean from "../assets/projects/insight-studio-graphs-clean.webp";
+import insightPeriodClean from "../assets/projects/insight-studio-period-clean.webp";
+import insightSetupClean from "../assets/projects/insight-studio-setup-clean.webp";
+import krmScreenshot from "../assets/projects/krm-ryugaku-status.webp";
+import namaeScreenshot from "../assets/projects/namae-studio-real.webp";
 import projects from "../data/projects.json";
 
 const heroVideo =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4";
+const heroPoster = "/hero-insight-studio-dashboard.webp";
 
 const maxReedVideos = {
   background:
@@ -47,6 +52,10 @@ const maxReedVideos = {
   software:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260507_153148_d7a3e1dd-e5d0-4ce6-8306-00d7522ecc44.mp4",
 };
+
+const contactEmail = "hello@kazushi.dev";
+const contactSubject = "制作相談について";
+const contactMailHref = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
 
 const screenshotByPath = {
   "assets/projects/insight-studio-dashboard-gpt.png": insightDashboardGpt,
@@ -132,10 +141,10 @@ const processSteps = [
 ];
 
 const workFilters = [
-  ["すべて", "4件"],
-  ["SaaS", "1件"],
-  ["Webサービス", "1件"],
-  ["LP", "2件"],
+  { id: "all", label: "すべて", count: "4件" },
+  { id: "saas", label: "SaaS", count: "1件", match: "SaaS" },
+  { id: "service", label: "Webサービス", count: "1件", match: "Webサービス" },
+  { id: "lp", label: "LP", count: "2件", match: "ランディングページ" },
 ];
 
 const profileStoryCards = [
@@ -213,27 +222,30 @@ const consultationSteps = [
   {
     label: "LP",
     eyebrow: "Landing Page",
-    title: "LPの相談材料を見る",
-    text: "ファーストビュー、信頼材料、CTAまでの流れを見て、相談前に必要な説得材料を整理します。",
+    title: "LP制作を相談する",
+    text: "ファーストビュー、信頼材料、CTAまでの流れを確認し、問い合わせにつながるLPへ整えます。",
     proof: "KRM 留学LP / 日だまり茶房",
+    mailHint: "LPの目的、参考にしたい実績、希望CTAを書いて送れます。",
     href: "/works/krm-ryugaku",
     icon: Frame,
   },
   {
     label: "Webサービス",
     eyebrow: "Web Service",
-    title: "Webサービスの導線を見る",
-    text: "入力、結果確認、比較の順番を見て、ユーザーが迷わず進める画面設計を確認します。",
+    title: "WebサービスUIを相談する",
+    text: "入力、結果確認、比較の順番を整理し、ユーザーが迷わず進める画面にします。",
     proof: "姓名診断",
+    mailHint: "入力項目、結果画面、ユーザーが迷う箇所を書いて送れます。",
     href: "/works/namae-studio",
     icon: Component,
   },
   {
     label: "業務画面",
     eyebrow: "Business UI",
-    title: "業務画面の設計を見る",
-    text: "状態表示、分析、次アクションを分けて、情報量の多い画面でも判断しやすい構成を見ます。",
+    title: "業務画面を相談する",
+    text: "状態表示、分析、次アクションを分け、情報量の多い画面でも判断しやすくします。",
     proof: "Insight Studio",
+    mailHint: "整理したい業務、画面数、判断に使う情報を書いて送れます。",
     href: "/works/insight-studio",
     icon: Layers,
   },
@@ -254,6 +266,21 @@ const consultationBriefItems = [
     label: "03",
     title: "必要な導線を拾う",
     text: "ファーストビュー、フォーム、結果画面、分析画面など、相談で話したい部分を具体化します。",
+  },
+];
+
+const contactReadinessItems = [
+  {
+    label: "相談できる内容",
+    text: "LP、Webサービス、業務画面の設計と実装相談。",
+  },
+  {
+    label: "初回で話すこと",
+    text: "目的、近い実績、必要な導線、公開までの優先順。",
+  },
+  {
+    label: "返信目安",
+    text: "内容確認後、初回の整理ポイントを返信します。",
   },
 ];
 
@@ -314,6 +341,14 @@ function assetPath(path) {
 
 function screenshotPath(path) {
   return screenshotByPath[path] || assetPath(path);
+}
+
+function proofLabel(project) {
+  return project.proofLevel || project.workType || project.role;
+}
+
+function compactList(value) {
+  return Array.isArray(value) ? value.join(" / ") : value;
 }
 
 function getMotion(reduce, delay = 0) {
@@ -453,7 +488,7 @@ function PageAtmosphere({ variant }) {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className={`absolute inset-0 ${theme.base}`} />
-      {theme.image && <img className={`absolute max-w-none rounded-[3rem] object-cover blur-[1px] saturate-[0.92] ${theme.imageClass}`} src={theme.image} alt="" />}
+      {theme.image && <img className={`absolute max-w-none rounded-[3rem] object-cover blur-[1px] saturate-[0.92] ${theme.imageClass}`} src={theme.image} alt="" loading="lazy" decoding="async" />}
       {theme.ribbons !== false && (
         <>
           <MotionRibbon className="right-[-16rem] top-[7rem] h-[42rem] w-[58rem] opacity-70" />
@@ -501,7 +536,7 @@ function FeatureLabel({ children, align = "center" }) {
 function VideoBackdrop({ src, poster, className = "" }) {
   return (
     <>
-      {poster && <img className="absolute inset-0 h-full w-full object-cover" src={poster} alt="" aria-hidden="true" />}
+      {poster && <img className="absolute inset-0 h-full w-full object-cover" src={poster} alt="" aria-hidden="true" decoding="async" />}
       <video className={`absolute inset-0 h-full w-full object-cover ${className}`} src={src} autoPlay loop muted playsInline />
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/16 to-black/72" />
     </>
@@ -622,7 +657,7 @@ function EditorialImageCard({ image, alt, title, text, label }) {
 
   return (
     <motion.article {...getMotion(reduce, 0.04)} className="motion-card group relative overflow-hidden rounded-2xl border border-white/[0.12] bg-white/[0.06] backdrop-blur-xl">
-      <img className="h-[360px] w-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.035] group-hover:opacity-100 md:h-[440px]" src={image} alt={alt} />
+      <img className="h-[360px] w-full object-cover opacity-90 transition duration-700 group-hover:scale-[1.035] group-hover:opacity-100 md:h-[440px]" src={image} alt={alt} loading="lazy" decoding="async" />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/26 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
         <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#D7B66D]">{label}</p>
@@ -638,46 +673,62 @@ function Home() {
 
   return (
     <>
-      <section className="motion-stage relative flex min-h-screen overflow-hidden bg-black px-4 pb-10 pt-24 md:px-8">
-        <video className="absolute inset-0 h-full w-full object-cover opacity-70" src={heroVideo} autoPlay loop muted playsInline />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_58%,rgba(100,206,251,.12),transparent_22rem),linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.78)_72%,#090a0f)]" />
-        <MotionRibbon className="right-[-26rem] top-[18rem] h-[32rem] w-[60rem] opacity-42" />
-        <MotionRibbon className="left-[-28rem] top-[8rem] h-[28rem] w-[50rem] rotate-[14deg] opacity-26" reverse />
+      <section className="motion-stage relative flex min-h-screen overflow-hidden bg-[#05060A] px-4 pb-10 pt-24 md:px-8">
+        <img className="absolute inset-0 h-full w-full object-cover object-top opacity-20 saturate-[1.05]" src={heroPoster} alt="" aria-hidden="true" fetchPriority="high" />
+        <video className="absolute inset-0 h-full w-full object-cover opacity-18 mix-blend-screen" src={heroVideo} poster={heroPoster} autoPlay loop muted playsInline />
+        <HeroProofStage reduce={reduce} />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,6,10,.98),rgba(5,6,10,.84)_44%,rgba(5,6,10,.58)_70%,rgba(5,6,10,.82)),radial-gradient(circle_at_72%_24%,rgba(216,185,110,.15),transparent_25rem),linear-gradient(180deg,rgba(5,6,10,.12),rgba(5,6,10,.86)_78%,#090a0f)]" />
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#090a0f] to-transparent" />
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-between gap-10">
-          <div className="grid gap-5 pt-8 text-sm leading-6 text-white/80 md:text-base lg:grid-cols-2">
-            <motion.p {...getMotion(reduce, 0.04)} className="max-w-[28rem]">
-              実画面を中心に、制作物と導線設計を紹介します。
+          <div className="grid gap-5 pt-8 text-sm leading-6 text-white/78 md:text-base lg:grid-cols-2">
+            <motion.p {...getMotion(reduce, 0.04)} className="max-w-[30rem]">
+              LP・Webサービス・業務UIを、実画面で検証して作る。
             </motion.p>
-            <motion.p {...getMotion(reduce, 0.08)} className="font-black lg:text-right">
-              4作品 / SaaS・Webサービス・LP
+            <motion.p {...getMotion(reduce, 0.08)} className="font-black text-[#D8B96E] lg:text-right">
+              4 works / verified screens / client-ready flow
             </motion.p>
           </div>
 
-          <motion.div {...getMotion(reduce, 0.12)} className="mx-auto w-full max-w-5xl text-center">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-white/80 md:text-sm">
-              <span className="sm:hidden">実画面ポートフォリオ</span>
-              <span className="hidden sm:inline">実画面スクリーンショット / モーションポートフォリオ</span>
+          <motion.div {...getMotion(reduce, 0.12)} className="w-full max-w-4xl">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[#D8B96E] md:text-sm">
+              Client-ready web portfolio
             </p>
-            <h1 className="text-5xl font-medium leading-[0.9] tracking-tighter text-white sm:text-6xl md:text-7xl xl:text-8xl">
-              見て伝わる、
-              <ShinyText className="mt-2 block">動く制作実績。</ShinyText>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base font-bold leading-8 text-white/70">
-              派手さよりも、見た瞬間に「何を作ったか」「どこへ進めばよいか」が分かることを優先したポートフォリオです。
-            </p>
-            <Link className="group mx-auto mt-7 inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-black text-white transition hover:-translate-y-1 hover:bg-gray-900 md:px-8 md:py-4" to="/works">
-              代表作を見る
-              <ArrowRight className="transition group-hover:translate-x-1" size={18} />
-            </Link>
-            <div className="mx-auto mt-8 grid w-fit gap-2 text-center text-[10px] font-black uppercase tracking-[0.22em] text-white/42">
-              Scroll
-              <span className="mx-auto h-10 w-px overflow-hidden bg-white/14">
-                <span className="block h-4 w-px animate-scroll-down bg-cyan" />
+            <h1 className="max-w-4xl text-[2.75rem] font-black leading-[1.02] tracking-normal text-white sm:text-6xl md:text-7xl xl:text-[5.9rem]">
+              <span className="block sm:hidden">
+                初見で伝わる
+                <ShinyText className="mt-1 block">制作実績。</ShinyText>
               </span>
+              <span className="hidden sm:block">
+                作れるものが、
+                <ShinyText className="mt-2 block">初見で伝わる。</ShinyText>
+              </span>
+            </h1>
+            <p className="mt-6 max-w-2xl break-words text-base font-bold leading-8 text-white/72 [overflow-wrap:anywhere] md:text-lg">
+              <span className="block sm:hidden">実画面で、発注前に判断しやすく見せます。</span>
+              <span className="hidden sm:block">広告運用の現場感、React実装、AI活用、ブラウザ検証をまとめて、発注前に判断しやすい形で見せます。</span>
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link className="motion-button bg-milk text-ink" to="/works">
+                実績を見る
+                <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+              </Link>
+              <Link className="motion-button border border-[#D8B96E]/36 bg-[#D8B96E]/12 text-[#F5F1E8]" to="/contact">
+                制作相談を始める
+                <Send className="ml-2 h-4 w-4" strokeWidth={2.2} />
+              </Link>
             </div>
+            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
+              {["LP / CTA設計", "WebサービスUI", "業務SaaS画面"].map((item) => (
+                <span key={item} className="inline-flex items-center gap-2 border border-white/12 bg-black/32 px-3 py-2 text-xs font-black text-white/76 backdrop-blur-xl">
+                  <CheckCircle2 className="h-4 w-4 text-[#D8B96E]" strokeWidth={2.2} />
+                  {item}
+                </span>
+              ))}
+            </div>
+            <HeroProofReel reduce={reduce} />
           </motion.div>
 
-          <motion.div {...getMotion(reduce, 0.18)} className="grid gap-3 md:grid-cols-4">
+          <motion.div {...getMotion(reduce, 0.18)} className="hidden gap-3 md:grid md:grid-cols-4">
             {projects.map((project) => (
               <HeroPreviewCard key={project.id} project={project} reduce={reduce} />
             ))}
@@ -692,6 +743,98 @@ function Home() {
         <HomeContactCTA reduce={reduce} />
       </main>
     </>
+  );
+}
+
+function HeroProofStage({ reduce }) {
+  const stageProjects = projects.slice(0, 4);
+
+  return (
+    <div className="hero-proof-stage pointer-events-none absolute right-[-10rem] top-[5.5rem] hidden h-[39rem] w-[64rem] lg:block" aria-hidden="true">
+      <div className="hero-proof-glow absolute inset-0" />
+      <motion.div
+        className="hero-proof-rail absolute left-[7rem] top-[4rem] h-[28rem] w-[44rem]"
+        animate={reduce ? undefined : { rotate: [-3, 2, -3], y: [0, -10, 0] }}
+        transition={reduce ? undefined : { duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {stageProjects.map((project, index) => {
+          const isLead = index === 0;
+          const positions = [
+            "left-[3rem] top-[3rem] z-30 w-[31rem]",
+            "right-[-5rem] top-[-1rem] z-20 w-[24rem]",
+            "left-[-3rem] bottom-[-1rem] z-10 w-[25rem]",
+            "right-[-2rem] bottom-[1rem] z-10 w-[24rem]",
+          ];
+
+          return (
+            <motion.div
+              key={project.id}
+              className={`hero-proof-card absolute ${positions[index]} ${isLead ? "hero-proof-card-lead" : ""}`}
+              animate={
+                reduce
+                  ? undefined
+                  : {
+                      y: [0, index % 2 === 0 ? -12 : 10, 0],
+                      rotate: [index % 2 === 0 ? -1.2 : 1.6, index % 2 === 0 ? 1.4 : -1.1, index % 2 === 0 ? -1.2 : 1.6],
+                    }
+              }
+              transition={reduce ? undefined : { duration: 7 + index * 1.3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="overflow-hidden border border-white/18 bg-[#F4F1EA] p-2 shadow-[0_34px_120px_rgba(0,0,0,.48)]">
+                <img className="aspect-[16/10] w-full object-cover object-top" src={screenshotPath(project.screenshots[0])} alt="" decoding="async" fetchPriority={isLead ? "high" : undefined} />
+                <div className="flex items-center justify-between gap-3 px-2 py-2">
+                  <p className="text-xs font-black uppercase tracking-[0.14em] text-black/52">{project.name}</p>
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#B38B33]" />
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+      <div className="hero-scan-line absolute left-[10rem] top-[3rem] h-px w-[39rem]" />
+      <div className="hero-orbit-ring absolute left-[9rem] top-[6rem] h-[24rem] w-[42rem]" />
+    </div>
+  );
+}
+
+function HeroProofReel({ reduce }) {
+  const railItems = reduce ? projects : [...projects, ...projects];
+
+  return (
+    <motion.div {...getMotion(reduce, 0.16)} className="hero-proof-reel mt-8 max-w-[46rem] overflow-hidden border border-white/12 bg-black/28 p-2 backdrop-blur-2xl">
+      <div className="mb-2 flex items-center justify-between gap-3 px-2">
+        <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[#D8B96E]">Verified screen reel</p>
+        <span className="hidden text-[11px] font-black text-white/42 sm:inline">real screenshots only</span>
+      </div>
+      <div className="relative h-[9.4rem] overflow-hidden sm:h-[10.8rem] lg:h-[8.8rem]">
+        <motion.div
+          className="absolute inset-y-0 left-0 flex gap-3 py-1"
+          animate={reduce ? undefined : { x: ["0%", "-50%"] }}
+          transition={reduce ? undefined : { duration: 26, repeat: Infinity, ease: "linear" }}
+        >
+          {railItems.map((project, index) => (
+            <Link
+              key={`${project.id}-hero-reel-${index}`}
+              to={`/works/${project.id}`}
+              className="hero-reel-card group block w-[15rem] shrink-0 overflow-hidden border border-white/12 bg-[#F4F1EA] p-1.5 text-[#05060A] sm:w-[18rem] lg:w-[16.5rem]"
+            >
+              <img
+                className="aspect-[16/9] w-full object-cover object-top transition duration-500 group-hover:scale-[1.035]"
+                src={screenshotPath(project.screenshots[0])}
+                alt={`${project.name}の実画面プレビュー`}
+                loading={index === 0 ? undefined : "lazy"}
+                decoding="async"
+                fetchPriority={index === 0 ? "high" : undefined}
+              />
+              <div className="flex items-center justify-between gap-3 px-2 py-2">
+                <span className="truncate text-xs font-black">{project.name}</span>
+                <span className="shrink-0 text-[10px] font-black text-black/46">{proofLabel(project)}</span>
+              </div>
+            </Link>
+          ))}
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
 
@@ -831,7 +974,7 @@ function HeroPreviewCard({ project, reduce }) {
       transition={reduce ? undefined : { duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
     >
       <Link to={`/works/${project.id}`} className="group relative block h-28 overflow-hidden rounded-3xl border border-white/15 bg-white/10 backdrop-blur-xl md:h-36">
-        <img className="h-full w-full object-cover object-top opacity-[.82] transition duration-500 group-hover:scale-110 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} />
+        <img className="h-full w-full object-cover object-top opacity-[.88] transition duration-500 group-hover:scale-110 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <p className="absolute bottom-3 left-3 text-sm font-black text-white">{project.name}</p>
       </Link>
@@ -861,6 +1004,11 @@ function ShinyText({ children, className = "" }) {
 
 function Works() {
   const reduce = useReducedMotion();
+  const [activeFilter, setActiveFilter] = useState("all");
+  const selectedFilter = workFilters.find((filter) => filter.id === activeFilter) || workFilters[0];
+  const filteredProjects = selectedFilter.match
+    ? projects.filter((project) => project.category.includes(selectedFilter.match))
+    : projects;
 
   return (
     <SubPage variant="works">
@@ -871,16 +1019,26 @@ function Works() {
             制作実績
           </h1>
           <p className="mt-4 max-w-2xl text-base font-bold leading-8 text-white/70 md:text-lg">
-            実画面のスクリーンショットから、近い制作物と導線設計を確認できます。
+            実案件、自主制作、検証用デモを分けて、依頼前に近い制作物と担当範囲を確認できます。
           </p>
         </motion.div>
 
         <motion.div {...getMotion(reduce, 0.08)} className="mt-6 flex flex-wrap gap-2">
-          {workFilters.map(([label, count]) => (
-            <span key={label} className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.07] px-4 py-2 text-sm font-black text-white/72 backdrop-blur-xl">
-              {label}
-              <span className="text-white/42">{count}</span>
-            </span>
+          {workFilters.map((filter) => (
+            <button
+              key={filter.id}
+              type="button"
+              onClick={() => setActiveFilter(filter.id)}
+              className={`inline-flex items-center gap-2 border px-4 py-2 text-sm font-black backdrop-blur-xl transition ${
+                activeFilter === filter.id
+                  ? "border-[#D8B96E]/50 bg-[#F4F1EA] text-[#05060A]"
+                  : "border-white/[0.12] bg-white/[0.07] text-white/72 hover:border-[#D8B96E]/36 hover:text-white"
+              }`}
+              aria-pressed={activeFilter === filter.id}
+            >
+              {filter.label}
+              <span className={activeFilter === filter.id ? "text-black/50" : "text-white/42"}>{filter.count}</span>
+            </button>
           ))}
         </motion.div>
       </section>
@@ -894,14 +1052,16 @@ function Works() {
             </h2>
           </div>
           <p className="max-w-xl text-sm font-bold leading-7 text-white/58">
-            作品の種類、対象ユーザー、見るべき導線をそろえています。気になるカードから詳細へ進めます。
+            {selectedFilter.label}の掲載中作品です。カード内の種別ラベルで、実案件・自主制作・検証用デモを確認できます。
           </p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        <motion.div layout className="grid gap-5 md:grid-cols-2">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       <section className="mt-10 flex flex-col justify-between gap-4 rounded-[1.6rem] border border-cyan/[0.14] bg-white/[0.055] p-5 backdrop-blur-xl md:flex-row md:items-center">
@@ -934,7 +1094,7 @@ function ProofRail({ reduce }) {
               to={`/works/${project.id}`}
               className="group relative block w-[24rem] shrink-0 overflow-hidden rounded-[1.25rem] border border-white/10 bg-black md:w-[34rem]"
             >
-              <img className="h-full w-full object-cover object-top opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} />
+              <img className="h-full w-full object-cover object-top opacity-85 transition duration-500 group-hover:scale-105 group-hover:opacity-100" src={screenshotPath(project.screenshots[0])} alt={`${project.name}の画面プレビュー`} loading="lazy" decoding="async" />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <p className="text-sm font-black text-white">{project.name}</p>
               </div>
@@ -950,30 +1110,43 @@ function ProjectCard({ project, index }) {
   const reduce = useReducedMotion();
   const image = screenshotPath(project.screenshots[0]);
   const accent = project.accent?.[0] || "#D7B66D";
+  const workType = project.workType || project.role;
+  const proof = proofLabel(project);
 
   return (
     <motion.article
       {...getMotion(reduce, index * 0.04)}
       layout
+      exit={reduce ? undefined : { opacity: 0, y: 18, scale: 0.98, filter: "blur(8px)" }}
+      transition={{ duration: 0.42, delay: index * 0.035, ease: [0.2, 0.8, 0.2, 1] }}
       whileHover={reduce ? undefined : { y: -8 }}
       style={{ "--accent": accent }}
-      className="motion-card group overflow-hidden rounded-2xl border border-white/[0.13] bg-white/[0.065] p-2 shadow-[0_28px_90px_rgba(0,0,0,.34)] backdrop-blur-xl"
+      className="motion-card work-card group overflow-hidden border border-white/[0.13] bg-[#F4F1EA] p-2 text-[#05060A] shadow-[0_28px_90px_rgba(0,0,0,.34)]"
     >
       <Link to={`/works/${project.id}`} className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan">
-        <div className="relative min-h-[360px] overflow-hidden rounded-[1rem] bg-black md:min-h-[440px]">
-          <img className="absolute inset-0 h-full w-full object-cover object-top opacity-88 transition duration-700 group-hover:scale-[1.035] group-hover:opacity-100" src={image} alt={`${project.name}の画面プレビュー`} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-          <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
-            <span className="liquid-glass rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.16em] text-white/74">{project.category}</span>
-            <span className="liquid-glass rounded-full px-3 py-1 text-[11px] font-bold text-white/64">{project.type}</span>
+        <div className="overflow-hidden bg-white">
+          <img
+            className="aspect-[16/10] w-full object-cover object-top opacity-[0.98] transition duration-700 group-hover:scale-[1.035] group-hover:opacity-100"
+            src={image}
+            alt={`${project.name}の画面プレビュー`}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div className="p-4 md:p-5">
+          <div className="flex flex-wrap gap-2">
+            <span className="work-proof-badge border border-black/12 bg-[#05060A] px-3 py-1 text-[11px] font-black text-white">{proof}</span>
+            <span className="border border-black/12 bg-black/[0.035] px-3 py-1 text-[11px] font-black uppercase tracking-[0.14em] text-black/62">{workType}</span>
+            <span className="border border-black/12 bg-black/[0.035] px-3 py-1 text-[11px] font-bold text-black/54">{project.type}</span>
           </div>
-          <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-            <h2 className="text-2xl font-black tracking-[-0.02em] text-white md:text-3xl">{project.name}</h2>
-            <p className="mt-3 max-w-xl text-sm font-bold leading-6 text-white/72">{project.shortValue}</p>
-            <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#F4F1EA] px-4 py-2 text-sm font-black text-[#05060A]">
+          <h2 className="mt-4 text-2xl font-black tracking-normal text-[#05060A] md:text-3xl">{project.name}</h2>
+          <p className="mt-3 max-w-xl text-sm font-bold leading-6 text-black/62">{project.shortValue}</p>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 bg-[#05060A] px-4 py-2 text-sm font-black text-white transition duration-300 group-hover:translate-x-1">
               {project.ctaLabel}
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
-            </div>
+            </span>
+            <span className="text-xs font-black text-black/44">{project.safeAssetNote}</span>
           </div>
         </div>
       </Link>
@@ -997,7 +1170,7 @@ function ProjectDetail() {
   return (
     <Page className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-x-[-8rem] top-[-9rem] z-0 h-[62rem] overflow-hidden" aria-hidden="true">
-        <img className="absolute right-[-4rem] top-0 h-[48rem] w-[78rem] max-w-none rounded-[4rem] object-cover object-top opacity-20 blur-[1px] saturate-[.9]" src={screenshot} alt="" />
+        <img className="absolute right-[-4rem] top-0 h-[48rem] w-[78rem] max-w-none rounded-[4rem] object-cover object-top opacity-20 blur-[1px] saturate-[.9]" src={screenshot} alt="" decoding="async" />
         <MotionRibbon className="right-[-10rem] top-[7rem] h-[36rem] w-[56rem] opacity-56" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_16%,rgba(114,226,255,.20),transparent_25rem),radial-gradient(circle_at_16%_24%,rgba(216,184,106,.12),transparent_20rem),linear-gradient(180deg,rgba(14,28,44,.88),rgba(9,16,24,.80)_54%,rgba(5,6,10,.96))]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:44px_44px] opacity-35 [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
@@ -1026,9 +1199,13 @@ function ProjectDetail() {
             </a>
           </motion.div>
           <motion.div {...getMotion(reduce, 0.12)} className="relative overflow-hidden rounded-[2rem] border border-white/14 bg-white/[0.07] p-2 shadow-glow backdrop-blur-xl">
-            <img className={`h-[460px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面プレビュー`} />
+            <img className={`max-h-[460px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面プレビュー`} decoding="async" />
           </motion.div>
         </section>
+
+        <ProjectTrustSummary project={project} accent={accent} reduce={reduce} />
+        <ProjectDecisionPanel project={project} accent={accent} reduce={reduce} />
+        <ScreenBreakdownGrid project={project} accent={accent} reduce={reduce} />
 
         {hasTabbedCase && <CaseStudyTabs project={project} accent={accent} reduce={reduce} />}
 
@@ -1080,10 +1257,135 @@ function ProjectDetail() {
         </section>
 
         <section className="mt-16 overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.065] p-3 backdrop-blur-xl">
-          <img className={`max-h-[760px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面全体プレビュー`} />
+          <img className={`max-h-[760px] w-full rounded-[1.55rem] ${detailImageClass}`} src={screenshot} alt={`${project.name}の画面全体プレビュー`} loading="lazy" decoding="async" />
         </section>
       </div>
     </Page>
+  );
+}
+
+function ProjectTrustSummary({ project, accent, reduce }) {
+  const summaryItems = [
+    ["制作区分", proofLabel(project)],
+    ["担当範囲", compactList(project.deliverables) || project.scope || "画面設計 / UI実装 / ブラウザ確認"],
+    ["相談に使える理由", project.businessValue || project.clientReadiness || project.shortValue],
+  ];
+
+  return (
+    <section className="mt-10 grid gap-3 md:grid-cols-3">
+      {summaryItems.map(([label, text], index) => (
+        <motion.article
+          key={label}
+          {...getMotion(reduce, index * 0.035)}
+          className="project-trust-card border border-white/12 bg-white/[0.065] p-5 backdrop-blur-xl"
+          style={{ "--accent": accent }}
+        >
+          <p className="text-[11px] font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
+            {label}
+          </p>
+          <p className="mt-3 text-sm font-bold leading-7 text-white/72">{text}</p>
+        </motion.article>
+      ))}
+    </section>
+  );
+}
+
+function ProjectDecisionPanel({ project, accent, reduce }) {
+  const decisionItems = [
+    ["課題", project.challenge || `${project.audience}が、何を見るべきか迷わず判断できる入口を作ること。`],
+    ["担当範囲", project.scope || "画面構成、コピー整理、UI実装、ブラウザ確認までを担当。"],
+    ["画面設計", project.designApproach || project.designFocus],
+    ["成果・検証", project.outcome || "公開画面とスクリーンショットで導線、表示崩れ、掲載安全性を確認。"],
+    ["次に改善するなら", project.nextImprovement || "問い合わせ導線と実データ検証の粒度をさらに増やす。"],
+  ];
+  const evidence = project.evidence || [project.safeAssetNote, project.contentSource].filter(Boolean);
+
+  return (
+    <section className="mt-12 grid gap-5 lg:grid-cols-[1.1fr_.9fr]">
+      <motion.div {...getMotion(reduce, 0.04)} className="border border-white/12 bg-[#F4F1EA] p-5 text-[#05060A] md:p-7">
+        <p className="text-xs font-black uppercase tracking-[0.16em] text-black/48">Client decision sheet</p>
+        <h2 className="mt-3 max-w-2xl text-3xl font-black leading-tight tracking-normal md:text-4xl">
+          発注前に見たい判断材料。
+        </h2>
+        <div className="mt-6 grid gap-3">
+          {decisionItems.map(([label, text]) => (
+            <article key={label} className="grid gap-3 border-t border-black/10 pt-4 md:grid-cols-[8rem_1fr]">
+              <p className="text-sm font-black" style={{ color: accent }}>
+                {label}
+              </p>
+              <p className="text-sm font-bold leading-7 text-black/68">{text}</p>
+            </article>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.aside {...getMotion(reduce, 0.08)} className="border border-white/12 bg-white/[0.065] p-5 backdrop-blur-xl md:p-7">
+        <div className="flex items-start gap-3">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[#D8B96E]/24 bg-[#D8B96E]/12 text-[#D8B96E]">
+            <ShieldCheck className="h-5 w-5" strokeWidth={2.1} />
+          </span>
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
+              Proof and safety
+            </p>
+            <h3 className="mt-2 text-2xl font-black tracking-normal text-white">{project.clientReadiness || "提出用に説明可能な素材"}</h3>
+          </div>
+        </div>
+        <div className="mt-5 grid gap-3">
+          {evidence.map((item) => (
+            <p key={item} className="flex gap-3 text-sm font-bold leading-7 text-white/66">
+              <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#D8B96E]" strokeWidth={2.2} />
+              <span>{item}</span>
+            </p>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2">
+          {(project.tags || []).map((tag) => (
+            <span key={tag} className="border border-white/10 bg-white/[0.055] px-3 py-1 text-xs font-black text-white/52">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </motion.aside>
+    </section>
+  );
+}
+
+function ScreenBreakdownGrid({ project, accent, reduce }) {
+  if (!project.screenBreakdown?.length) return null;
+
+  return (
+    <section className="mt-12">
+      <div className="mb-5 grid gap-4 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+        <div>
+          <p className="eyebrow" style={{ color: accent }}>
+            Screen breakdown
+          </p>
+          <h2 className="mt-3 text-3xl font-black leading-tight tracking-normal text-white md:text-4xl">
+            画面のどこを見ればよいか。
+          </h2>
+        </div>
+        <p className="max-w-2xl text-sm font-bold leading-7 text-white/58">
+          作品を雰囲気だけで見せず、発注前に確認したい導線、CTA、情報設計のポイントへ分解します。
+        </p>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {project.screenBreakdown.map((item, index) => (
+          <motion.article
+            key={`${project.id}-${item.label}`}
+            {...getMotion(reduce, index * 0.035)}
+            className="screen-breakdown-card border border-white/12 bg-[#0C1117]/82 p-5 backdrop-blur-xl"
+            style={{ "--accent": accent }}
+          >
+            <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
+              {item.label}
+            </p>
+            <h3 className="mt-3 text-xl font-black tracking-normal text-white">{item.title}</h3>
+            <p className="mt-3 text-sm font-bold leading-7 text-white/58">{item.text}</p>
+          </motion.article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -1147,6 +1449,8 @@ function CaseStudyTabs({ project, accent, reduce }) {
                   className="min-h-[260px] w-full rounded-[1.25rem] bg-white object-contain"
                   src={screenshotPath(image.src)}
                   alt={`${project.name} ${image.title}`}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="flex flex-col justify-center p-3">
                   <h4 className="text-2xl font-black tracking-[-0.03em] text-white">{image.title}</h4>
@@ -1217,7 +1521,7 @@ function CaseStudyGallery({ project, accent, reduce }) {
             {...getMotion(reduce, index * 0.04)}
             className="grid overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.05] p-3 lg:grid-cols-[1.08fr_.72fr]"
           >
-            <img className="h-full min-h-[240px] w-full rounded-[1.5rem] bg-white object-contain" src={screenshotPath(item.src)} alt={`${project.name} ${item.title}`} />
+            <img className="h-full min-h-[240px] w-full rounded-[1.5rem] bg-white object-contain" src={screenshotPath(item.src)} alt={`${project.name} ${item.title}`} loading="lazy" decoding="async" />
             <div className="flex flex-col justify-center p-5 lg:p-7">
               <p className="text-xs font-black uppercase tracking-[0.16em]" style={{ color: accent }}>
                 {item.label}
@@ -1358,7 +1662,7 @@ function About() {
             >
               <Link to={card.href} className="block">
                 <div className="overflow-hidden rounded-xl border border-white/[0.08] bg-black/28">
-                  <img className="aspect-[16/9] w-full object-cover object-top opacity-90 transition duration-500 group-hover:scale-[1.025]" src={screenshotPath(card.image)} alt={card.imageAlt} />
+                  <img className="aspect-[16/9] w-full object-cover object-top opacity-90 transition duration-500 group-hover:scale-[1.025]" src={screenshotPath(card.image)} alt={card.imageAlt} loading="lazy" decoding="async" />
                 </div>
                 <div className="p-3 md:p-4">
                   <span className="text-xs font-black uppercase tracking-[0.16em] text-cyan">{card.label}</span>
@@ -1444,21 +1748,37 @@ function Contact() {
     <SubPage variant="contact">
       <section className="grid gap-8 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
         <motion.div {...getMotion(reduce, 0.02)} className="max-w-3xl">
-          <p className="eyebrow text-cyan">相談前の入口</p>
+          <p className="eyebrow text-[#D8B96E]">Start a project</p>
           <h1 className="mt-4 text-balance text-[2.65rem] font-black leading-[1.08] tracking-normal text-milk sm:text-5xl md:text-[3.2rem]">
-            相談したい内容を、近い作品から整理する。
+            <span className="block sm:hidden">制作相談を開始。</span>
+            <span className="hidden sm:block">
+              制作相談を、
+              <br />
+              ここから始める。
+            </span>
           </h1>
           <p className="mt-6 max-w-2xl text-base font-bold leading-8 text-white/66">
-            LP、Webサービス、業務画面のどれに近いかを選び、ファーストビュー、フォーム、分析画面など見たい導線を先に絞れます。
+            LP、Webサービス、業務画面のどれに近いかを選び、参考実績を見ながら初回相談に進めます。
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="motion-button bg-milk text-ink" href="#contact-types">
-              相談タイプを選ぶ
-              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            <a className="motion-button bg-milk text-ink" href={contactMailHref}>
+              メールで相談する
+              <Mail className="ml-2 h-4 w-4" strokeWidth={2.4} />
             </a>
-            <Link className="motion-button border border-white/12 bg-white/[0.065] text-white" to="/works">
-              作品一覧を見る
-            </Link>
+            <a className="motion-button border border-[#D8B96E]/32 bg-[#D8B96E]/10 text-white" href="#contact-types">
+              相談タイプを選ぶ
+            </a>
+          </div>
+          <p className="mt-4 text-sm font-bold leading-7 text-white/46">
+            宛先: {contactEmail} / 件名: {contactSubject}
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {contactReadinessItems.map((item) => (
+              <div key={item.label} className="contact-ready-card border border-white/12 bg-white/[0.055] p-4 backdrop-blur-xl">
+                <p className="text-[11px] font-black uppercase tracking-[0.14em] text-[#D8B96E]">{item.label}</p>
+                <p className="mt-2 text-sm font-bold leading-6 text-white/62">{item.text}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -1482,6 +1802,7 @@ function Contact() {
                   <span className="block text-xs font-black uppercase tracking-[0.16em] text-cyan">{step.eyebrow}</span>
                   <span className="mt-1 block text-xl font-black tracking-normal text-white">{step.title}</span>
                   <span className="mt-2 block text-sm font-bold leading-6 text-white/56">{step.text}</span>
+                  <span className="mt-3 block border-t border-white/10 pt-3 text-xs font-black leading-5 text-[#D8B96E]/82">{step.mailHint}</span>
                 </span>
                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-milk text-ink transition group-hover:translate-x-1">
                   <ArrowUpRight className="h-4 w-4" strokeWidth={2.3} />
@@ -1490,6 +1811,24 @@ function Contact() {
             ))}
           </div>
         </motion.div>
+      </section>
+
+      <section className="mt-14 grid gap-5 border border-[#D8B96E]/20 bg-[#F4F1EA] p-5 text-[#05060A] md:grid-cols-[.9fr_1.1fr] md:p-7">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.16em] text-black/48">Inquiry ready</p>
+          <h2 className="mt-3 text-3xl font-black leading-tight tracking-normal md:text-4xl">初回相談で話せること。</h2>
+          <p className="mt-4 text-sm font-bold leading-7 text-black/62">
+            完成イメージが固まっていなくても、目的、参考実績、必要な導線を一緒に整理できます。
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {["LPのCV導線", "Webサービスの入力体験", "業務画面の情報整理"].map((item) => (
+            <div key={item} className="border border-black/10 bg-white/60 p-4">
+              <CheckCircle2 className="h-5 w-5 text-[#B38B33]" strokeWidth={2.2} />
+              <p className="mt-3 text-sm font-black leading-6">{item}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="mt-20">
@@ -1530,7 +1869,7 @@ function Contact() {
             >
               <Link to={`/works/${guide.project.id}`} className="grid gap-4 sm:grid-cols-[12rem_1fr]">
                 <div className="overflow-hidden rounded-xl bg-black/24">
-                  <img className="h-40 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02] sm:h-full" src={screenshotPath(guide.project.screenshots[0])} alt={`${guide.project.name}の画面プレビュー`} />
+                  <img className="h-40 w-full object-cover object-top transition duration-500 group-hover:scale-[1.02] sm:h-full" src={screenshotPath(guide.project.screenshots[0])} alt={`${guide.project.name}の画面プレビュー`} loading="lazy" decoding="async" />
                 </div>
                 <div className="flex flex-col justify-center p-3">
                   <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan">{guide.label}</p>
@@ -1547,27 +1886,24 @@ function Contact() {
         </div>
       </section>
 
-      <section className="mt-20 rounded-[2rem] border border-cyan/[0.16] bg-[linear-gradient(135deg,rgba(114,226,255,.10),rgba(255,255,255,.035)_42%,rgba(216,184,106,.08))] p-5 backdrop-blur-xl md:p-8">
+      <section className="mt-20 rounded-[1.2rem] border border-[#D8B96E]/22 bg-[linear-gradient(135deg,rgba(216,185,110,.16),rgba(255,255,255,.045)_42%,rgba(114,226,255,.08))] p-5 backdrop-blur-xl md:p-8">
         <motion.div {...getMotion(reduce, 0.02)} className="max-w-4xl">
-          <p className="eyebrow text-cyan">Next step</p>
+          <p className="eyebrow text-[#D8B96E]">Next step</p>
           <h2 className="mt-4 max-w-3xl text-3xl font-black leading-tight tracking-normal text-white md:text-[2.65rem]">
-            まず作品を見て、相談の輪郭を作る。
+            近い作品を見ながら、初回相談へ進む。
           </h2>
           <p className="mt-5 max-w-2xl font-bold leading-8 text-white/62">
-            近い作品と見たい導線が決まると、依頼内容、優先したい画面、必要なCTAを話しやすくなります。
+            依頼内容がまだ曖昧でも大丈夫です。近い作品、優先したい画面、必要なCTAから相談内容を組み立てます。
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link className="motion-button bg-milk text-ink" to="/works">
-              まず作品を見る
-              <ArrowRight className="ml-2 h-4 w-4" strokeWidth={2.4} />
-            </Link>
+            <a className="motion-button bg-milk text-ink" href={contactMailHref}>
+              メールで相談する
+              <Mail className="ml-2 h-4 w-4" strokeWidth={2.4} />
+            </a>
             <a className="motion-button border border-white/12 bg-white/[0.065] text-white" href="#contact-types">
-              相談タイプへ戻る
+              相談タイプを見る
             </a>
           </div>
-          <p className="mt-5 max-w-2xl text-xs font-bold leading-6 text-white/42">
-            このページでは実連絡先や外部フォームを掲載せず、作品確認から相談前の判断材料を揃える入口として整理しています。
-          </p>
         </motion.div>
       </section>
     </SubPage>
